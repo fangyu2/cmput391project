@@ -1,0 +1,42 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc01               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+img#e4              { /* cmput391001003.jpg */
+	position        : absolute;
+	left            :  21.00pt;
+	top             : 102.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e3              { /* Home */
+	position        : absolute;
+	left            :  51.75pt;
+	top             : 111.75pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e2              { /* cmput391001001.jpg */
+	position        : absolute;
+	left            :  21.00pt;
+	top             : 149.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e1              { /* Login */
+	position        : absolute;
+	left            :  51.75pt;
+	top             : 159.00pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+body#page           { /* Page Body */
+	background-color: #c0c0c0;
+	}
+
+
+
+/*--- EndOfFile ---*/

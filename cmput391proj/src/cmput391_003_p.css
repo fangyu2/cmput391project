@@ -1,0 +1,70 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc06               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+img#e8              { /* cmput391003007.jpg */
+	position        : absolute;
+	left            :  14.25pt;
+	top             : 102.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e7              { /* Home */
+	position        : absolute;
+	left            :  48.00pt;
+	top             : 111.75pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e6              { /* cmput391003005.jpg */
+	position        : absolute;
+	left            :  15.75pt;
+	top             : 192.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e5              { /* Edit Profile */
+	position        : absolute;
+	left            :  47.25pt;
+	top             : 197.25pt;
+	width           :  56.25pt;
+	height          :  38.25pt;
+	}
+img#e4              { /* cmput391003003.jpg */
+	position        : absolute;
+	left            :  15.75pt;
+	top             : 240.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e3              { /* Logout */
+	position        : absolute;
+	left            :  46.50pt;
+	top             : 249.75pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e2              { /* cmput391003001.jpg */
+	position        : absolute;
+	left            :  15.00pt;
+	top             : 147.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e1              { /* Search */
+	position        : absolute;
+	left            :  45.75pt;
+	top             : 156.75pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/

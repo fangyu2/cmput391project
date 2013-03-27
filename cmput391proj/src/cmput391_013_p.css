@@ -1,0 +1,221 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc32               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+.cc33               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	padding         :   1.50pt;
+	}
+.cc34               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc35               { /* Common */
+	font            : 12pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc36               { /* Common */
+	font            : italic 16pt 'Impact';
+	color           : #000000;
+	}
+img#e28             { /* cmput391013007.jpg */
+	position        : absolute;
+	left            :  33.00pt;
+	top             : 101.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e27             { /* Home */
+	position        : absolute;
+	left            :  66.75pt;
+	top             : 111.00pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e26             { /* cmput391013005.jpg */
+	position        : absolute;
+	left            :  32.25pt;
+	top             : 200.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e25             { /* Edit Profile */
+	position        : absolute;
+	left            :  63.75pt;
+	top             : 206.25pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e24             { /* cmput391013003.jpg */
+	position        : absolute;
+	left            :  32.25pt;
+	top             : 247.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e23             { /* Logout */
+	position        : absolute;
+	left            :  63.00pt;
+	top             : 257.25pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e22             { /* cmput391013001.jpg */
+	position        : absolute;
+	left            :  33.75pt;
+	top             : 150.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e21             { /* Search */
+	position        : absolute;
+	left            :  64.50pt;
+	top             : 160.50pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+input#e20           { /* Password password  */
+	position        : absolute;
+	left            : 281.25pt;
+	top             : 107.25pt;
+	width           :  51.00pt;
+	height          :  14.25pt;
+	}
+input#e19           { /* Password password  */
+	position        : absolute;
+	left            : 281.25pt;
+	top             : 137.25pt;
+	width           :  51.00pt;
+	height          :  14.25pt;
+	}
+input#e18           { /* Button onclick="alert('B... */
+	position        : absolute;
+	left            : 408.75pt;
+	top             : 392.25pt;
+	width           :  57.00pt;
+	height          :  20.25pt;
+	}
+div#e17             { /* New Password: */
+	position        : absolute;
+	left            : 200.25pt;
+	top             : 111.75pt;
+	width           :  64.50pt;
+	height          :  12.75pt;
+	}
+div#e16             { /* Re-Type Password: */
+	position        : absolute;
+	left            : 186.00pt;
+	top             : 145.50pt;
+	width           :  78.75pt;
+	height          :  12.75pt;
+	}
+div#e15             { /* Change Password: */
+	position        : absolute;
+	left            : 168.00pt;
+	top             :  83.25pt;
+	width           : 156.00pt;
+	height          :  14.25pt;
+	}
+div#e14             { /* Edit Profile */
+	position        : absolute;
+	left            : 312.75pt;
+	top             :  57.00pt;
+	width           : 156.00pt;
+	height          :  21.75pt;
+	}
+div#e13             { /* Change Email: */
+	position        : absolute;
+	left            : 168.00pt;
+	top             : 174.00pt;
+	width           : 156.00pt;
+	height          :  15.75pt;
+	}
+input#e12           { /* Text text_box  */
+	position        : absolute;
+	left            : 255.75pt;
+	top             : 195.75pt;
+	width           : 121.50pt;
+	}
+div#e11             { /* New Email: */
+	position        : absolute;
+	left            : 185.25pt;
+	top             : 198.00pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e10           { /* Text text_box  */
+	position        : absolute;
+	left            : 255.75pt;
+	top             : 222.00pt;
+	width           : 121.50pt;
+	}
+div#e9              { /* Change Personal Informat... */
+	position        : absolute;
+	left            : 168.00pt;
+	top             : 255.75pt;
+	width           : 181.50pt;
+	height          :  29.25pt;
+	}
+input#e8            { /* Text text_box  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             : 277.50pt;
+	width           : 121.50pt;
+	}
+div#e7              { /* Address: */
+	position        : absolute;
+	left            : 186.75pt;
+	top             : 279.75pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e6            { /* Text text_box  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             : 303.75pt;
+	width           : 121.50pt;
+	}
+div#e5              { /* Phone: */
+	position        : absolute;
+	left            : 186.75pt;
+	top             : 306.00pt;
+	width           :  90.75pt;
+	height          :  12.00pt;
+	}
+input#e4            { /* Text text_box  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             : 324.75pt;
+	width           : 121.50pt;
+	}
+div#e3              { /* First Name: */
+	position        : absolute;
+	left            : 186.75pt;
+	top             : 327.00pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e2            { /* Text text_box  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             : 351.00pt;
+	width           : 121.50pt;
+	}
+div#e1              { /* Last Name: */
+	position        : absolute;
+	left            : 186.75pt;
+	top             : 353.25pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/

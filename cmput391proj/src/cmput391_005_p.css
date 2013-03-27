@@ -1,0 +1,255 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc08               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+.cc09               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	padding         :   1.50pt;
+	}
+.cc10               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc11               { /* Common */
+	font            : 12pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc12               { /* Common */
+	font            : italic 16pt 'Impact';
+	color           : #000000;
+	}
+img#e33             { /* cmput391005011.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             :  63.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e32             { /* Home */
+	position        : absolute;
+	left            :  50.25pt;
+	top             :  73.50pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e31             { /* cmput391005009.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             : 156.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e30             { /* Edit Profile */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 161.25pt;
+	width           :  56.25pt;
+	height          :  38.25pt;
+	}
+img#e29             { /* cmput391005007.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             : 296.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e28             { /* Logout */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 306.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e27             { /* cmput391005005.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             : 202.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e26             { /* Manage Users */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 207.75pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e25             { /* cmput391005003.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             : 249.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e24             { /* View Logs */
+	position        : absolute;
+	left            :  42.75pt;
+	top             : 261.00pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e23             { /* cmput391005001.jpg */
+	position        : absolute;
+	left            :  16.50pt;
+	top             : 110.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e22             { /* Search */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 120.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+input#e21           { /* Password password  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             :  87.75pt;
+	width           :  50.25pt;
+	height          :  13.50pt;
+	}
+input#e20           { /* Password password  */
+	position        : absolute;
+	left            : 257.25pt;
+	top             : 117.75pt;
+	width           :  50.25pt;
+	height          :  13.50pt;
+	}
+input#e19           { /* Button onclick="alert('B... */
+	position        : absolute;
+	left            : 384.75pt;
+	top             : 372.75pt;
+	width           :  56.25pt;
+	}
+div#e18             { /* New Password: */
+	position        : absolute;
+	left            : 176.25pt;
+	top             :  92.25pt;
+	width           :  64.50pt;
+	height          :  12.75pt;
+	}
+div#e17             { /* Re-Type Password: */
+	position        : absolute;
+	left            : 162.00pt;
+	top             : 126.00pt;
+	width           :  78.75pt;
+	height          :  12.75pt;
+	}
+div#e16             { /* Change Password: */
+	position        : absolute;
+	left            : 144.00pt;
+	top             :  63.75pt;
+	width           : 156.00pt;
+	height          :  14.25pt;
+	}
+div#e15             { /* Edit Profile */
+	position        : absolute;
+	left            : 288.75pt;
+	top             :  37.50pt;
+	width           : 156.00pt;
+	height          :  21.75pt;
+	}
+div#e14             { /* Change Email: */
+	position        : absolute;
+	left            : 144.00pt;
+	top             : 154.50pt;
+	width           : 156.00pt;
+	height          :  15.75pt;
+	}
+input#e13           { /* Text text_box  */
+	position        : absolute;
+	left            : 231.75pt;
+	top             : 176.25pt;
+	width           : 120.75pt;
+	}
+div#e12             { /* New Email: */
+	position        : absolute;
+	left            : 161.25pt;
+	top             : 178.50pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e11           { /* Text text_box  */
+	position        : absolute;
+	left            : 231.75pt;
+	top             : 202.50pt;
+	width           : 120.75pt;
+	}
+div#e10             { /* Retype New Email: */
+	position        : absolute;
+	left            : 133.50pt;
+	top             : 204.75pt;
+	width           :  90.75pt;
+	height          :  21.75pt;
+	}
+div#e9              { /* Change Personal Informat... */
+	position        : absolute;
+	left            : 144.00pt;
+	top             : 236.25pt;
+	width           : 181.50pt;
+	height          :  29.25pt;
+	}
+input#e8            { /* Text text_box  */
+	position        : absolute;
+	left            : 233.25pt;
+	top             : 258.00pt;
+	width           : 120.75pt;
+	}
+div#e7              { /* Address: */
+	position        : absolute;
+	left            : 162.75pt;
+	top             : 260.25pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e6            { /* Text text_box  */
+	position        : absolute;
+	left            : 233.25pt;
+	top             : 284.25pt;
+	width           : 120.75pt;
+	}
+div#e5              { /* Phone: */
+	position        : absolute;
+	left            : 162.75pt;
+	top             : 286.50pt;
+	width           :  90.75pt;
+	height          :  12.00pt;
+	}
+input#e4            { /* Text text_box  */
+	position        : absolute;
+	left            : 233.25pt;
+	top             : 305.25pt;
+	width           : 120.75pt;
+	}
+div#e3              { /* First Name: */
+	position        : absolute;
+	left            : 162.75pt;
+	top             : 307.50pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+input#e2            { /* Text text_box  */
+	position        : absolute;
+	left            : 233.25pt;
+	top             : 331.50pt;
+	width           : 120.75pt;
+	}
+div#e1              { /* Last Name: */
+	position        : absolute;
+	left            : 162.75pt;
+	top             : 333.75pt;
+	width           :  64.50pt;
+	height          :  12.00pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/

@@ -1,0 +1,120 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc14               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+.cc15               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc16               { /* Common */
+	font            : 10pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+img#e14             { /* cmput391007011.jpg */
+	position        : absolute;
+	left            :  21.00pt;
+	top             :  63.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e13             { /* Home */
+	position        : absolute;
+	left            :  51.75pt;
+	top             :  73.50pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e12             { /* cmput391007009.jpg */
+	position        : absolute;
+	left            :  18.75pt;
+	top             : 156.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e11             { /* Edit Profile */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 161.25pt;
+	width           :  56.25pt;
+	height          :  38.25pt;
+	}
+img#e10             { /* cmput391007007.jpg */
+	position        : absolute;
+	left            :  22.50pt;
+	top             : 296.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e9              { /* Logout */
+	position        : absolute;
+	left            :  53.25pt;
+	top             : 306.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e8              { /* cmput391007005.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 202.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e7              { /* Manage Users */
+	position        : absolute;
+	left            :  49.50pt;
+	top             : 207.75pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e6              { /* cmput391007003.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 249.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e5              { /* View Logs */
+	position        : absolute;
+	left            :  45.75pt;
+	top             : 258.75pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e4              { /* cmput391007001.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 110.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e3              { /* Search */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 120.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+select#e2           { /* List select_list onChang... */
+	position        : absolute;
+	left            : 185.25pt;
+	top             : 102.75pt;
+	width           : 359.25pt;
+	height          : 229.50pt;
+	}
+div#e1              { /* User Logs: */
+	position        : absolute;
+	left            : 189.00pt;
+	top             :  86.25pt;
+	width           : 108.75pt;
+	height          :  12.00pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/

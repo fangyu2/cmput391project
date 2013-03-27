@@ -1,0 +1,98 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc13               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+img#e12             { /* cmput391006011.jpg */
+	position        : absolute;
+	left            :  21.00pt;
+	top             :  63.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e11             { /* Home */
+	position        : absolute;
+	left            :  51.75pt;
+	top             :  73.50pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e10             { /* cmput391006009.jpg */
+	position        : absolute;
+	left            :  18.75pt;
+	top             : 156.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e9              { /* Edit Profile */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 161.25pt;
+	width           :  56.25pt;
+	height          :  38.25pt;
+	}
+img#e8              { /* cmput391006007.jpg */
+	position        : absolute;
+	left            :  22.50pt;
+	top             : 296.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e7              { /* Logout */
+	position        : absolute;
+	left            :  53.25pt;
+	top             : 306.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e6              { /* cmput391006005.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 202.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e5              { /* Manage Users */
+	position        : absolute;
+	left            :  49.50pt;
+	top             : 207.75pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e4              { /* cmput391006003.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 249.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e3              { /* View Logs */
+	position        : absolute;
+	left            :  45.75pt;
+	top             : 258.75pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e2              { /* cmput391006001.jpg */
+	position        : absolute;
+	left            :  19.50pt;
+	top             : 110.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e1              { /* Search */
+	position        : absolute;
+	left            :  50.25pt;
+	top             : 120.00pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/

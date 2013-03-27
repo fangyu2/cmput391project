@@ -1,0 +1,124 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc22               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+.cc23               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	padding         :   1.50pt;
+	}
+.cc24               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc25               { /* Common */
+	font            : 10pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+img#e14             { /* cmput391010009.jpg */
+	position        : absolute;
+	left            :  23.25pt;
+	top             :  79.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e13             { /* Home */
+	position        : absolute;
+	left            :  54.00pt;
+	top             :  89.25pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e12             { /* cmput391010007.jpg */
+	position        : absolute;
+	left            :  21.00pt;
+	top             : 172.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e11             { /* Edit Profile */
+	position        : absolute;
+	left            :  52.50pt;
+	top             : 177.00pt;
+	width           :  56.25pt;
+	height          :  38.25pt;
+	}
+img#e10             { /* cmput391010005.jpg */
+	position        : absolute;
+	left            :  20.25pt;
+	top             : 265.50pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e9              { /* Logout */
+	position        : absolute;
+	left            :  51.00pt;
+	top             : 275.25pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+img#e8              { /* cmput391010003.jpg */
+	position        : absolute;
+	left            :  21.75pt;
+	top             : 218.25pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e7              { /* Add Records */
+	position        : absolute;
+	left            :  51.75pt;
+	top             : 223.50pt;
+	width           :  56.25pt;
+	height          :  26.25pt;
+	}
+img#e6              { /* cmput391010001.jpg */
+	position        : absolute;
+	left            :  21.75pt;
+	top             : 126.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e5              { /* Search */
+	position        : absolute;
+	left            :  52.50pt;
+	top             : 135.75pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+input#e4            { /* Text text_box  */
+	position        : absolute;
+	left            : 224.25pt;
+	top             : 165.00pt;
+	width           : 121.50pt;
+	}
+input#e3            { /* Button onclick="alert('B... */
+	position        : absolute;
+	left            : 381.75pt;
+	top             : 162.75pt;
+	width           :  57.00pt;
+	height          :  20.25pt;
+	}
+div#e2              { /* Enter Patient Name: */
+	position        : absolute;
+	left            : 216.00pt;
+	top             : 141.00pt;
+	width           : 110.25pt;
+	height          :  12.00pt;
+	}
+select#e1           { /* List select_list onChang... */
+	position        : absolute;
+	left            : 216.00pt;
+	top             : 196.50pt;
+	width           : 339.75pt;
+	height          : 259.50pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/
