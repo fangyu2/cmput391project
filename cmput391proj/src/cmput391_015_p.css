@@ -1,0 +1,138 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc41               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	padding         :   1.50pt;
+	}
+.cc42               { /* Common */
+	font            : 8pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc43               { /* Common */
+	font            : 11pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc44               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc45               { /* Common */
+	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
+	color           : #c0c0c0;
+	}
+input#e16           { /* Text text_box  */
+	position        : absolute;
+	left            : 226.50pt;
+	top             : 143.25pt;
+	width           : 121.50pt;
+	}
+input#e15           { /* Password password  */
+	position        : absolute;
+	left            : 226.50pt;
+	top             : 165.75pt;
+	width           : 121.50pt;
+	}
+input#e14           { /* Button onclick="alert('B... */
+	position        : absolute;
+	left            : 306.00pt;
+	top             : 278.25pt;
+	width           :  57.00pt;
+	height          :  20.25pt;
+	}
+div#e13             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 144.75pt;
+	width           :  98.25pt;
+	height          :  12.75pt;
+	}
+div#e12             { /* &nbsp;&nbsp;Password: */
+	position        : absolute;
+	left            : 167.25pt;
+	top             : 167.25pt;
+	width           :  50.25pt;
+	height          :  12.75pt;
+	}
+div#e11             { /* Register: */
+	position        : absolute;
+	left            : 172.50pt;
+	top             :  99.00pt;
+	width           : 118.50pt;
+	height          :  15.00pt;
+	}
+input#e10           { /* Password password  */
+	position        : absolute;
+	left            : 226.50pt;
+	top             : 187.50pt;
+	width           : 121.50pt;
+	}
+div#e9              { /* Retype Password: */
+	position        : absolute;
+	left            : 123.75pt;
+	top             : 190.50pt;
+	width           :  93.75pt;
+	height          :  20.25pt;
+	}
+div#e8              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 210.75pt;
+	width           :  98.25pt;
+	height          :  11.25pt;
+	}
+input#e7            { /* Text text_box  */
+	position        : absolute;
+	left            : 226.50pt;
+	top             : 234.00pt;
+	width           : 121.50pt;
+	}
+div#e6              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 235.50pt;
+	width           :  98.25pt;
+	height          :  11.25pt;
+	}
+select#e5           { /* Combo Box combo_box onCh... */
+	position        : absolute;
+	left            : 226.50pt;
+	top             : 211.50pt;
+	width           : 127.50pt;
+	}
+img#e4              { /* cmput391015003.jpg */
+	position        : absolute;
+	left            :  31.50pt;
+	top             : 102.75pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e3              { /* Home */
+	position        : absolute;
+	left            :  62.25pt;
+	top             : 112.50pt;
+	width           :  56.25pt;
+	height          :  17.25pt;
+	}
+img#e2              { /* cmput391015001.jpg */
+	position        : absolute;
+	left            :  31.50pt;
+	top             : 150.00pt;
+	width           :  90.75pt;
+	height          :  42.00pt;
+	}
+div#e1              { /* Login */
+	position        : absolute;
+	left            :  62.25pt;
+	top             : 159.75pt;
+	width           :  56.25pt;
+	height          :  14.25pt;
+	}
+body#page           { /* Page Body */
+	background-color: #ffffff;
+	}
+
+
+
+/*--- EndOfFile ---*/
