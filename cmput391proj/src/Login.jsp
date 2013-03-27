@@ -39,6 +39,7 @@
 	<div id="e1" class="cc05">
 		User Login:
 	</div>
+	<input id="e1" class="cc04" type="button" value="Register" onclick="location.href='Register.jsp'">
 </form>
 </body>
 </html>
