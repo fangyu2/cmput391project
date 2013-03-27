@@ -15,31 +15,31 @@
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 <form method="post">
-	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img10,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img10,0,0)">
-		<img id="e10" name="e10" src="cmput391002003.jpg" title="" alt="cmput391002003.jpg" align="right" border="0"></a>
-	<div id="e9" class="cc02">
+	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img11,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img11,0,0)">
+		<img id="e11" name="e11" src="cmput391002003.jpg" title="" alt="cmput391002003.jpg" align="right" border="0"></a>
+	<div id="e10" class="cc02">
 		<a href="Home.jsp">
 		Home</a>
 	</div>
-	<a href="Login.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img8,'cmput391_002.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img8,0,0)">
-		<img id="e8" name="e8" src="cmput391002001.jpg" title="" alt="cmput391002001.jpg" align="right" border="0"></a>
-	<div id="e7" class="cc02">
+	<a href="Login.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img9,'cmput391_002.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img9,0,0)">
+		<img id="e9" name="e9" src="cmput391002001.jpg" title="" alt="cmput391002001.jpg" align="right" border="0"></a>
+	<div id="e8" class="cc02">
 		<a href="Login.jsp">
 		Login</a>
 	</div>
-	<input id="e6" class="cc03" type="text" name="text_box" size="23">
-	<input id="e5" class="cc03" type="password" name="password" size="23">
-	<input id="e4" class="cc04" type="button" value="Login" onclick="alert('Button')">
-	<div id="e3" class="cc04">
+	<input id="e7" class="cc03" type="text" name="text_box" size="23">
+	<input id="e6" class="cc03" type="password" name="password" size="23">
+	<input id="e5" class="cc04" type="button" value="Login" onclick="alert('Button')">
+	<div id="e4" class="cc04">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 	</div>
-	<div id="e2" class="cc04">
+	<div id="e3" class="cc04">
 		&nbsp;&nbsp;Password:
 	</div>
-	<div id="e1" class="cc05">
+	<div id="e2" class="cc05">
 		User Login:
 	</div>
-	<input id="e1" class="cc04" type="button" value="Register" onclick="location.href='Register.jsp'">
+	<input id="e1" class="cc04" type="button" value="Register" onclick="alert('Button')">
 </form>
 </body>
 </html>

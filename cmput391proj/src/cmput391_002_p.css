@@ -18,72 +18,78 @@
 	font            : 11pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
 	color           : #000000;
 	}
-img#e10             { /* cmput391002003.jpg */
+img#e11             { /* cmput391002003.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 102.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e9              { /* Home */
+div#e10             { /* Home */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 111.75pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e8              { /* cmput391002001.jpg */
+img#e9              { /* cmput391002001.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 149.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e7              { /* Login */
+div#e8              { /* Login */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 159.00pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-input#e6            { /* Text text_box  */
+input#e7            { /* Text text_box  */
 	position        : absolute;
 	left            : 258.00pt;
 	top             : 196.50pt;
 	width           : 120.75pt;
 	}
-input#e5            { /* Password password  */
+input#e6            { /* Password password  */
 	position        : absolute;
 	left            : 258.00pt;
 	top             : 219.00pt;
 	width           : 120.75pt;
 	}
-input#e4            { /* Button onclick="alert('B... */
+input#e5            { /* Button onclick="alert('B... */
 	position        : absolute;
-	left            : 402.75pt;
-	top             : 205.50pt;
+	left            : 410.25pt;
+	top             : 189.00pt;
 	width           :  56.25pt;
 	}
-div#e3              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e4              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 150.00pt;
 	top             : 198.00pt;
 	width           :  98.25pt;
 	height          :  12.75pt;
 	}
-div#e2              { /* &nbsp;&nbsp;Password: */
+div#e3              { /* &nbsp;&nbsp;Password: */
 	position        : absolute;
 	left            : 198.00pt;
 	top             : 220.50pt;
 	width           :  50.25pt;
 	height          :  12.75pt;
 	}
-div#e1              { /* User Login: */
+div#e2              { /* User Login: */
 	position        : absolute;
 	left            : 203.25pt;
 	top             : 152.25pt;
 	width           : 118.50pt;
 	height          :  27.75pt;
+	}
+input#e1            { /* Button onclick="alert('B... */
+	position        : absolute;
+	left            : 409.50pt;
+	top             : 210.00pt;
+	width           :  56.25pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
