@@ -20,19 +20,47 @@
 
 <%@ page import="java.sql.*,cmput391.*"%>
 
-<%  %>
+<%
+	String uName = request.getParameter("userName").trim();
+	String uPass = request.getParameter("password").trim();
+	String userClass;
+%>
 
-<%!
-request.getParameter("userName").trim();
-	public void queryUser() {
-	String sql = "select * from Users where user_name = " + request.getParameter("userName").trim();
-	stmt =
+<%!public void queryUser() {
+	String sql = "select * from Users where user_name = '" + uName + "' and
+			"password = ' " + uPass + "'";
+	Statment stmt = null;
+	ResultSet = null;
+	
+	 try { 
+		stmt = UserConnection.getConnection().getConn().createStatement(); 
+		rset = stmt.executeQuery(sql); 
+		 } 
+	 catch(Exception ex){
+		 out.println("" + ex.getMessage() + ""); 
+		 } 
+	 
+	 String truepwd = "";
+	 
+	 while(rset != null && rset.next()){
+		 truepwd = (rset.getString(1)).trim();
+		 userClass = (rset.getString(2)).trim();
+	 }
+	 
+	 if(uPass.equals(truepwd)) {
+		 openPage(userClass);
+	 }
+	 else {
+		 out.println("<p><b> Either You Username or Your password is invald </b></p>");
+	 }
+		 
 }
-	public void routeManager() {
-		Location stLoc = new Location(60.2040521, 24.96185113, "1023");
-		Location endLoc = new Location(60.17936316, 24.92282214, "1130");
-		RouteRetriever hrr = new RouteRetriever();
-		trip = hrr.getRoutes(stLoc, endLoc, false);
+
+	public void openPage(String uClass) {
+		if(uClass.equals("a")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("adminUser.jsp");
+			dispatcher.forward(request, response);
+		}
 	}%>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<form method="post">
@@ -55,7 +83,7 @@ request.getParameter("userName").trim();
 		<input id="e7" class="cc03" type="text" name="userName" size="23">
 		<input id="e6" class="cc03" type="password" name="password" size="23">
 		<input id="e5" class="cc04" type="button" value="Login"
-			onclick="alert('Button')">
+			onclick="queryUser()">
 		<div id="e4" class="cc04">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 		</div>
