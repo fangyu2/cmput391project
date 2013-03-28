@@ -22,112 +22,153 @@
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
 	}
-input#e16           { /* Text text_box  */
+input#e22           { /* Text text_box  */
 	position        : absolute;
-	left            : 226.50pt;
+	left            : 237.75pt;
 	top             : 143.25pt;
 	width           : 121.50pt;
 	}
-input#e15           { /* Password password  */
+input#e21           { /* Password password  */
 	position        : absolute;
-	left            : 226.50pt;
+	left            : 237.75pt;
 	top             : 165.75pt;
 	width           : 121.50pt;
 	}
-input#e14           { /* Button onclick="alert('B... */
+input#e20           { /* Button onclick="alert('B... */
 	position        : absolute;
-	left            : 306.00pt;
-	top             : 278.25pt;
+	left            : 313.50pt;
+	top             : 359.25pt;
 	width           :  57.00pt;
-	height          :  20.25pt;
+	height          :  18.75pt;
 	}
-div#e13             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e19             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
 	top             : 144.75pt;
 	width           :  98.25pt;
 	height          :  12.75pt;
 	}
-div#e12             { /* &nbsp;&nbsp;Password: */
+div#e18             { /* &nbsp;&nbsp;Password: */
 	position        : absolute;
 	left            : 167.25pt;
 	top             : 167.25pt;
 	width           :  50.25pt;
 	height          :  12.75pt;
 	}
-div#e11             { /* Register: */
+div#e17             { /* Register: */
 	position        : absolute;
 	left            : 172.50pt;
 	top             :  99.00pt;
 	width           : 118.50pt;
 	height          :  15.00pt;
 	}
-input#e10           { /* Password password  */
+input#e16           { /* Password password  */
 	position        : absolute;
-	left            : 226.50pt;
+	left            : 237.75pt;
 	top             : 187.50pt;
 	width           : 121.50pt;
 	}
-div#e9              { /* Retype Password: */
+div#e15             { /* Retype Password: */
 	position        : absolute;
-	left            : 123.75pt;
-	top             : 190.50pt;
+	left            : 142.50pt;
+	top             : 192.00pt;
 	width           :  93.75pt;
 	height          :  20.25pt;
 	}
-div#e8              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e14             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
-	top             : 210.75pt;
+	top             : 320.25pt;
 	width           :  98.25pt;
-	height          :  11.25pt;
+	height          :   9.75pt;
 	}
-input#e7            { /* Text text_box  */
+input#e13           { /* Text text_box  */
 	position        : absolute;
-	left            : 226.50pt;
-	top             : 234.00pt;
+	left            : 237.75pt;
+	top             : 292.50pt;
 	width           : 121.50pt;
+	height          :   8.25pt;
 	}
-div#e6              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e12             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
-	top             : 235.50pt;
+	top             : 297.75pt;
 	width           :  98.25pt;
+	height          :   9.75pt;
+	}
+select#e11          { /* Combo Box combo_box onCh... */
+	position        : absolute;
+	left            : 237.75pt;
+	top             : 316.50pt;
+	width           : 127.50pt;
 	height          :  11.25pt;
 	}
-select#e5           { /* Combo Box combo_box onCh... */
-	position        : absolute;
-	left            : 226.50pt;
-	top             : 211.50pt;
-	width           : 127.50pt;
-	}
-img#e4              { /* cmput391015003.jpg */
+img#e10             { /* cmput391015003.jpg */
 	position        : absolute;
 	left            :  31.50pt;
 	top             : 102.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e3              { /* Home */
+div#e9              { /* Home */
 	position        : absolute;
 	left            :  62.25pt;
 	top             : 112.50pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e2              { /* cmput391015001.jpg */
+img#e8              { /* cmput391015001.jpg */
 	position        : absolute;
 	left            :  31.50pt;
 	top             : 150.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e1              { /* Login */
+div#e7              { /* Login */
 	position        : absolute;
 	left            :  62.25pt;
 	top             : 159.75pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
+	}
+input#e6            { /* Text text_box  */
+	position        : absolute;
+	left            : 237.75pt;
+	top             : 218.25pt;
+	width           : 121.50pt;
+	}
+div#e5              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 219.75pt;
+	width           :  98.25pt;
+	height          :  20.25pt;
+	}
+input#e4            { /* Text text_box  */
+	position        : absolute;
+	left            : 237.75pt;
+	top             : 237.00pt;
+	width           : 121.50pt;
+	}
+div#e3              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 238.50pt;
+	width           :  98.25pt;
+	height          :  20.25pt;
+	}
+input#e2            { /* Text text_box  */
+	position        : absolute;
+	left            : 237.75pt;
+	top             : 264.75pt;
+	width           : 121.50pt;
+	}
+div#e1              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+	position        : absolute;
+	left            : 119.25pt;
+	top             : 266.25pt;
+	width           :  98.25pt;
+	height          :  11.25pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
