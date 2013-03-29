@@ -15,12 +15,12 @@
 	color           : #000000;
 	}
 .cc44               { /* Common */
-	font            : 8pt 'MS Sans Serif';
-	color           : #000000;
-	}
-.cc45               { /* Common */
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
+	}
+.cc45               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
 	}
 input#e24           { /* Text text_box  */
 	position        : absolute;
@@ -78,110 +78,108 @@ div#e17             { /* Retype Password: */
 div#e16             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 122.25pt;
-	top             : 354.00pt;
+	top             : 357.75pt;
 	width           :  98.25pt;
 	height          :   9.75pt;
 	}
-input#e15           { /* Text text_box  */
-	position        : absolute;
-	left            : 235.50pt;
-	top             : 324.75pt;
-	width           : 121.50pt;
-	height          :   8.25pt;
-	}
-div#e14             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e15             { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 120.75pt;
 	top             : 331.50pt;
 	width           :  98.25pt;
 	height          :   9.75pt;
 	}
-select#e13          { /* Combo Box combo_box onCh... */
-	position        : absolute;
-	left            : 235.50pt;
-	top             : 348.75pt;
-	width           : 127.50pt;
-	height          :  11.25pt;
-	}
-img#e12             { /* cmput391015003.jpg */
+img#e14             { /* cmput391015003.jpg */
 	position        : absolute;
 	left            :  31.50pt;
 	top             : 102.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e11             { /* Home */
+div#e13             { /* Home */
 	position        : absolute;
 	left            :  62.25pt;
 	top             : 112.50pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e10             { /* cmput391015001.jpg */
+img#e12             { /* cmput391015001.jpg */
 	position        : absolute;
 	left            :  31.50pt;
 	top             : 150.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e9              { /* Login */
+div#e11             { /* Login */
 	position        : absolute;
 	left            :  62.25pt;
 	top             : 159.75pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-input#e8            { /* Text text_box  */
+input#e10           { /* Text text_box  */
 	position        : absolute;
 	left            : 235.50pt;
 	top             : 218.25pt;
 	width           : 121.50pt;
 	}
-div#e7              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e9              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
 	top             : 219.75pt;
 	width           :  98.25pt;
 	height          :  20.25pt;
 	}
-input#e6            { /* Text text_box  */
+input#e8            { /* Text text_box  */
 	position        : absolute;
 	left            : 235.50pt;
 	top             : 237.00pt;
 	width           : 121.50pt;
 	}
-div#e5              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e7              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
 	top             : 238.50pt;
 	width           :  98.25pt;
 	height          :  20.25pt;
 	}
-input#e4            { /* Text text_box  */
+input#e6            { /* Text text_box  */
 	position        : absolute;
 	left            : 235.50pt;
 	top             : 264.75pt;
 	width           : 121.50pt;
 	}
-div#e3              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e5              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 119.25pt;
 	top             : 266.25pt;
 	width           :  98.25pt;
 	height          :  11.25pt;
 	}
-input#e2            { /* Text text_box  */
+input#e4            { /* Text text_box  */
 	position        : absolute;
 	left            : 235.50pt;
 	top             : 293.25pt;
 	width           : 121.50pt;
 	}
-div#e1              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
+div#e3              { /* &nbsp;&nbsp;&nbsp;&nbsp;... */
 	position        : absolute;
 	left            : 118.50pt;
 	top             : 295.50pt;
 	width           :  98.25pt;
 	height          :  11.25pt;
+	}
+input#e2            { /* Text text_box  */
+	position        : absolute;
+	left            : 236.25pt;
+	top             : 325.50pt;
+	width           : 120.75pt;
+	}
+select#e1           { /* Combo Box combo_box onCh... */
+	position        : absolute;
+	left            : 234.75pt;
+	top             : 354.75pt;
+	width           : 126.75pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
