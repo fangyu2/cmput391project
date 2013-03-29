@@ -3,9 +3,9 @@ package cmput391;
 public class User {
 
 	private String userName;
-	private char userClass;
+	private String userClass;
 	
-	public User(String userName, char userClass) {
+	public User(String userName, String userClass) {
 		this.userName = userName;
 		this.userClass = userClass;
 	}
@@ -14,7 +14,7 @@ public class User {
 		this.userName = userName;
 	}
 	
-	public void setUserClass(char userClass) {
+	public void setUserClass(String userClass) {
 		this.userClass = userClass;
 	}
 	
@@ -22,7 +22,7 @@ public class User {
 		return userName;
 	}
 	
-	public char getUserClass() {
+	public String getUserClass() {
 		return userClass;
 	}
 	

@@ -20,14 +20,16 @@
 
 <%@ page import="java.sql.*,cmput391.*"%>
 
+<%! private User loggedUser;
+%>
 <%
 if(request.getParameter("bSubmit")!=null)
 {
-    queryUser(request, response, out);
+    queryUser(request, out);
 }
 %>
 
-<%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
+<%!public void openPage(String uClass, HttpServletRequest request, JspWriter out) {
 		if (uClass.equals("a")) {
 			response.sendRedirect("adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
@@ -37,7 +39,7 @@ if(request.getParameter("bSubmit")!=null)
 		}
 	}
 
-	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
+	public void queryUser(HttpServletRequest request, JspWriter out) {
 		String uName = request.getParameter("userName").trim();
 		String uPass = request.getParameter("password").trim();
 		String tempClass = null;
@@ -58,7 +60,8 @@ if(request.getParameter("bSubmit")!=null)
 			}
 
 			if (uPass.equals(truepwd)) {
-				openPage(tempClass, response, out);
+				loggedUser = new User(uName,tempClass);
+				openPage(tempClass, request, out);
 			} else {
 				System.out
 						.println("<p><b> Either You Username or Your password is invald </b></p>");
