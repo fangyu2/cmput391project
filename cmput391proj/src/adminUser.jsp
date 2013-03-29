@@ -17,9 +17,8 @@
 <%! private User loggedUser;
 %>
 
-<% String objectID = request.getParameter("loggedUser");
-loggedUser = request.getSession().getAttribute(objectID);
-request.getSession().removeAttribute(objectID);
+<% 
+loggedUser = UserManager.getUserManager().getUser();
 String uClass = loggedUser.getUserClass();
 try{
 	out.println("<p><b> " + uClass + "</b></p>");

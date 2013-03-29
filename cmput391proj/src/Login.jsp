@@ -20,8 +20,6 @@
 
 <%@ page import="java.sql.*,cmput391.*,java.util.UUID"%>
 
-<%! private User loggedUser;
-%>
 <%
 if(request.getParameter("bSubmit")!=null)
 {
@@ -29,24 +27,19 @@ if(request.getParameter("bSubmit")!=null)
 }
 %>
 
-<%!public void openPage(String uClass, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-	String objectID = UUID.randomUUID().toString();
-	request.getSession().setAttribute(objectID, loggedUser);
-	request.setAttribute("loggedUser", loggedUser);
-	try {
+<%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
+	try{
 	if (uClass.equals("a")) {
-			request.getRequestDispatcher("/adminUser.jsp").forward(request, response);
-			response.sendRedirect("/adminUser.jsp");
+			response.sendRedirect("adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
-			request.getRequestDispatcher("/regUser.jsp").forward(request, response);
-			response.sendRedirect("/regUser.jsp");
+			response.sendRedirect("regUser.jsp");
 		} else if (uClass.equals("r")) {
-			request.getRequestDispatcher("/radioUser.jsp").forward(request, response);
-			response.sendRedirect("/radioUser.jsp");
+			response.sendRedirect("radioUser.jsp");
 		}
 	}
 	catch(Exception ex) {
-		System.out.println("" + ex.getMessage() + "");
+		
+		System.out.println("" + ex.getMessage() +"");
 	}
 }
 
@@ -54,28 +47,28 @@ if(request.getParameter("bSubmit")!=null)
 		String uName = request.getParameter("userName").trim();
 		String uPass = request.getParameter("password").trim();
 		String tempClass = null;
-		String sql = "select * from Users where user_name = '" + uName
-				+ "' and" + "password = ' " + uPass + "'";
+		String sql = "select * from Users where user_name = \'" + uName
+				+ "\'";
 		Statement stmt = null;
 		ResultSet rset = null;
 
 		try {
-			stmt = UserConnection.getConnection().getConn().createStatement();
+			stmt = UserConnection.getConnection().getConn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
 			String truepwd = "";
 
 			while (rset != null && rset.next()) {
-				truepwd = (rset.getString(1)).trim();
-				tempClass = (rset.getString(2)).trim();
+				truepwd = (rset.getString(2)).trim();
+				tempClass = (rset.getString(3)).trim();
 			}
 
 			if (uPass.equals(truepwd)) {
-				loggedUser = new User(uName,tempClass);
-				openPage(tempClass, request, response, out);
+				UserManager.getUserManager().setUser(new User(uName,tempClass));
+				openPage(tempClass, response, out);
 			} else {
-				System.out
-						.println("<p><b> Either You Username or Your password is invald </b></p>");
+				out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
 			}
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
