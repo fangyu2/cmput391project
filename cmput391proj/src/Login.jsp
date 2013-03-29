@@ -18,9 +18,9 @@
 <!--// Motion Script //-->
 </head>
 
-<%@ page import="java.sql.*, cmput391.*, javax.servlet.http"%>
+<%@ page import="java.sql.*,cmput391.*"%>
 
-<%! private String uName;
+<%!private String uName;
 	private String uPass;%>
 
 <%
@@ -50,22 +50,22 @@
 		try {
 			stmt = UserConnection.getConnection().getConn().createStatement();
 			rset = stmt.executeQuery(sql);
+
+			String truepwd = "";
+
+			while (rset != null && rset.next()) {
+				truepwd = (rset.getString(1)).trim();
+				tempClass = (rset.getString(2)).trim();
+			}
+
+			if (uPass.equals(truepwd)) {
+				openPage(tempClass, request);
+			} else {
+				System.out
+						.println("<p><b> Either You Username or Your password is invald </b></p>");
+			}
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
-		}
-
-		String truepwd = "";
-
-		while (rset != null && rset.next()) {
-			truepwd = (rset.getString(1)).trim();
-			tempClass = (rset.getString(2)).trim();
-		}
-
-		if (uPass.equals(truepwd)) {
-			openPage(tempClass, request);
-		} else {
-			System.out
-					.println("<p><b> Either You Username or Your password is invald </b></p>");
 		}
 	}%>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
