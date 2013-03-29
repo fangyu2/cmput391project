@@ -39,16 +39,16 @@
 	<div id="e15" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:
 	</div>
-	<a href="index.html" onmouseover="OnWeOver(0,0,0,IDP[2],Img14,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img14,0,0)">
+	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img14,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img14,0,0)">
 		<img id="e14" name="e14" src="cmput391015003.jpg" title="" alt="cmput391015003.jpg" align="right" border="0"></a>
 	<div id="e13" class="cc44">
-		<a href="index.html">
+		<a href="Home.jsp">
 		Home</a>
 	</div>
-	<a href="cmput391_002.htm" onmouseover="OnWeOver(0,0,0,IDP[1],Img12,'cmput391_002.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img12,0,0)">
+	<a href="Login.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img12,'cmput391_002.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img12,0,0)">
 		<img id="e12" name="e12" src="cmput391015001.jpg" title="" alt="cmput391015001.jpg" align="right" border="0"></a>
 	<div id="e11" class="cc44">
-		<a href="cmput391_002.htm">
+		<a href="Login.jsp">
 		Login</a>
 	</div>
 	<input id="e10" class="cc41" type="text" name="text_box" value="FirstName" size="23">
