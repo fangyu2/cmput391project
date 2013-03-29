@@ -25,21 +25,24 @@
 <%
 if(request.getParameter("bSubmit")!=null)
 {
-    queryUser(request, out);
+    queryUser(request, response, out);
 }
 %>
 
-<%!public void openPage(String uClass, HttpServletRequest request, JspWriter out) {
-		if (uClass.equals("a")) {
-			response.sendRedirect("adminUser.jsp");
+<%!public void openPage(String uClass, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
+	String objectID = UUID.radomUUID().toString();
+	request.getSession().setAttribute(objectID, loggedUser);
+	request.setAttribute("loggedUser", loggedUser);
+	if (uClass.equals("a")) {
+			request.getRequestDispatcher("/adminUser.jsp").forward(request, response);
 		} else if (uClass.equals("p") || uClass.equals("d")) {
-			response.sendRedirect("regUser.jsp");
+			request.getRequestDispatcher("/regUser.jsp").forward(request, response);
 		} else if (uClass.equals("r")) {
-			response.sendRedirect("radioUser.jsp");
+			request.getRequestDispatcher("/radioUser.jsp").forward(request, response);
 		}
 	}
 
-	public void queryUser(HttpServletRequest request, JspWriter out) {
+	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		String uName = request.getParameter("userName").trim();
 		String uPass = request.getParameter("password").trim();
 		String tempClass = null;
@@ -61,7 +64,7 @@ if(request.getParameter("bSubmit")!=null)
 
 			if (uPass.equals(truepwd)) {
 				loggedUser = new User(uName,tempClass);
-				openPage(tempClass, request, out);
+				openPage(tempClass, request, response, out);
 			} else {
 				System.out
 						.println("<p><b> Either You Username or Your password is invald </b></p>");
