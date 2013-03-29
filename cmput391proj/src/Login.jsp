@@ -20,15 +20,12 @@
 
 <%@ page import="java.sql.*,cmput391.*,java.util.UUID"%>
 
-<%
-if(request.getParameter("bSubmit")!=null)
-{
-    queryUser(request, response, out);
-}
+<%! private User loggedUser;
 %>
 
-<%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
+<%!public void openPage(String uClass, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 	try{
+		request.getSession().setAttribute("loggedUser", loggedUser);
 	if (uClass.equals("a")) {
 			response.sendRedirect("adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
@@ -65,8 +62,9 @@ if(request.getParameter("bSubmit")!=null)
 			}
 
 			if (uPass.equals(truepwd)) {
-				UserManager.getUserManager().setUser(new User(uName,tempClass));
-				openPage(tempClass, response, out);
+				loggedUser = new User(uName,tempClass);
+				//UserManager.getUserManager().setUser(new User(uName,tempClass));
+				openPage(tempClass, request, response, out);
 			} else {
 				out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
 			}
@@ -74,6 +72,13 @@ if(request.getParameter("bSubmit")!=null)
 			System.out.println("" + ex.getMessage() + "");
 		}
 	}%>
+	
+	<%
+if(request.getParameter("bSubmit")!=null)
+{
+    queryUser(request, response, out);
+}
+%>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<form method="post">
 		<a href="Home.jsp"

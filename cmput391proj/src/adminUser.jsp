@@ -18,7 +18,7 @@
 %>
 
 <% 
-loggedUser = UserManager.getUserManager().getUser();
+loggedUser = request.getSession().getAttribute("loggedUser");//UserManager.getUserManager().getUser();
 String uClass = loggedUser.getUserClass();
 try{
 	out.println("<p><b> " + uClass + "</b></p>");
