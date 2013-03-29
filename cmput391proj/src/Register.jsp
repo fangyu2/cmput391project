@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="cmput391.*" %>
+<%@ page import="java.sql.*" %>
 <html lang="en">
 <head>
 	<title> Register </title>
@@ -13,8 +16,49 @@
 
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
+
+<%
+
+String username = (request.getParameter("username")).trim();
+String password = (request.getParameter("password")).trim();
+String retypepassword = (request.getParameter("retypepassword")).trim();
+String combo_box = (request.getParameter("combo_box"));
+String firstname = (request.getParameter("firstname")).trim();
+String lastname = (request.getParameter("lastname")).trim();
+
+Connection conn = UserConnection.getConnection().getConn();
+Statement stmt = null;
+ResultSet rset = null;
+
+String sql = "select user_name from users where user_name = '"+username+"'";
+try{
+	stmt = conn.createStatement();
+    rset = stmt.executeQuery(sql);
+}
+catch(Exception ex){
+    out.println("<hr>" + ex.getMessage() + "<hr>");
+}
+
+String trueUser = "";
+
+while(rset != null && rset.next())
+	trueUser = (rset.getString(1)).trim();
+
+//display the result
+if(username.equals(trueUser))
+    out.println("<p><b>That user name is already taken</b></p>");
+
+    try{
+            conn.close();
+    }
+    catch(Exception ex){
+            out.println("<hr>" + ex.getMessage() + "<hr>");
+    }
+
+%>
+
 <form method="post">
-	<input id="e22" class="cc41" type="text" name="text_box" value="userName" size="23">
+	<input id="e22" class="cc41" type="text" name="username" value="userName" size="23">
 	<input id="e21" class="cc41" type="password" name="password" size="23">
 	<input id="e20" class="cc42" type="button" value="Register" onclick="alert('Button')">
 	<div id="e19" class="cc42">
@@ -26,14 +70,14 @@
 	<div id="e17" class="cc43">
 		Register:
 	</div>
-	<input id="e16" class="cc41" type="password" name="password" size="23">
+	<input id="e16" class="cc41" type="password" name="retypepassword" size="23">
 	<div id="e15" class="cc42">
 		Retype Password:
 	</div>
 	<div id="e14" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class:
 	</div>
-	<input id="e13" class="cc41" type="text" name="text_box" value="email" size="23">
+	<input id="e13" class="cc41" type="text" name="email" value="email" size="23">
 	<div id="e12" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:
 	</div>
@@ -55,15 +99,15 @@
 		<a href="Login.jsp">
 		Login</a>
 	</div>
-	<input id="e6" class="cc41" type="text" name="text_box" value="FirstName" size="23">
+	<input id="e6" class="cc41" type="text" name="firstname" value="FirstName" size="23">
 	<div id="e5" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First Name:
 	</div>
-	<input id="e4" class="cc41" type="text" name="text_box" value="lastName" size="23">
+	<input id="e4" class="cc41" type="text" name="lastname" value="lastName" size="23">
 	<div id="e3" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name:
 	</div>
-	<input id="e2" class="cc41" type="text" name="text_box" value="phone" size="23">
+	<input id="e2" class="cc41" type="text" name="phone" value="phone" size="23">
 	<div id="e1" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone:
 	</div>
