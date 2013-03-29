@@ -20,14 +20,6 @@
 
 <%@ page import="java.sql.*,cmput391.*"%>
 
-<%!private String uName;
-	private String uPass;%>
-
-<%
-	uName = request.getParameter("userName").trim();
-	uPass = request.getParameter("password").trim();
-%>
-
 <%!public String openPage(String uClass, HttpServletRequest request) {
 		String jspPage = null;
 		if (uClass.equals("a")) {
@@ -41,7 +33,9 @@
 	}
 
 	public void queryUser(HttpServletRequest request) {
-		String tempClass;
+		String uName = request.getParameter("userName").trim();
+		String uPass = request.getParameter("password").trim();
+		String tempClass = null;
 		String sql = "select * from Users where user_name = '" + uName
 				+ "' and" + "password = ' " + uPass + "'";
 		Statement stmt = null;
