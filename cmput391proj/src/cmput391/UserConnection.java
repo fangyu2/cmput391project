@@ -8,8 +8,8 @@ public class UserConnection {
 	public static final String driverName = "oracle.jdbc.driver.OracleDriver";
 	public static final String dbstring = "jdbc:oracle:thin:@gwynne.cs.ualberta.ca:1521:CRS";
 	private Connection conn = null;
-	private String userName;
-	private String userPassword;
+	private String userName = "fangyu2";
+	private String userPassword = "9214Fangyu.";
 
 
 	protected UserConnection() {
