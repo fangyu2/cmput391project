@@ -28,6 +28,7 @@ if(request.getParameter("bSubmit")!=null)
 %>
 
 <%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
+	try{
 	if (uClass.equals("a")) {
 			response.sendRedirect("/adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
@@ -35,6 +36,10 @@ if(request.getParameter("bSubmit")!=null)
 		} else if (uClass.equals("r")) {
 			response.sendRedirect("/radioUser.jsp");
 		}
+	}
+	catch(Exception ex) {
+		System.out.println("" + ex.getMessage() +"");
+	}
 }
 
 	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
