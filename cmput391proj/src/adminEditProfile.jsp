@@ -13,13 +13,19 @@
 	private String Address = "";
 	private String uFirstName = "";
 	private String uLastName = "";
+	private boolean existingEmail = true;
 
-	public void queryUser(HttpServletRequest request,
-			HttpServletResponse response, JspWriter out) {
+	public void queryUser(boolean checkForUser) {
 		ResultSet rset = null;
 		Statement stmt = null;
-		String sql = "select * from persons where user_name = \'" + uName
-				+ "\'";
+		String sql;
+		
+		if(!checkForUser) {
+			sql = "select * from persons where user_name = \'" + uName + "\'";
+		}
+		else {
+			sql = "select * from persons where user_name = \'" + uEmail + "\'";
+		}
 
 		try {
 			stmt = UserConnection
@@ -45,8 +51,7 @@
 		}
 	}
 
-	public void updateUserInfo(HttpServletRequest request,
-			HttpServletResponse response, JspWriter out) {
+	public void updateUserInfo() {
 		ResultSet rset = null;
 		Statement stmt = null;
 		String sql = "select first_name, last_name, address, email, phone" +
@@ -117,7 +122,7 @@
 			response.sendRedirect("Home.jsp");
 		}
 		uName = loggedUser.getUserName();
-		queryUser(request, response, out);
+		queryUser(false);
 		if (request.getParameter("bSubmit") != null) {
 			uPass = request.getParameter("password").trim();
 			verifyUPass = request.getParameter("veripassword").trim();
@@ -141,11 +146,12 @@
 			verifyUEmail = request.getParameter("renewemail").trim();
 			if (!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
 				uEmail = temp;
+				queryUser(true);
 			} else {
 				out.println("<center><p><b> Emails Entered Did Not Match </b></p></center");
 			}
 
-			updateUserInfo(request, response, out);
+			updateUserInfo();
 
 			if (uPass.compareTo(verifyUPass) == 0) {
 				updatePassword();

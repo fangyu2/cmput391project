@@ -68,11 +68,12 @@
 			} else {
 				out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
 			}
+			finally{
+				if(stmt != null) { stmt.close();}
+			}
+			
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
-		}
-		finally{
-			if(stmt != null) { stmt.close();}
 		}
 	}%>
 	
