@@ -18,48 +18,54 @@
 <!--// Motion Script //-->
 </head>
 
-<%@ page import="java.sql.*,cmput391.*"%>
+<%@ page import="java.sql.*, cmput391.*, javax.servlet.http"%>
+
+<%! private String uName;
+	private String uPass;%>
 
 <%
-	String uName = request.getParameter("userName").trim();
-	String uPass = request.getParameter("password").trim();
-	String userClass;
+	uName = request.getParameter("userName").trim();
+	uPass = request.getParameter("password").trim();
 %>
 
-<%!public void queryUser() {
-	String sql = "select * from Users where user_name = '" + uName + "' and
-			"password = ' " + uPass + "'";
-	Statment stmt = null;
-	ResultSet = null;
-	
-	 try { 
-		stmt = UserConnection.getConnection().getConn().createStatement(); 
-		rset = stmt.executeQuery(sql); 
-		 } 
-	 catch(Exception ex){
-		 out.println("" + ex.getMessage() + ""); 
-		 } 
-	 
-	 String truepwd = "";
-	 
-	 while(rset != null && rset.next()){
-		 truepwd = (rset.getString(1)).trim();
-		 userClass = (rset.getString(2)).trim();
-	 }
-	 
-	 if(uPass.equals(truepwd)) {
-		 openPage(userClass);
-	 }
-	 else {
-		 out.println("<p><b> Either You Username or Your password is invald </b></p>");
-	 }
-		 
-}
+<%!public String openPage(String uClass, HttpServletRequest request) {
+		String jspPage = null;
+		if (uClass.equals("a")) {
+			request.getRequestDispatcher("/adminUser.jsp");
+		} else if (uClass.equals("p") || uClass.equals("d")) {
+			request.getRequestDispatcher("/regUser.jsp");
+		} else if (uClass.equals("r")) {
+			request.getRequestDispatcher("/radioUser.jsp");
+		}
+		return jspPage;
+	}
 
-	public void openPage(String uClass) {
-		if(uClass.equals("a")){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("adminUser.jsp");
-			dispatcher.forward(request, response);
+	public void queryUser(HttpServletRequest request) {
+		String tempClass;
+		String sql = "select * from Users where user_name = '" + uName
+				+ "' and" + "password = ' " + uPass + "'";
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		try {
+			stmt = UserConnection.getConnection().getConn().createStatement();
+			rset = stmt.executeQuery(sql);
+		} catch (Exception ex) {
+			System.out.println("" + ex.getMessage() + "");
+		}
+
+		String truepwd = "";
+
+		while (rset != null && rset.next()) {
+			truepwd = (rset.getString(1)).trim();
+			tempClass = (rset.getString(2)).trim();
+		}
+
+		if (uPass.equals(truepwd)) {
+			openPage(tempClass, request);
+		} else {
+			System.out
+					.println("<p><b> Either You Username or Your password is invald </b></p>");
 		}
 	}%>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
@@ -83,7 +89,7 @@
 		<input id="e7" class="cc03" type="text" name="userName" size="23">
 		<input id="e6" class="cc03" type="password" name="password" size="23">
 		<input id="e5" class="cc04" type="button" value="Login"
-			onclick="queryUser()">
+			onclick="queryUser(request);">
 		<div id="e4" class="cc04">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 		</div>
