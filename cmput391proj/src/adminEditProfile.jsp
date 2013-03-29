@@ -13,11 +13,11 @@
 	private String Address = "";
 	private String uFirstName = "";
 	private String uLastName = "";
-	private ResultSet rset = null;
-	Statement stmt = null;
 
 	public void queryUser(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
+		ResultSet rset = null;
+		Statement stmt = null;
 		String sql = "select * from persons where user_name = \'" + uName
 				+ "\'";
 
@@ -47,6 +47,8 @@
 
 	public void updateUserInfo(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
+		ResultSet rset = null;
+		Statement stmt = null;
 		String sql = "select first_name, last_name, address, email, phone" +
 				"from persons where user_name = \'" + uName + "\'";
 
@@ -66,6 +68,9 @@
 				rset.updateString(5, uPhone);
 				rset.updateRow();
 			}
+			
+			UserConnection.getConnection().getConn().commit();
+			
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -75,6 +80,8 @@
 	}
 
 	public void updatePassword() {
+		ResultSet rset = null;
+		Statement stmt = null;
 		String sql = "select password from users where user_name = \'" + uName + "\'";
 
 		try {
@@ -89,6 +96,8 @@
 				rset.updateString("password", uPass);
 				rset.updateRow();
 			}
+			
+			UserConnection.getConnection().getConn().commit();
 			
 			if (stmt != null) {
 				stmt.close();
