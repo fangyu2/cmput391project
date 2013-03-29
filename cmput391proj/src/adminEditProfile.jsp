@@ -230,8 +230,8 @@
 		<div id="e16" class="cc11">Change Password:</div>
 		<div id="e15" class="cc12">Edit Profile</div>
 		<div id="e14" class="cc11">Change Email:</div>
-		<input id="e13" class="cc09" type="text" name="newemail" size="23" value="<%=uEmail%>
-		<div id="e12" class="cc10" >">New Email:</div>
+		<input id="e13" class="cc09" type="text" name="newemail" size="23" value="<%=uEmail%>">
+		<div id="e12" class="cc10" >New Email:</div>
 		<input id="e11" class="cc09" type="text" name="renewemail" size="23">
 		<div id="e10" class="cc10">Retype New Email:</div>
 		<div id="e9" class="cc11">Change Personal Information:</div>
