@@ -36,12 +36,12 @@
 				uEmail = (rset.getString(5)).trim();
 				uPhone = (rset.getString(6)).trim();
 			}
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		} finally {
+			
 			if (stmt != null) {
 				stmt.close();
 			}
+		} catch (SQLException ex) {
+			System.out.println("" + ex.getMessage() + "");
 		}
 	}
 
@@ -66,13 +66,12 @@
 				rset.updateString(6, uPhone);
 				rset.updateRow();
 			}
-		} catch (Exception ex) {
-
-		} finally {
 			if (stmt != null) {
 				stmt.close();
 			}
-		}
+		} catch (SQLException ex) {
+
+		} 
 	}
 
 	public void updatePassword() {
@@ -92,12 +91,12 @@
 				rset2.updateString(2, uPass);
 				rset2.updateRow();
 			}
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		} finally {
+			
 			if (stmt2 != null) {
 				stmt2.close();
 			}
+		} catch (SQLException ex) {
+			System.out.println("" + ex.getMessage() + "");
 		}
 
 	}%>
@@ -231,17 +230,17 @@
 		<div id="e16" class="cc11">Change Password:</div>
 		<div id="e15" class="cc12">Edit Profile</div>
 		<div id="e14" class="cc11">Change Email:</div>
-		<input id="e13" class="cc09" type="text" name="newemail" size="23">
-		<div id="e12" class="cc10" value="<%=uEmail%>">New Email:</div>
+		<input id="e13" class="cc09" type="text" name="newemail" size="23" value="<%=uEmail%>
+		<div id="e12" class="cc10" >">New Email:</div>
 		<input id="e11" class="cc09" type="text" name="renewemail" size="23">
 		<div id="e10" class="cc10">Retype New Email:</div>
 		<div id="e9" class="cc11">Change Personal Information:</div>
-		<input id="e8" class="cc09" type="text" name="address" size="23">
-		<div id="e7" class="cc10" value="<%=Address%>">Address:</div>
-		<input id="e6" class="cc09" type="text" name="phone" size="23">
-		<div id="e5" class="cc10" value="<%=uPhone%>">Phone:</div>
-		<input id="e4" class="cc09" type="text" name="firstname" size="23">
-		<div id="e3" class="cc10" value="<%=uFirstName%>">First Name:</div>
+		<input id="e8" class="cc09" type="text" name="address" size="23" value="<%=Address%>">
+		<div id="e7" class="cc10" >Address:</div>
+		<input id="e6" class="cc09" type="text" name="phone" size="23" value="<%=uPhone%>">
+		<div id="e5" class="cc10">Phone:</div>
+		<input id="e4" class="cc09" type="text" name="firstname" size="23" value="<%=uFirstName%>">
+		<div id="e3" class="cc10">First Name:</div>
 		<input id="e2" class="cc09" type="text" name="lastname" size="23"
 			value="<%=uLastName%>">
 		<div id="e1" class="cc10">Last Name:</div>
