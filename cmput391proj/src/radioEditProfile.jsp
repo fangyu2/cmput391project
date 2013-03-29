@@ -245,17 +245,17 @@
 		<div id="e15" class="cc30">Change Password:</div>
 		<div id="e14" class="cc31">Edit Profile</div>
 		<div id="e13" class="cc30">Change Email:</div>
-		<input id="e12" class="cc28" type="text" name="text_box" size="23">
+		<input id="e12" class="cc28" type="text" name="newemail" size="23" value="<%=uEmail%>">
 		<div id="e11" class="cc29">New Email:</div>
-		<input id="e10" class="cc28" type="text" name="text_box" size="23">
+		<input id="e10" class="cc28" type="text" name="renewemail" size="23" value="<%=uEmail%>">
 		<div id="e9" class="cc30">Change Personal Information:</div>
-		<input id="e8" class="cc28" type="text" name="text_box" size="23">
+		<input id="e8" class="cc28" type="text" name="address" size="23" value="<%=Address%>">
 		<div id="e7" class="cc29">Address:</div>
-		<input id="e6" class="cc28" type="text" name="text_box" size="23">
+		<input id="e6" class="cc28" type="text" name="phone" size="23" value="<%=uPhone%>">
 		<div id="e5" class="cc29">Phone:</div>
-		<input id="e4" class="cc28" type="text" name="text_box" size="23">
+		<input id="e4" class="cc28" type="text" name="firstname" size="23" value="<%=uFirstName%>">
 		<div id="e3" class="cc29">First Name:</div>
-		<input id="e2" class="cc28" type="text" name="text_box" size="23">
+		<input id="e2" class="cc28" type="text" name="lastname" size="23" value="<%=uLastName%>">
 		<div id="e1" class="cc29">Last Name:</div>
 	</form>
 </body>
