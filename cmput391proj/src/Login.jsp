@@ -18,7 +18,7 @@
 <!--// Motion Script //-->
 </head>
 
-<%@ page import="java.sql.*,cmput391.*"%>
+<%@ page import="java.sql.*,cmput391.*,java.util.UUID"%>
 
 <%! private User loggedUser;
 %>
@@ -30,9 +30,10 @@ if(request.getParameter("bSubmit")!=null)
 %>
 
 <%!public void openPage(String uClass, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-	String objectID = UUID.radomUUID().toString();
+	String objectID = UUID.randomUUID().toString();
 	request.getSession().setAttribute(objectID, loggedUser);
 	request.setAttribute("loggedUser", loggedUser);
+	try {
 	if (uClass.equals("a")) {
 			request.getRequestDispatcher("/adminUser.jsp").forward(request, response);
 		} else if (uClass.equals("p") || uClass.equals("d")) {
@@ -41,6 +42,10 @@ if(request.getParameter("bSubmit")!=null)
 			request.getRequestDispatcher("/radioUser.jsp").forward(request, response);
 		}
 	}
+	catch(Exception ex) {
+		out.println("<p><b> " + ex.getMessage() + " </b></p>");
+	}
+}
 
 	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		String uName = request.getParameter("userName").trim();
