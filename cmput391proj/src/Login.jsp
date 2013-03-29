@@ -71,6 +71,9 @@
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
+		finally{
+			if(stmt != null) { stmt.close();}
+		}
 	}%>
 	
 	<%

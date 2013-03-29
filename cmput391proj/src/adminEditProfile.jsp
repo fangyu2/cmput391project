@@ -2,6 +2,136 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<%@ page import="java.sql.*,cmput391.*" %>
+<%!
+private User loggedUser;
+private String uName = "";
+private String uPass;
+private String verifyUPass;
+private String uPhone = "";
+private String uEmail = "";
+private String verifyUEmail;
+private String Address = "";
+private String uFirstName = "";
+private String uLastName = "";
+private ResultSet rset = null;
+Statement stmt = null;
+
+public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
+		String sql = "select * from persons where user_name = \'" + uName
+				+ "\'";
+
+		try {
+			stmt = UserConnection.getConnection().getConn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			rset = stmt.executeQuery(sql);
+
+			while (rset != null && rset.next()) {
+				uFirstName = (rset.getString(2)).trim();
+				uLastName = (rset.getString(3)).trim();
+				Address = (rset.getString(4)).trim();
+				uEmail = (rset.getString(5)).trim();
+				uPhone = (rset.getString(6)).trim();
+			}
+		} catch (Exception ex) {
+			System.out.println("" + ex.getMessage() + "");
+		}
+	}
+
+	public void updateUserInfo(HttpServletRequest request, HttpServletResponse response, JspWriter out){
+			rset.beforeFirst();
+			while (rset != null && rset.next()) {
+				rset.updateString(2, uFirstName);
+				rset.updateString(3, uLastName);
+				rset.updateString(4, Address);
+				rset.updateString(5, uEmail);
+				rset.updateString(6, uPhone);
+				rset.updateRow();
+			}
+			if(stmt != null) { stmt.close();}
+	}
+	
+	public void updatePassword(){
+		Statement stmt2 = null;
+		ResultSet rset2 = null;
+		String sql = "select * from users where user_name = \'" + uName
+				+ "\'";
+
+		try {
+			stmt2 = UserConnection.getConnection().getConn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			rset2 = stmt.executeQuery(sql);
+
+			while (rset2 != null && rset2.next()) {
+				rset2.updateString(2, uPass);
+				rset2.updateRow();
+			}
+		} catch (Exception ex) {
+			System.out.println("" + ex.getMessage() + "");
+		}
+		finally {
+			if(stmt2 != null) {stmt2.close();}
+		}
+		
+	}
+
+%>
+
+<% 
+String temp;
+try{
+	loggedUser = (User) request.getSession().getAttribute("loggedUser");//UserManager.getUserManager().getUser();
+	if(loggedUser == null) {
+		response.sendRedirect("Home.jsp");
+	}
+	uName = loggedUser.getUserName();
+	queryUser(request, response, out);
+	if(request.getParameter("bSubmit")!=null)
+	{
+		uPass = request.getParameter("password").trim();
+		verifyUPass = request.getParameter("veripassword").trim();
+		temp = request.getParameter("firstname").trim();
+		if(!temp.equals("")) {
+			uFirstName = temp;
+		}
+		temp = request.getParameter("lastname").trim();
+		if(!temp.equals("")) {
+			uLastName = temp;
+		}
+		temp = request.getParameter("address").trim();
+		if(!temp.equals("")) {
+			Address = temp;
+		}
+		temp = request.getParameter("phone").trim();
+		if(!temp.equals("")) {
+			uPhone = temp;
+		}
+		temp = request.getParameter("newemail").trim();
+		verifyUEmail = request.getParameter("renewemail").trim();
+		if(!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
+			uEmail = temp;
+		} else {
+			out.println("<center><p><b> Emails Entered Did Not Match </b></p></center");
+		}
+		
+		updateUserInfo(request, response, out);
+		
+		if(uPass.compareTo(verifyUPass) == 0) {
+			updatePassword();
+		}
+		else {
+			out.println("<center><p><b> Passwords Entered Did Not Match </b></p></center");
+		}
+		
+	}
+	if(stmt != null) {
+		stmt.close();
+	}
+}
+catch(Exception ex) {
+	System.out.println(""+ex.getMessage()+"");
+}
+%>
 <head>
 	<title> AdminEditProfile </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -52,8 +182,8 @@
 		Search</a>
 	</div>
 	<input id="e21" class="cc09" type="password" name="password" size="10">
-	<input id="e20" class="cc09" type="password" name="password" size="10">
-	<input id="e19" class="cc10" type="button" value="Ok" onclick="alert('Button')">
+	<input id="e20" class="cc09" type="password" name="veripassword" size="10">
+	<input id="e19" class="cc10" type="submit" value="Ok" name = "bSubmit">
 	<div id="e18" class="cc10">
 		New Password:
 	</div>
@@ -69,30 +199,31 @@
 	<div id="e14" class="cc11">
 		Change Email:
 	</div>
-	<input id="e13" class="cc09" type="text" name="text_box" size="23">
-	<div id="e12" class="cc10">
+	<input id="e13" class="cc09" type="text" name="newemail" size="23">
+	<div id="e12" class="cc10" value="<%=uEmail%>">
 		New Email:
 	</div>
-	<input id="e11" class="cc09" type="text" name="text_box" size="23">
+	<input id="e11" class="cc09" type="text" name="renewemail" size="23">
 	<div id="e10" class="cc10">
 		Retype New Email:
 	</div>
 	<div id="e9" class="cc11">
 		Change Personal Information:
 	</div>
-	<input id="e8" class="cc09" type="text" name="text_box" size="23">
-	<div id="e7" class="cc10">
+	<input id="e8" class="cc09" type="text" name="address" size="23">
+	<div id="e7" class="cc10" value="<%=Address%>">
 		Address:
 	</div>
-	<input id="e6" class="cc09" type="text" name="text_box" size="23">
-	<div id="e5" class="cc10">
+	<input id="e6" class="cc09" type="text" name="phone" size="23">
+	<div id="e5" class="cc10" value="<%=uPhone%>">
 		Phone:
 	</div>
-	<input id="e4" class="cc09" type="text" name="text_box" size="23">
-	<div id="e3" class="cc10">
+	<input id="e4" class="cc09" type="text" name="firstname" size="23">
+	<div id="e3" class="cc10" value="<%=uFirstName%>">
 		First Name:
 	</div>
-	<input id="e2" class="cc09" type="text" name="text_box" size="23">
+	<input id="e2" class="cc09" type="text" name="lastname" size="23" 
+	value="<%=uLastName%>">
 	<div id="e1" class="cc10">
 		Last Name:
 	</div>
