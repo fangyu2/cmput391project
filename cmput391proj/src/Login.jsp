@@ -53,7 +53,8 @@ if(request.getParameter("bSubmit")!=null)
 		ResultSet rset = null;
 
 		try {
-			stmt = UserConnection.getConnection().getConn().createStatement();
+			stmt = UserConnection.getConnection().getConn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
 			String truepwd = "";
@@ -67,8 +68,7 @@ if(request.getParameter("bSubmit")!=null)
 				UserManager.getUserManager().setUser(new User(uName,tempClass));
 				openPage(tempClass, response, out);
 			} else {
-				System.out
-						.println("<p><b> Either You Username or Your password is invald </b></p>");
+				out.println("<p><b> Either You Username or Your password is invald </b></p>");
 			}
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
