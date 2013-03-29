@@ -26,7 +26,7 @@
 					.getConnection()
 					.getConn()
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-							ResultSet.CONCUR_UPDATABLE);
+							ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
 			while (rset != null && rset.next()) {
@@ -36,7 +36,7 @@
 				uEmail = (rset.getString(5)).trim();
 				uPhone = (rset.getString(6)).trim();
 			}
-			
+			verifyUEmail = uEmail;
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -47,8 +47,8 @@
 
 	public void updateUserInfo(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
-		String sql = "select * from persons where user_name = \'" + uName
-				+ "\'";
+		String sql = "select first_name, last_name, address, email, phone" +
+				"from persons where user_name = \'" + uName + "\'";
 
 		try {
 			stmt = UserConnection
@@ -59,11 +59,11 @@
 			rset = stmt.executeQuery(sql);
 
 			while (rset != null && rset.next()) {
-				rset.updateString(2, uFirstName);
-				rset.updateString(3, uLastName);
-				rset.updateString(4, Address);
-				rset.updateString(5, uEmail);
-				rset.updateString(6, uPhone);
+				rset.updateString(1, uFirstName);
+				rset.updateString(2, uLastName);
+				rset.updateString(3, Address);
+				rset.updateString(4, uEmail);
+				rset.updateString(5, uPhone);
 				rset.updateRow();
 			}
 			if (stmt != null) {
@@ -75,25 +75,23 @@
 	}
 
 	public void updatePassword() {
-		Statement stmt2 = null;
-		ResultSet rset2 = null;
-		String sql = "select * from users where user_name = \'" + uName + "\'";
+		String sql = "select password from users where user_name = \'" + uName + "\'";
 
 		try {
-			stmt2 = UserConnection
+			stmt = UserConnection
 					.getConnection()
 					.getConn()
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 							ResultSet.CONCUR_UPDATABLE);
-			rset2 = stmt.executeQuery(sql);
+			rset = stmt.executeQuery(sql);
 
-			while (rset2 != null && rset2.next()) {
-				rset2.updateString(2, uPass);
-				rset2.updateRow();
+			while (rset != null && rset.next()) {
+				rset.updateString("password", uPass);
+				rset.updateRow();
 			}
 			
-			if (stmt2 != null) {
-				stmt2.close();
+			if (stmt != null) {
+				stmt.close();
 			}
 		} catch (SQLException ex) {
 			System.out.println("" + ex.getMessage() + "");
@@ -146,9 +144,6 @@
 				out.println("<center><p><b> Passwords Entered Did Not Match </b></p></center");
 			}
 
-		}
-		if (stmt != null) {
-			stmt.close();
 		}
 	} catch (Exception ex) {
 		System.out.println("" + ex.getMessage() + "");
@@ -232,7 +227,7 @@
 		<div id="e14" class="cc11">Change Email:</div>
 		<input id="e13" class="cc09" type="text" name="newemail" size="23" value="<%=uEmail%>">
 		<div id="e12" class="cc10" >New Email:</div>
-		<input id="e11" class="cc09" type="text" name="renewemail" size="23">
+		<input id="e11" class="cc09" type="text" name="renewemail" size="23" value="<%=uEmail%>">
 		<div id="e10" class="cc10">Retype New Email:</div>
 		<div id="e9" class="cc11">Change Personal Information:</div>
 		<input id="e8" class="cc09" type="text" name="address" size="23" value="<%=Address%>">
