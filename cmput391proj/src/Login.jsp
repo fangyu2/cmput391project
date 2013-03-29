@@ -20,6 +20,13 @@
 
 <%@ page import="java.sql.*,cmput391.*"%>
 
+<%
+if(request.getParameter("bSubmit")!=null)
+{
+    queryUser(request);
+}
+%>
+
 <%!public String openPage(String uClass, HttpServletRequest request) {
 		String jspPage = null;
 		if (uClass.equals("a")) {
@@ -82,8 +89,7 @@
 		</div>
 		<input id="e7" class="cc03" type="text" name="userName" size="23">
 		<input id="e6" class="cc03" type="password" name="password" size="23">
-		<input id="e5" class="cc04" type="button" value="Login"
-			onclick="queryUser(request);">
+		<input id="e5" class="cc04" type="submit" value="Login" name = "bSubmit">
 		<div id="e4" class="cc04">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 		</div>
