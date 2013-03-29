@@ -30,11 +30,11 @@ if(request.getParameter("bSubmit")!=null)
 <%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
 	try{
 	if (uClass.equals("a")) {
-			response.sendRedirect("/adminUser.jsp");
+			response.sendRedirect("adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
-			response.sendRedirect("/regUser.jsp");
+			response.sendRedirect("regUser.jsp");
 		} else if (uClass.equals("r")) {
-			response.sendRedirect("/radioUser.jsp");
+			response.sendRedirect("radioUser.jsp");
 		}
 	}
 	catch(Exception ex) {
@@ -47,8 +47,8 @@ if(request.getParameter("bSubmit")!=null)
 		String uName = request.getParameter("userName").trim();
 		String uPass = request.getParameter("password").trim();
 		String tempClass = null;
-		String sql = "select * from Users where user_name = '" + uName
-				+ "' and" + "password = ' " + uPass + "'";
+		String sql = "select * from Users where user_name = \'" + uName
+				+ "\'";
 		Statement stmt = null;
 		ResultSet rset = null;
 
@@ -60,15 +60,15 @@ if(request.getParameter("bSubmit")!=null)
 			String truepwd = "";
 
 			while (rset != null && rset.next()) {
-				truepwd = (rset.getString(1)).trim();
-				tempClass = (rset.getString(2)).trim();
+				truepwd = (rset.getString(2)).trim();
+				tempClass = (rset.getString(3)).trim();
 			}
 
 			if (uPass.equals(truepwd)) {
 				UserManager.getUserManager().setUser(new User(uName,tempClass));
 				openPage(tempClass, response, out);
 			} else {
-				out.println("<p><b> Either You Username or Your password is invald </b></p>");
+				out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
 			}
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
