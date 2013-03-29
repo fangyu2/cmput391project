@@ -36,14 +36,17 @@ if(request.getParameter("bSubmit")!=null)
 	try {
 	if (uClass.equals("a")) {
 			request.getRequestDispatcher("/adminUser.jsp").forward(request, response);
+			response.sendRedirect("/adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
 			request.getRequestDispatcher("/regUser.jsp").forward(request, response);
+			response.sendRedirect("/regUser.jsp");
 		} else if (uClass.equals("r")) {
 			request.getRequestDispatcher("/radioUser.jsp").forward(request, response);
+			response.sendRedirect("/radioUser.jsp");
 		}
 	}
 	catch(Exception ex) {
-		out.println("<p><b> " + ex.getMessage() + " </b></p>");
+		System.out.println("" + ex.getMessage() + "");
 	}
 }
 

@@ -12,7 +12,22 @@
 	<script src="cmput391_004_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
 
+<%@ page import="java.sql.*,cmput391.*,java.util.UUID"%>
 
+<%! private User loggedUser;
+%>
+
+<% String objectID = request.getParameter("loggedUser");
+loggedUser = request.getSession().getAttribute(objectID);
+request.getSession().removeAttribute(objectID);
+String uClass = loggedUser.getUserClass();
+try{
+	out.println("<p><b> " + uClass + "</b></p>");
+}
+catch(Exception ex) {
+	System.out.println(""+ex.getMessage()+"");
+}
+%>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<a href="adminUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[6],Img12,'cmput391_004.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[6],Img12,0,0)">
 		<img id="e12" name="e12" src="cmput391004011.jpg" title="" alt="cmput391004011.jpg" align="right" border="0"></a>
