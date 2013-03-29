@@ -19,11 +19,10 @@
 		ResultSet rset = null;
 		Statement stmt = null;
 		String sql;
-		
-		if(!checkForUser) {
+
+		if (!checkForUser) {
 			sql = "select * from persons where user_name = \'" + uName + "\'";
-		}
-		else {
+		} else {
 			sql = "select * from persons where user_name = \'" + uEmail + "\'";
 		}
 
@@ -34,6 +33,10 @@
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 							ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
+
+			if (!rset.isBeforeFirst()) {
+				existingEmail = false;
+			}
 
 			while (rset != null && rset.next()) {
 				uFirstName = (rset.getString(2)).trim();
@@ -54,8 +57,8 @@
 	public void updateUserInfo() {
 		ResultSet rset = null;
 		Statement stmt = null;
-		String sql = "select first_name, last_name, address, email, phone" +
-				"from persons where user_name = \'" + uName + "\'";
+		String sql = "select first_name, last_name, address, email, phone"
+				+ "from persons where user_name = \'" + uName + "\'";
 
 		try {
 			stmt = UserConnection
@@ -73,21 +76,22 @@
 				rset.updateString(5, uPhone);
 				rset.updateRow();
 			}
-			
+
 			UserConnection.getConnection().getConn().commit();
-			
+
 			if (stmt != null) {
 				stmt.close();
 			}
 		} catch (SQLException ex) {
 
-		} 
+		}
 	}
 
 	public void updatePassword() {
 		ResultSet rset = null;
 		Statement stmt = null;
-		String sql = "select password from users where user_name = \'" + uName + "\'";
+		String sql = "select password from users where user_name = \'" + uName
+				+ "\'";
 
 		try {
 			stmt = UserConnection
@@ -101,9 +105,9 @@
 				rset.updateString("password", uPass);
 				rset.updateRow();
 			}
-			
+
 			UserConnection.getConnection().getConn().commit();
-			
+
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -145,8 +149,12 @@
 			temp = request.getParameter("newemail").trim();
 			verifyUEmail = request.getParameter("renewemail").trim();
 			if (!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
-				uEmail = temp;
 				queryUser(true);
+				if (!existingEmail) {
+					uEmail = temp;
+				} else {
+					out.println("<center><p><b> Email Already Exist </b></p></center");
+				}
 			} else {
 				out.println("<center><p><b> Emails Entered Did Not Match </b></p></center");
 			}
@@ -240,16 +248,21 @@
 		<div id="e16" class="cc11">Change Password:</div>
 		<div id="e15" class="cc12">Edit Profile</div>
 		<div id="e14" class="cc11">Change Email:</div>
-		<input id="e13" class="cc09" type="text" name="newemail" size="23" value="<%=uEmail%>">
-		<div id="e12" class="cc10" >New Email:</div>
-		<input id="e11" class="cc09" type="text" name="renewemail" size="23" value="<%=uEmail%>">
+		<input id="e13" class="cc09" type="text" name="newemail" size="23"
+			value="<%=uEmail%>">
+		<div id="e12" class="cc10">New Email:</div>
+		<input id="e11" class="cc09" type="text" name="renewemail" size="23"
+			value="<%=uEmail%>">
 		<div id="e10" class="cc10">Retype New Email:</div>
 		<div id="e9" class="cc11">Change Personal Information:</div>
-		<input id="e8" class="cc09" type="text" name="address" size="23" value="<%=Address%>">
-		<div id="e7" class="cc10" >Address:</div>
-		<input id="e6" class="cc09" type="text" name="phone" size="23" value="<%=uPhone%>">
+		<input id="e8" class="cc09" type="text" name="address" size="23"
+			value="<%=Address%>">
+		<div id="e7" class="cc10">Address:</div>
+		<input id="e6" class="cc09" type="text" name="phone" size="23"
+			value="<%=uPhone%>">
 		<div id="e5" class="cc10">Phone:</div>
-		<input id="e4" class="cc09" type="text" name="firstname" size="23" value="<%=uFirstName%>">
+		<input id="e4" class="cc09" type="text" name="firstname" size="23"
+			value="<%=uFirstName%>">
 		<div id="e3" class="cc10">First Name:</div>
 		<input id="e2" class="cc09" type="text" name="lastname" size="23"
 			value="<%=uLastName%>">
