@@ -23,23 +23,21 @@
 <%
 if(request.getParameter("bSubmit")!=null)
 {
-    queryUser(request);
+    queryUser(request, response, out);
 }
 %>
 
-<%!public String openPage(String uClass, HttpServletRequest request) {
-		String jspPage = null;
+<%!public void openPage(String uClass, HttpServletResponse response, JspWriter out) {
 		if (uClass.equals("a")) {
-			request.getRequestDispatcher("/adminUser.jsp");
+			response.sendRedirect("adminUser.jsp");
 		} else if (uClass.equals("p") || uClass.equals("d")) {
-			request.getRequestDispatcher("/regUser.jsp");
+			response.sendRedirect("regUser.jsp");
 		} else if (uClass.equals("r")) {
-			request.getRequestDispatcher("/radioUser.jsp");
+			response.sendRedirect("radioUser.jsp");
 		}
-		return jspPage;
 	}
 
-	public void queryUser(HttpServletRequest request) {
+	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		String uName = request.getParameter("userName").trim();
 		String uPass = request.getParameter("password").trim();
 		String tempClass = null;
@@ -60,7 +58,7 @@ if(request.getParameter("bSubmit")!=null)
 			}
 
 			if (uPass.equals(truepwd)) {
-				openPage(tempClass, request);
+				openPage(tempClass, response, out);
 			} else {
 				System.out
 						.println("<p><b> Either You Username or Your password is invald </b></p>");
