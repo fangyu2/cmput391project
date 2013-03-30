@@ -75,6 +75,7 @@
             stmt.executeQuery(sql);
             sql = "commit;";
             stmt.executeQuery(sql);
+            UserConnection.getConnection().getConn().commit();
             stmt.close();
          } catch (Exception ex)
          {
@@ -170,6 +171,7 @@
          outstream3.close();
 
          stmt.executeUpdate("commit");
+         UserConnection.getConnection().getConn().commit();
          stmt.close();
 
       } catch (Exception ex)
