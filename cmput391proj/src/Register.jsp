@@ -38,13 +38,16 @@ if(request.getParameter("rSubmit")!=null)
 			stmt = UserConnection.getConnection().getConn().createStatement();
 			rset = stmt.executeQuery(sql);
 			String trueuser = "";
-			out.println("hi");
 			while (rset != null && rset.next()) {
 				trueuser = (rset.getString(1)).trim();
 			}
 			if (username.equals(trueuser)) {
 				out.println("<p><b> This user name already exists! </b></p>");
-			} else {
+			} 
+			if (username.equals("")) {
+				out.println("<p><b> Username field not filled! </b></p>");
+			}
+			else {
 				checkPassword(username,request, response, out);
 			}
 		} catch (Exception ex) {
@@ -59,6 +62,9 @@ if(request.getParameter("rSubmit")!=null)
 		String retypepassword = (request.getParameter("retypepassword")).trim();
 		if(!password.equals(retypepassword)){
 			out.println("<p><b> Passwords dont match! </b></p>");
+		}
+		if (password.equals("")) {
+			out.println("<p><b> Password field not filled! </b></p>");
 		}
 		else{
 			checkEmail(username, password, request, response, out);
@@ -89,7 +95,11 @@ if(request.getParameter("rSubmit")!=null)
 
 			if (email.equals(trueEmail)) {
 				out.println("<p><b> This Email is already registered by another user! </b></p>");
-			} else {
+			}
+			if (email.equals("")) {
+				out.println("<p><b> Email field not filled! </b></p>");
+			}
+			else {
 				registerUser(username, password, email, request, response, out);
 			}
 		} catch (Exception ex) {
@@ -163,7 +173,7 @@ if(request.getParameter("rSubmit")!=null)
 
 
 <form method="post">
-	<input id="e24" class="cc41" type="text" name="text_box" value="userName" size="23">
+	<input id="e24" class="cc41" type="text" name="username" value="userName" size="23">
 	<input id="e23" class="cc41" type="password" name="password" size="23">
 	<input id="e22" class="cc42" type="submit" value="Register" name="rSubmit">
 	<div id="e21" class="cc42">
@@ -214,7 +224,7 @@ if(request.getParameter("rSubmit")!=null)
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:
 	</div>
 	<input id="e2" class="cc41" type="text" name="text_box" value="email" size="23">
-	<select id="e1" class="cc45" size="1" name="combo_box" onchange="alert('Combo_Box'+'['+this.selectedIndex+']')">
+	<select id="e1" class="cc45" size="1" name="combo_box">
 	<option> 1. Patient</option>
 	<option> 2. Doctor</option>
 	<option> 3. Radiologist</option>
