@@ -18,9 +18,12 @@
 %>
 
 <% 
-loggedUser = UserManager.getUserManager().getUser();
-String uClass = loggedUser.getUserClass();
 try{
+	loggedUser = (User) request.getSession().getAttribute("loggedUser");//UserManager.getUserManager().getUser();
+	if(loggedUser == null) {
+		response.sendRedirect("Home.jsp");
+	}
+	String uClass = loggedUser.getUserClass();
 	out.println("<p><b> " + uClass + "</b></p>");
 }
 catch(Exception ex) {

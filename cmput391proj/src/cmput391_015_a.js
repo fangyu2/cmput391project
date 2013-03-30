@@ -4,14 +4,14 @@
 function OnWeLoad()
 {
 
-	Img8={max:1,pos:0};
-	Img8[0]=new Image();Img8[0].src='cmput391015001.jpg';
-	Img8[1]=new Image();Img8[1].src='cmput391015002.jpg';
-	Img10={max:1,pos:0};
-	Img10[0]=new Image();Img10[0].src='cmput391015003.jpg';
-	Img10[1]=new Image();Img10[1].src='cmput391015004.jpg';	IDP.my=(window.parent.frames.length && parent.MyFrm)?parent.MyFrm:window;
-	IDP[1]=(V5)?'document.getElementById(\'e8\').src':(IE)?'e8.src':'document.e8.src';
-	IDP[2]=(V5)?'document.getElementById(\'e10\').src':(IE)?'e10.src':'document.e10.src';
+	Img12={max:1,pos:0};
+	Img12[0]=new Image();Img12[0].src='cmput391015001.jpg';
+	Img12[1]=new Image();Img12[1].src='cmput391015002.jpg';
+	Img14={max:1,pos:0};
+	Img14[0]=new Image();Img14[0].src='cmput391015003.jpg';
+	Img14[1]=new Image();Img14[1].src='cmput391015004.jpg';	IDP.my=(window.parent.frames.length && parent.MyFrm)?parent.MyFrm:window;
+	IDP[1]=(V5)?'document.getElementById(\'e12\').src':(IE)?'e12.src':'document.e12.src';
+	IDP[2]=(V5)?'document.getElementById(\'e14\').src':(IE)?'e14.src':'document.e14.src';
 	isOvr=1;
 }
 
