@@ -28,11 +28,17 @@
 <%!public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
 		
+	int ID = 0;
 	try {
 			String recordID = (request.getParameter("recordID")).trim();
-			int ID = Integer.parseInt(recordID);
+			ID = Integer.parseInt(recordID);
 		} catch (NumberFormatException ex) {
+			try{
 			out.println("<center><p><b> ID entered is not a number!! </b></p></center");
+			}
+			catch(Exception exp) {				
+			}
+			return;
 		}
 	
 	try{
@@ -79,6 +85,7 @@
 			UserConnection.getConnection().getConn().commit();
 			stmt.close();
 			addImg(ID, request, response, out);
+	}
 		 catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
