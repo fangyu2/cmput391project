@@ -6,184 +6,243 @@
 	color           : #c0c0c0;
 	}
 .cc27               { /* Common */
-	font            : 10pt 'Times New Roman', Book, Georgia, serif;
-	color           : #000000;
-	}
-.cc28               { /* Common */
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
 	padding         :   1.50pt;
 	}
-.cc29               { /* Common */
+.cc28               { /* Common */
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
 	}
-img#e26             { /* cmput391011009.jpg */
+img#e35             { /* cmput391011009.jpg */
 	position        : absolute;
 	left            :  23.25pt;
 	top             :  79.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e25             { /* Home */
+div#e34             { /* Home */
 	position        : absolute;
 	left            :  54.00pt;
 	top             :  89.25pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e24             { /* cmput391011007.jpg */
+img#e33             { /* cmput391011007.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 172.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e23             { /* Edit Profile */
+div#e32             { /* Edit Profile */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 177.00pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e22             { /* cmput391011005.jpg */
+img#e31             { /* cmput391011005.jpg */
 	position        : absolute;
 	left            :  20.25pt;
 	top             : 265.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e21             { /* Logout */
+div#e30             { /* Logout */
 	position        : absolute;
 	left            :  51.00pt;
 	top             : 275.25pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e20             { /* cmput391011003.jpg */
+img#e29             { /* cmput391011003.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 218.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e19             { /* Add Records */
+div#e28             { /* Add Records */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 223.50pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e18             { /* cmput391011001.jpg */
+img#e27             { /* cmput391011001.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 126.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e17             { /* Search */
+div#e26             { /* Search */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 135.75pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-div#e16             { /* Record ID:\ \\ \Patient ... */
-	position        : absolute;
-	left            : 169.50pt;
-	top             : 102.75pt;
-	width           :  96.00pt;
-	height          : 242.25pt;
-	}
-input#e15           { /* Text text_box  */
+input#e25           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             :  96.75pt;
 	width           : 120.75pt;
 	}
-input#e14           { /* Text text_box  */
+input#e24           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 121.50pt;
 	width           : 120.75pt;
 	}
-input#e13           { /* Text text_box  */
+input#e23           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 146.25pt;
 	width           : 120.75pt;
 	}
-input#e12           { /* Text text_box  */
+input#e22           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 173.25pt;
 	width           : 120.75pt;
 	}
-input#e11           { /* Text text_box  */
+input#e21           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 198.00pt;
 	width           : 120.75pt;
 	}
-input#e10           { /* Text text_box  */
+input#e20           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 268.50pt;
 	width           : 120.75pt;
 	}
-input#e9            { /* Text text_box  */
+input#e19           { /* Text text_box  */
 	position        : absolute;
 	left            : 246.75pt;
 	top             : 293.25pt;
 	width           : 120.75pt;
 	}
-select#e8           { /* Combo Box Date_Day Day  */
+select#e18          { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 246.00pt;
 	top             : 222.00pt;
 	width           :  41.25pt;
 	}
-select#e7           { /* Combo Box Date_Month Mon... */
+select#e17          { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 291.75pt;
 	top             : 222.00pt;
 	width           :  71.25pt;
 	}
-select#e6           { /* Combo Box Date_Year Year... */
+select#e16          { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 366.00pt;
 	top             : 222.00pt;
 	width           :  48.75pt;
 	}
-select#e5           { /* Combo Box Date_Day Day  */
+select#e15          { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 246.00pt;
 	top             : 247.50pt;
 	width           :  41.25pt;
 	}
-select#e4           { /* Combo Box Date_Month Mon... */
+select#e14          { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 291.00pt;
 	top             : 247.50pt;
 	width           :  71.25pt;
 	}
-select#e3           { /* Combo Box Date_Year Year... */
+select#e13          { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 366.00pt;
 	top             : 247.50pt;
 	width           :  48.75pt;
 	}
-input#e2            { /* File a_file  */
+input#e12           { /* File a_file  */
 	background-color: #ffffff;
 	position        : absolute;
 	left            : 252.75pt;
 	top             : 327.75pt;
 	}
-input#e1            { /* Submit  */
+input#e11           { /* Submit  */
 	position        : absolute;
 	left            : 336.00pt;
 	top             : 366.00pt;
 	width           :  56.25pt;
+	}
+div#e10             { /* Record ID:  */
+	position        : absolute;
+	left            : 192.00pt;
+	top             :  99.75pt;
+	width           :  50.25pt;
+	height          :  12.75pt;
+	}
+div#e9              { /* Patient Name: */
+	position        : absolute;
+	left            : 181.50pt;
+	top             : 125.25pt;
+	width           :  59.25pt;
+	height          :  12.75pt;
+	}
+div#e8              { /* Doctor: */
+	position        : absolute;
+	left            : 207.00pt;
+	top             : 147.75pt;
+	width           :  35.25pt;
+	height          :  12.75pt;
+	}
+div#e7              { /* Radiologist: */
+	position        : absolute;
+	left            : 192.00pt;
+	top             : 177.00pt;
+	width           :  50.25pt;
+	height          :  12.75pt;
+	}
+div#e6              { /* Test Type: */
+	position        : absolute;
+	left            : 195.00pt;
+	top             : 201.75pt;
+	width           :  47.25pt;
+	height          :  12.75pt;
+	}
+div#e5              { /* Prescribing Date: */
+	position        : absolute;
+	left            : 172.50pt;
+	top             : 226.50pt;
+	width           :  69.75pt;
+	height          :  12.75pt;
+	}
+div#e4              { /* Test Date: */
+	position        : absolute;
+	left            : 195.75pt;
+	top             : 250.50pt;
+	width           :  46.50pt;
+	height          :  12.75pt;
+	}
+div#e3              { /* Diagnosis: */
+	position        : absolute;
+	left            : 198.75pt;
+	top             : 273.00pt;
+	width           :  43.50pt;
+	height          :  12.00pt;
+	}
+div#e2              { /* Description: */
+	position        : absolute;
+	left            : 191.25pt;
+	top             : 297.00pt;
+	width           :  51.00pt;
+	height          :  12.75pt;
+	}
+div#e1              { /* Attach a Picture: */
+	position        : absolute;
+	left            : 174.00pt;
+	top             : 332.25pt;
+	width           :  68.25pt;
+	height          :  12.75pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
