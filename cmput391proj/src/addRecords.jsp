@@ -307,7 +307,7 @@
 	<option> November</option>
 	<option> December</option>
 	</select>
-	<select id="e16" class="cc28" size="1" name="pby" title="Year">
+	<select id="e16" class="cc28" size="1" name="pdy" title="Year">
 	<option> 2003</option>
 	<option> 2004</option>
 	<option> 2005</option>
