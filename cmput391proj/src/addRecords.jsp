@@ -78,13 +78,10 @@
 			stmt = UserConnection
 					.getConnection()
 					.getConn()
-					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-							ResultSet.CONCUR_UPDATABLE);
+					.createStatement();
 			stmt.executeQuery(sql);
-			sql = "commit;";
-			stmt.executeQuery(sql);
-			UserConnection.getConnection().getConn().commit();
 			stmt.close();
+			UserConnection.getConnection().getConn().commit();
 			addImg(ID, request, response, out);
 	}
 		 catch (Exception ex) {
