@@ -27,10 +27,15 @@
 
 <%!public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
-		try {
-
+		
+	try {
 			String recordID = (request.getParameter("recordID")).trim();
 			int ID = Integer.parseInt(recordID);
+		} catch (NumberFormatException ex) {
+			out.println("<center><p><b> ID entered is not a number!! </b></p></center");
+		}
+	
+	try{
 			String patientName = (request.getParameter("patient")).trim();
 			String doctorName = (request.getParameter("docName")).trim();
 			String radiologist = (request.getParameter("radname")).trim();
@@ -74,9 +79,7 @@
 			UserConnection.getConnection().getConn().commit();
 			stmt.close();
 			addImg(ID, request, response, out);
-		} catch (NumberFormatException ex) {
-			out.println("<center><p><b> ID entered is not a number!! </b></p></center");
-		} catch (Exception ex) {
+		 catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
 
