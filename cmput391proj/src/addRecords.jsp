@@ -50,15 +50,13 @@
          tempyr = (request.getParameter("pdy")).trim();
          tempmon = (request.getParameter("pdm")).trim();
 
-         pres_date = tempday.concat(dash).concat(tempmon).concat(dash)
-               .concat(tempyr);
+         pres_date = tempday.concat(dash).concat(tempmon).concat(dash).concat(tempyr);
 
          tempday = (request.getParameter("tdd")).trim();
          tempyr = (request.getParameter("tdy")).trim();
          tempmon = (request.getParameter("tdm")).trim();
 
-         pres_date = tempday.concat(dash).concat(tempmon).concat(dash)
-               .concat(tempyr);
+         pres_date = tempday.concat(dash).concat(tempmon).concat(dash).concat(tempyr);
 
          try
          {
