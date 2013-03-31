@@ -56,8 +56,10 @@
 
 			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
 					.concat(tempyr);
-			//String sql = "INSERT INTO radiology_record VALUES("+ID+", '" +patientName+ "', '" +doctorName+ "', '" +radiologist+ "', '" +testType+ "', SYSDATE, SYSDATE, '" +diagnosis+ "', '" +description+ "')";
-			String sql = "INSERT INTO radiology_record VALUES(14,'eric','evan','gia','MRI', SYSDATE, SYSDATE, 'cancer','cancer')";
+			String sql = "INSERT INTO radiology_record VALUES("+ID+", '" 
+					+patientName+ "', '" +doctorName+ "', '" +radiologist+ "', '" 
+			+testType+ "', '" + pres_date + "', '"+ test_date+"', '" 
+					+diagnosis+ "', '" +description+ "')";
 			Statement stmt = null;
 			ResultSet rset = null;
 
