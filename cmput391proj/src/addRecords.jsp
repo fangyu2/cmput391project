@@ -56,7 +56,7 @@
          tempyr = (request.getParameter("tdy")).trim();
          tempmon = (request.getParameter("tdm")).trim();
 
-         pres_date = tempday.concat(dash).concat(tempmon).concat(dash).concat(tempyr);
+         test_date = tempday.concat(dash).concat(tempmon).concat(dash).concat(tempyr);
 
          try
          {
