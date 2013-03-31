@@ -229,7 +229,7 @@
 		<input id="e20" class="cc33" type="password" name="password" size="10">
 		<input id="e19" class="cc33" type="password" name="password" size="10">
 		<input id="e18" class="cc34" type="button" value="Ok"
-			onclick="alert('Button')">
+			name="bSubmit">
 		<div id="e17" class="cc34">New Password:</div>
 		<div id="e16" class="cc34">Re-Type Password:</div>
 		<div id="e15" class="cc35">Change Password:</div>

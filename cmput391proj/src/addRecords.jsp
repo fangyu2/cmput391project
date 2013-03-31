@@ -391,7 +391,7 @@
 	<option> 2018</option>
 	</select>
 	<input id="e12" class="cc27" type="file" name="a_file" size="13">
-	<input id="e11" class="cc28" type="submit" value="Submit">
+	<input id="e11" class="cc28" type="submit" value="submit" name="rSubmit">
 	<div id="e10" class="cc28">
 		Record ID: 
 	</div>
