@@ -300,18 +300,18 @@
 			<option>30</option>
 			<option>31</option>
 		</select> <select id="e17" class="cc28" size="1" name="pdm" title="Month">
-			<option>01</option>
-			<option>02</option>
-			<option>03</option>
-			<option>04</option>
-			<option>05</option>
-			<option>06</option>
-			<option>07</option>
-			<option>08</option>
-			<option>09</option>
-			<option>10</option>
-			<option>11</option>
-			<option>12</option>
+			<option>JAN</option>
+			<option>FEB</option>
+			<option>MAR</option>
+			<option>APR</option>
+			<option>MAY</option>
+			<option>JUN</option>
+			<option>JUL</option>
+			<option>AUG</option>
+			<option>SEP</option>
+			<option>OCT</option>
+			<option>NOV</option>
+			<option>DEC</option>
 		</select> <select id="e16" class="cc28" size="1" name="pdy" title="Year">
 			<option>2003</option>
 			<option>2004</option>
@@ -362,18 +362,18 @@
 			<option>30</option>
 			<option>31</option>
 		</select> <select id="e14" class="cc28" size="1" name="tdm" title="Month">
-			<option>01</option>
-			<option>02</option>
-			<option>03</option>
-			<option>04</option>
-			<option>05</option>
-			<option>06</option>
-			<option>07</option>
-			<option>08</option>
-			<option>09</option>
-			<option>10</option>
-			<option>11</option>
-			<option>12</option>
+			<option>JAN</option>
+			<option>FEB</option>
+			<option>MAR</option>
+			<option>APR</option>
+			<option>MAY</option>
+			<option>JUN</option>
+			<option>JUL</option>
+			<option>AUG</option>
+			<option>SEP</option>
+			<option>OCT</option>
+			<option>NOV</option>
+			<option>DEC</option>
 		</select> <select id="e13" class="cc28" size="1" name="tdy" title="Year">
 			<option>2003</option>
 			<option>2004</option>
