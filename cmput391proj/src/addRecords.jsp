@@ -34,6 +34,7 @@
 			ID = Integer.parseInt(recordID);
 		} catch (NumberFormatException ex) {
 			try{
+			out.println("<br /> <br />");
 			out.println("<center><p><b> ID entered is not a number!! </b></p></center");
 			}
 			catch(Exception exp) {				
