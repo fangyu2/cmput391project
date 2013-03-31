@@ -85,7 +85,12 @@
 			addImg(ID, request, response, out);
 	}
 		 catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
+			 try{
+					out.println("<br /> <br />");
+					out.println("<center><p><b> Record ID already exist!!! </b></p></center");
+					}
+					catch(Exception exp) {				
+					}
 		}
 
 	}
@@ -167,9 +172,8 @@
 			instream.close();
 			outstream3.close();
 
-			stmt.executeUpdate("commit");
-			UserConnection.getConnection().getConn().commit();
 			stmt.close();
+			UserConnection.getConnection().getConn().commit();
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
