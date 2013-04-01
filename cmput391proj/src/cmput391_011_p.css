@@ -162,7 +162,7 @@ select#e13          { /* Combo Box Date_Year Year... */
 	top             : 247.50pt;
 	width           :  48.75pt;
 	}
-input#e12           { /* File a_file  */
+applet#e12           { /* File a_file  */
 	background-color: #ffffff;
 	position        : absolute;
 	left            : 252.75pt;
@@ -170,8 +170,8 @@ input#e12           { /* File a_file  */
 	}
 input#e11           { /* Submit  */
 	position        : absolute;
-	left            : 336.00pt;
-	top             : 366.00pt;
+	left            : 436.00pt;
+	top             : 566.00pt;
 	width           :  56.25pt;
 	}
 div#e10             { /* Record ID:  */
