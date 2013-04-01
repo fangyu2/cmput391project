@@ -82,7 +82,8 @@
 			stmt.executeQuery(sql);
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
-			addImg(ID, request, response, out);
+			request.getSession().setAttribute("recordID", ID);
+			//addImg(ID, request, response, out);
 	}
 		 catch (Exception ex) {
 			 try{
@@ -148,7 +149,7 @@
 			outstream.close();
 
 			//Write the image to the blob object
-			OutputStream outstream2 = myblob.getBinaryOutputStream();
+			OutputStream outstream2 = myblob2.getBinaryOutputStream();
 			ImageIO.write(img, "jpg", outstream2);
 
 			int size2 = myblob2.getBufferSize();
@@ -160,7 +161,7 @@
 			outstream2.close();
 
 			//Write the image to the blob object
-			OutputStream outstream3 = myblob.getBinaryOutputStream();
+			OutputStream outstream3 = myblob3.getBinaryOutputStream();
 			ImageIO.write(largeimg, "jpg", outstream3);
 
 			int size3 = myblob3.getBufferSize();
@@ -406,7 +407,17 @@
 			<option>23</option>
 			<option>24</option>
 			<option>25</option>
-		</select> <input id="e12" class="cc27" type="file" name="a_file" size="13">
+		</select> <applet id="e12" class="cc27" code="applet-basic_files/wjhk.JUploadApplet" name="JUpload" archive="applet-basic_files/wjhk.jar" mayscript="" height="300" width="640">
+    <param name="CODE" value="wjhk.jupload2.JUploadApplet">
+    <param name="ARCHIVE" value="wjhk.jupload.jar">
+    <param name="type" value="application/x-java-applet;version=1.4">
+    <param name="scriptable" value="false">    
+    <param name="postURL"
+    value="http://luscar.cs.ualberta.ca:8080/yuan/parseRequest.jsp?URLParam=URL+Parameter+Value">
+    <param name="nbFilesPerRequest" value="2">    
+Java 1.4 or higher plugin required.
+</applet>
+
 		<input id="e11" class="cc28" type="submit" value="submit"
 			name="rSubmit">
 		<div id="e10" class="cc28">Record ID:</div>
