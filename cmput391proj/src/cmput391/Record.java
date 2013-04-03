@@ -7,7 +7,7 @@ public class Record {
 
 	public Record(int record) {
 		this.recordID = record;
-		imgID = 0;
+		imgID = record;
 	}
 
 	public void setRecordID(int record) {

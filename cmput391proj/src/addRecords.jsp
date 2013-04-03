@@ -24,7 +24,7 @@
 <%@ page
 	import="oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO"%>
 
-<%! private User loggedUser;
+<%!private User loggedUser;
 	private Record record;%>
 
 <%!public void addRecord(HttpServletRequest request,
@@ -81,6 +81,7 @@
 			stmt.executeQuery(sql);
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
+			record = new Record(ID);
 			request.getSession().setAttribute("record", record);
 			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
@@ -209,11 +210,14 @@
 	}%>
 
 <%
+	request.getSession().removeAttribute("record");
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
+		response.sendRedirect("Home.jsp");
+	} else {
 		String uClass = loggedUser.getUserClass();
 		if (uClass.compareTo("r") != 0)
-			response.sendRedirect("Home.jsp");	
+			response.sendRedirect("Home.jsp");
 	}
 	if (request.getParameter("rSubmit") != null) {
 		addRecord(request, response, out);

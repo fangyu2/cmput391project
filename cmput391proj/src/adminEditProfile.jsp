@@ -121,7 +121,7 @@
 	String temp;
 	try {
 		loggedUser = (User) request.getSession().getAttribute(
-				"loggedUser");//UserManager.getUserManager().getUser();
+				"loggedUser");
 		if (loggedUser == null) {
 			response.sendRedirect("Home.jsp");
 		} else {
