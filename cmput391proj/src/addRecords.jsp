@@ -85,7 +85,7 @@
 			String checked = request.getParameter("addPic");			
 			if(checked != null){
 				request.getSession().setAttribute("record", record);
-				response.sendRediect();
+				response.sendRediect("upload.jsp");
 			}
 			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
