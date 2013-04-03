@@ -5,89 +5,174 @@
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
 	}
-img#e12             { /* cmput391004011.jpg */
+.cc08               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	}
+.cc09               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
+	padding         :   1.50pt;
+	}
+img#e24             { /* cmput391004011.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             :  63.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e11             { /* Home */
+div#e23             { /* Home */
 	position        : absolute;
 	left            :  51.75pt;
 	top             :  73.50pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e10             { /* cmput391004009.jpg */
+img#e22             { /* cmput391004009.jpg */
 	position        : absolute;
 	left            :  18.75pt;
 	top             : 156.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e9              { /* Edit Profile */
+div#e21             { /* Edit Profile */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 161.25pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e8              { /* cmput391004007.jpg */
+img#e20             { /* cmput391004007.jpg */
 	position        : absolute;
 	left            :  22.50pt;
 	top             : 296.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e7              { /* Logout */
+div#e19             { /* Logout */
 	position        : absolute;
 	left            :  53.25pt;
 	top             : 306.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e6              { /* cmput391004005.jpg */
+img#e18             { /* cmput391004005.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 202.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e5              { /* Manage Users */
+div#e17             { /* Manage Users */
 	position        : absolute;
 	left            :  49.50pt;
 	top             : 207.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e4              { /* cmput391004003.jpg */
+img#e16             { /* cmput391004003.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 249.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e3              { /* View Logs */
+div#e15             { /* View Logs */
 	position        : absolute;
 	left            :  45.75pt;
 	top             : 258.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e2              { /* cmput391004001.jpg */
+img#e14             { /* cmput391004001.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 110.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e1              { /* Search */
+div#e13             { /* Search */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 120.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
+	}
+input#e12           { /* Submit  */
+	position        : absolute;
+	left            : 525.00pt;
+	top             :  29.25pt;
+	width           :  78.75pt;
+	}
+textarea#e11        { /* Text Area text_area  */
+	position        : absolute;
+	left            : 129.75pt;
+	top             : 117.75pt;
+	width           : 519.75pt;
+	height          : 388.50pt;
+	}
+input#e10           { /* Text text_box  */
+	position        : absolute;
+	left            : 176.25pt;
+	top             :  37.50pt;
+	width           : 120.75pt;
+	}
+select#e9           { /* Combo Box Date_Day Day  */
+	position        : absolute;
+	left            : 175.50pt;
+	top             :  60.75pt;
+	width           :  41.25pt;
+	}
+select#e8           { /* Combo Box Date_Month Mon... */
+	position        : absolute;
+	left            : 220.50pt;
+	top             :  60.75pt;
+	width           :  71.25pt;
+	}
+select#e7           { /* Combo Box Date_Year Year... */
+	position        : absolute;
+	left            : 295.50pt;
+	top             :  60.75pt;
+	width           :  48.75pt;
+	}
+select#e6           { /* Combo Box Date_Day Day  */
+	position        : absolute;
+	left            : 174.75pt;
+	top             :  93.00pt;
+	width           :  41.25pt;
+	}
+select#e5           { /* Combo Box Date_Month Mon... */
+	position        : absolute;
+	left            : 219.75pt;
+	top             :  93.00pt;
+	width           :  71.25pt;
+	}
+select#e4           { /* Combo Box Date_Year Year... */
+	position        : absolute;
+	left            : 294.75pt;
+	top             :  93.00pt;
+	width           :  48.75pt;
+	}
+div#e3              { /* From: */
+	position        : absolute;
+	left            : 134.25pt;
+	top             :  62.25pt;
+	width           :  28.50pt;
+	height          :  12.75pt;
+	}
+div#e2              { /* To: */
+	position        : absolute;
+	left            : 141.75pt;
+	top             :  92.25pt;
+	width           :  21.00pt;
+	height          :  12.75pt;
+	}
+div#e1              { /* Diagnosis: */
+	position        : absolute;
+	left            : 129.75pt;
+	top             :  37.50pt;
+	width           :  45.75pt;
+	height          :  12.75pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;

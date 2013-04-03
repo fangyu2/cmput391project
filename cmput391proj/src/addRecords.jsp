@@ -85,7 +85,7 @@
 			String checked = request.getParameter("addPic");			
 			if(checked != null){
 				request.getSession().setAttribute("record", record);
-				response.sendRediect("upload.jsp");
+				response.sendRedirect("upload.jsp");
 			}
 			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
@@ -429,8 +429,7 @@
 		<div id="e5" class="cc28">Test Date:</div>
 		<div id="e4" class="cc28">Diagnosis:</div>
 		<div id="e3" class="cc28">Description:</div>
-		<input id="e2" class="cc28" type="checkbox" name="check_box"
-			onclick="alert('Check_Box')">
+		<input id="e2" class="cc28" type="checkbox" name="addPic">
 		<div id="e1" class="cc29">Attach Photo</div>
 	</form>
 </body>
