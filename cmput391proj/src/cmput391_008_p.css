@@ -1,133 +1,180 @@
 /*--- Avanquest WebEasy Page Style ---*/
 
 
-.cc17               { /* Common */
+.cc19               { /* Common */
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
 	}
-.cc18               { /* Common */
+.cc20               { /* Common */
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
 	padding         :   1.50pt;
 	}
-.cc19               { /* Common */
+.cc21               { /* Common */
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
 	}
-.cc20               { /* Common */
+.cc22               { /* Common */
 	font            : 10pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
 	color           : #000000;
 	}
-img#e16             { /* cmput391008011.jpg */
+.cc23               { /* Common */
+	font            : 10pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	}
+img#e23             { /* cmput391008011.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             :  63.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e15             { /* Home */
+div#e22             { /* Home */
 	position        : absolute;
 	left            :  51.75pt;
 	top             :  73.50pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e14             { /* cmput391008009.jpg */
+img#e21             { /* cmput391008009.jpg */
 	position        : absolute;
 	left            :  18.75pt;
 	top             : 156.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e13             { /* Edit Profile */
+div#e20             { /* Edit Profile */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 161.25pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e12             { /* cmput391008007.jpg */
+img#e19             { /* cmput391008007.jpg */
 	position        : absolute;
 	left            :  22.50pt;
 	top             : 296.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e11             { /* Logout */
+div#e18             { /* Logout */
 	position        : absolute;
 	left            :  53.25pt;
 	top             : 306.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e10             { /* cmput391008005.jpg */
+img#e17             { /* cmput391008005.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 202.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e9              { /* Manage Users */
+div#e16             { /* Manage Users */
 	position        : absolute;
 	left            :  49.50pt;
 	top             : 207.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e8              { /* cmput391008003.jpg */
+img#e15             { /* cmput391008003.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 249.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e7              { /* View Logs */
+div#e14             { /* View Logs */
 	position        : absolute;
 	left            :  45.75pt;
 	top             : 258.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e6              { /* cmput391008001.jpg */
+img#e13             { /* cmput391008001.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 110.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e5              { /* Search */
+div#e12             { /* Search */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 120.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-input#e4            { /* Text text_box  */
+input#e11           { /* Text text_box  */
 	position        : absolute;
-	left            : 224.25pt;
-	top             : 165.00pt;
+	left            : 197.25pt;
+	top             : 167.25pt;
 	width           : 121.50pt;
 	}
-input#e3            { /* Button onclick="alert('B... */
+input#e10           { /* Button onclick="alert('B... */
 	position        : absolute;
-	left            : 381.75pt;
-	top             : 162.75pt;
+	left            : 389.25pt;
+	top             : 163.50pt;
 	width           :  57.00pt;
 	height          :  20.25pt;
 	}
-div#e2              { /* Enter Patient Name: */
+div#e9              { /* Enter Patient Name: */
 	position        : absolute;
-	left            : 216.00pt;
-	top             : 141.00pt;
+	left            : 197.25pt;
+	top             : 143.25pt;
 	width           : 110.25pt;
 	height          :  12.00pt;
 	}
-select#e1           { /* List select_list onChang... */
+div#e8              { /* From: */
 	position        : absolute;
-	left            : 216.00pt;
-	top             : 196.50pt;
-	width           : 339.00pt;
-	height          : 258.75pt;
+	left            : 199.50pt;
+	top             : 205.50pt;
+	width           :  90.75pt;
+	height          :  14.25pt;
+	}
+select#e7           { /* Combo Box Date_Day Day  */
+	position        : absolute;
+	left            : 198.00pt;
+	top             : 222.75pt;
+	width           :  41.25pt;
+	}
+select#e6           { /* Combo Box Date_Month Mon... */
+	position        : absolute;
+	left            : 243.00pt;
+	top             : 222.75pt;
+	width           :  71.25pt;
+	}
+select#e5           { /* Combo Box Date_Year Year... */
+	position        : absolute;
+	left            : 318.00pt;
+	top             : 222.75pt;
+	width           :  48.75pt;
+	}
+div#e4              { /* To: */
+	position        : absolute;
+	left            : 200.25pt;
+	top             : 245.25pt;
+	width           :  90.75pt;
+	height          :  14.25pt;
+	}
+select#e3           { /* Combo Box Date_Day Day  */
+	position        : absolute;
+	left            : 198.75pt;
+	top             : 262.50pt;
+	width           :  41.25pt;
+	}
+select#e2           { /* Combo Box Date_Month Mon... */
+	position        : absolute;
+	left            : 243.75pt;
+	top             : 262.50pt;
+	width           :  71.25pt;
+	}
+select#e1           { /* Combo Box Date_Year Year... */
+	position        : absolute;
+	left            : 318.75pt;
+	top             : 262.50pt;
+	width           :  48.75pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;

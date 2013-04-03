@@ -128,6 +128,7 @@
 	}
 %>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
+<form method="post">
 	<a href="adminUser.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[6],Img24,'cmput391_004.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[6],Img24,0,0)"> <img id="e24"
@@ -323,5 +324,6 @@
 	<div id="e4" class="cc08">From:</div>
 	<div id="e3" class="cc08">To:</div>
 	<div id="e2" class="cc08">Diagnosis:</div>
+	</form>
 </body>
 </html>
