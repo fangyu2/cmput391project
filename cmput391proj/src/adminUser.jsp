@@ -128,53 +128,53 @@
 	}
 %>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
-	<a href="cmput391_004.htm"
+	<a href="adminUser.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[6],Img24,'cmput391_004.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[6],Img24,0,0)"> <img id="e24"
 		name="e24" src="cmput391004011.jpg" title="" alt="cmput391004011.jpg"
 		align="right" border="0"></a>
 	<div id="e23" class="cc07">
-		<a href="index.html"> Home</a>
+		<a href="adminUser.jsp"> Home</a>
 	</div>
-	<a href="cmput391_005.htm"
+	<a href="adminEditProfile.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[5],Img22,'cmput391_005.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[5],Img22,0,0)"> <img id="e22"
 		name="e22" src="cmput391004009.jpg" title="" alt="cmput391004009.jpg"
 		align="right" border="0"></a>
 	<div id="e21" class="cc07">
-		<a href="cmput391_004.htm"> Edit Profile</a>
+		<a href="adminEditProfile.jsp"> Edit Profile</a>
 	</div>
-	<a href="index.html"
+	<a href="Home.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[4],Img20,'index.html',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[4],Img20,0,0)"> <img id="e20"
 		name="e20" src="cmput391004007.jpg" title="" alt="cmput391004007.jpg"
 		align="right" border="0"></a>
 	<div id="e19" class="cc07">
-		<a href="index.html"> Logout</a>
+		<a href="Home.jsp"> Logout</a>
 	</div>
-	<a href="cmput391_006.htm"
+	<a href="managaUsers.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[3],Img18,'cmput391_006.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[3],Img18,0,0)"> <img id="e18"
 		name="e18" src="cmput391004005.jpg" title="" alt="cmput391004005.jpg"
 		align="right" border="0"></a>
 	<div id="e17" class="cc07">
-		<a href="index.html"> Manage Users</a>
+		<a href="manageUsers.jsp"> Manage Users</a>
 	</div>
-	<a href="cmput391_007.htm"
+	<a href="viewLogs.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[2],Img16,'cmput391_007.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[2],Img16,0,0)"> <img id="e16"
 		name="e16" src="cmput391004003.jpg" title="" alt="cmput391004003.jpg"
 		align="right" border="0"></a>
 	<div id="e15" class="cc07">
-		<a href="cmput391_002.htm"> View Logs</a>
+		<a href="viewLogs.jsp"> View Logs</a>
 	</div>
-	<a href="cmput391_008.htm"
+	<a href="adminSearch.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[1],Img14,'cmput391_008.htm',1)"
 		onmouseout="OnWeOver(0,0,0,IDP[1],Img14,0,0)"> <img id="e14"
 		name="e14" src="cmput391004001.jpg" title="" alt="cmput391004001.jpg"
 		align="right" border="0"></a>
 	<div id="e13" class="cc07">
-		<a href="index.html"> Search</a>
+		<a href="adminSearch.jsp"> Search</a>
 	</div>
 	<input id="e12" class="cc08" type="submit" value="Generate Report" 
 	name="rSubmit">
