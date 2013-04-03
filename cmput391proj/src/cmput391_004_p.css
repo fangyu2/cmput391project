@@ -104,75 +104,73 @@ input#e12           { /* Submit  */
 	top             :  29.25pt;
 	width           :  78.75pt;
 	}
-textarea#e11        { /* Text Area text_area  */
-	position        : absolute;
-	left            : 129.75pt;
-	top             : 117.75pt;
-	width           : 519.75pt;
-	height          : 388.50pt;
-	}
-input#e10           { /* Text text_box  */
+input#e11           { /* Text text_box  */
 	position        : absolute;
 	left            : 176.25pt;
 	top             :  37.50pt;
 	width           : 120.75pt;
 	}
-select#e9           { /* Combo Box Date_Day Day  */
+select#e10          { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 175.50pt;
 	top             :  60.75pt;
 	width           :  41.25pt;
 	}
-select#e8           { /* Combo Box Date_Month Mon... */
+select#e9           { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 220.50pt;
 	top             :  60.75pt;
 	width           :  71.25pt;
 	}
-select#e7           { /* Combo Box Date_Year Year... */
+select#e8           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 295.50pt;
 	top             :  60.75pt;
 	width           :  48.75pt;
 	}
-select#e6           { /* Combo Box Date_Day Day  */
+select#e7           { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 174.75pt;
 	top             :  93.00pt;
 	width           :  41.25pt;
 	}
-select#e5           { /* Combo Box Date_Month Mon... */
+select#e6           { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 219.75pt;
 	top             :  93.00pt;
 	width           :  71.25pt;
 	}
-select#e4           { /* Combo Box Date_Year Year... */
+select#e5           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 294.75pt;
 	top             :  93.00pt;
 	width           :  48.75pt;
 	}
-div#e3              { /* From: */
+div#e4              { /* From: */
 	position        : absolute;
 	left            : 134.25pt;
 	top             :  62.25pt;
 	width           :  28.50pt;
 	height          :  12.75pt;
 	}
-div#e2              { /* To: */
+div#e3              { /* To: */
 	position        : absolute;
 	left            : 141.75pt;
 	top             :  92.25pt;
 	width           :  21.00pt;
 	height          :  12.75pt;
 	}
-div#e1              { /* Diagnosis: */
+div#e2              { /* Diagnosis: */
 	position        : absolute;
 	left            : 129.75pt;
 	top             :  37.50pt;
 	width           :  45.75pt;
 	height          :  12.75pt;
+	}
+table#e1           { /* List select_list onChang... */
+	position        : absolute;
+	left            : 141.00pt;
+	top             : 126.75pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
