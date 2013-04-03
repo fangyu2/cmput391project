@@ -123,6 +123,8 @@
 		loggedUser = (User) request.getSession().getAttribute(
 				"loggedUser");//UserManager.getUserManager().getUser();
 		if (loggedUser == null) {
+			response.sendRedirect("Home.jsp");
+		} else {
 			String uClass = loggedUser.getUserClass();
 			if (uClass.compareTo("a") != 0)
 				response.sendRedirect("Home.jsp");

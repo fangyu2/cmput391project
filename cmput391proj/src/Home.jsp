@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="cmput391.*" %>
 <html lang="en">
 <head>
 	<title> Home </title>
@@ -11,7 +12,7 @@
 	<script src="cmput391_g.js" type="text/javascript"></script>		<!--// Document Script //-->
 	<script src="index_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
-<% //testing %>
+<% request.getSession().removeAttribute("loggedUser"); %>
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img4,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img4,0,0)">

@@ -24,25 +24,26 @@
 <%@ page
 	import="oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO"%>
 
+<%! private User loggedUser;
+	private Record record;%>
 
 <%!public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
-		
-	int ID = 0;
-	try {
+
+		int ID = 0;
+		try {
 			String recordID = (request.getParameter("recordID")).trim();
 			ID = Integer.parseInt(recordID);
 		} catch (NumberFormatException ex) {
-			try{
-			out.println("<br /> <br />");
-			out.println("<center><p><b> ID entered is not a number!! </b></p></center");
-			}
-			catch(Exception exp) {				
+			try {
+				out.println("<br /> <br />");
+				out.println("<center><p><b> ID entered is not a number!! </b></p></center");
+			} catch (Exception exp) {
 			}
 			return;
 		}
-	
-	try{
+
+		try {
 			String patientName = (request.getParameter("patient")).trim();
 			String doctorName = (request.getParameter("docName")).trim();
 			String radiologist = (request.getParameter("radname")).trim();
@@ -68,30 +69,26 @@
 
 			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
 					.concat(tempyr);
-			String sql = "INSERT INTO radiology_record VALUES("+ID+", '" 
-					+patientName+ "', '" +doctorName+ "', '" +radiologist+ "', '" 
-			+testType+ "', '" + pres_date + "', '"+ test_date+"', '" 
-					+diagnosis+ "', '" +description+ "')";
+			String sql = "INSERT INTO radiology_record VALUES(" + ID + ", '"
+					+ patientName + "', '" + doctorName + "', '" + radiologist
+					+ "', '" + testType + "', '" + pres_date + "', '"
+					+ test_date + "', '" + diagnosis + "', '" + description
+					+ "')";
 			Statement stmt = null;
 			ResultSet rset = null;
 
-			stmt = UserConnection
-					.getConnection()
-					.getConn()
-					.createStatement();
+			stmt = UserConnection.getConnection().getConn().createStatement();
 			stmt.executeQuery(sql);
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
-			request.getSession().setAttribute("recordID", ID);
+			request.getSession().setAttribute("record", record);
 			//addImg(ID, request, response, out);
-	}
-		 catch (Exception ex) {
-			 try{
-					out.println("<br /> <br />");
-					out.println("<center><p><b> Record ID already exist!!! </b></p></center");
-					}
-					catch(Exception exp) {				
-					}
+		} catch (Exception ex) {
+			try {
+				out.println("<br /> <br />");
+				out.println("<center><p><b> Record ID already exist!!! </b></p></center");
+			} catch (Exception exp) {
+			}
 		}
 
 	}
@@ -212,6 +209,12 @@
 	}%>
 
 <%
+	loggedUser = (User) request.getSession().getAttribute("loggedUser");
+	if (loggedUser == null) {
+		String uClass = loggedUser.getUserClass();
+		if (uClass.compareTo("r") != 0)
+			response.sendRedirect("Home.jsp");	
+	}
 	if (request.getParameter("rSubmit") != null) {
 		addRecord(request, response, out);
 	}
@@ -407,16 +410,20 @@
 			<option>23</option>
 			<option>24</option>
 			<option>25</option>
-		</select> <applet id="e12" class="cc27" code="applet-basic_files/wjhk.JUploadApplet" name="JUpload" archive="applet-basic_files/wjhk.jar" mayscript="" height="300" width="640">
-    <param name="CODE" value="wjhk.jupload2.JUploadApplet">
-    <param name="ARCHIVE" value="wjhk.jupload.jar">
-    <param name="type" value="application/x-java-applet;version=1.4">
-    <param name="scriptable" value="false">    
-    <param name="postURL"
-    value="http://luscar.cs.ualberta.ca:8080/yuan/parseRequest.jsp?URLParam=URL+Parameter+Value">
-    <param name="nbFilesPerRequest" value="2">    
-Java 1.4 or higher plugin required.
-</applet>
+		</select>
+		<applet id="e12" class="cc27"
+			code="applet-basic_files/wjhk.JUploadApplet" name="JUpload"
+			archive="applet-basic_files/wjhk.jar" mayscript="" height="300"
+			width="640">
+			<param name="CODE" value="wjhk.jupload2.JUploadApplet">
+			<param name="ARCHIVE" value="wjhk.jupload.jar">
+			<param name="type" value="application/x-java-applet;version=1.4">
+			<param name="scriptable" value="false">
+			<param name="postURL"
+				value="http://luscar.cs.ualberta.ca:8080/yuan/parseRequest.jsp?URLParam=URL+Parameter+Value">
+			<param name="nbFilesPerRequest" value="2">
+			Java 1.4 or higher plugin required.
+		</applet>
 
 		<input id="e11" class="cc28" type="submit" value="submit"
 			name="rSubmit">
