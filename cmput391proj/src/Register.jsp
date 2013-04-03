@@ -25,6 +25,7 @@
 if(request.getParameter("rSubmit")!=null)
 {
     checkUser(request, response, out);
+    openPage(response, out);
 }
 %>
 
@@ -47,7 +48,7 @@ if(request.getParameter("rSubmit")!=null)
 			if (username.equals("")) {
 				out.println("<p><b> Username field not filled! </b></p>");
 			}
-			else {
+			if (!username.equals("") && !username.equals(trueuser)) {
 				checkPassword(username,request, response, out);
 			}
 		} catch (Exception ex) {
@@ -66,7 +67,7 @@ if(request.getParameter("rSubmit")!=null)
 		if (password.equals("")) {
 			out.println("<p><b> Password field not filled! </b></p>");
 		}
-		else{
+		if (password.equals(retypepassword) && !password.equals("")){
 			checkEmail(username, password, request, response, out);
 		}
 
@@ -99,7 +100,7 @@ if(request.getParameter("rSubmit")!=null)
 			if (email.equals("")) {
 				out.println("<p><b> Email field not filled! </b></p>");
 			}
-			else {
+			if (!email.equals(trueEmail) && !email.equals("")) {
 				registerUser(username, password, email, request, response, out);
 			}
 		} catch (Exception ex) {
@@ -142,7 +143,7 @@ if(request.getParameter("rSubmit")!=null)
 		
 		String firstname = (request.getParameter("firstname"));
 		String lastname = (request.getParameter("lastname"));
-		String address = "N/A";
+		String address = (request.getParameter("address"));
 		String phone = (request.getParameter("phone"));
 		try {
 		String sql2 = "insert into persons values ('" +username+ "', '" +firstname+ "', '" +lastname+ "','" +address+ "', '" +email+ "', '" +phone+ "')";
@@ -159,7 +160,6 @@ if(request.getParameter("rSubmit")!=null)
 		}catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
-
 	}
 	
 	public void openPage(HttpServletResponse response, JspWriter out) {
@@ -223,7 +223,7 @@ if(request.getParameter("rSubmit")!=null)
 	<div id="e3" class="cc42">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:
 	</div>
-	<input id="e2" class="cc41" type="text" name="text_box" value="email" size="23">
+	<input id="e2" class="cc41" type="text" name="email" value="email" size="23">
 	<select id="e1" class="cc45" size="1" name="combo_box">
 	<option> 1. Patient</option>
 	<option> 2. Doctor</option>
