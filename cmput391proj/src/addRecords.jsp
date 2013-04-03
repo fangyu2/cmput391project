@@ -82,7 +82,11 @@
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
 			record = new Record(ID);
-			request.getSession().setAttribute("record", record);
+			String checked = request.getParameter("addPic");			
+			if(checked != null){
+				request.getSession().setAttribute("record", record);
+				response.sendRediect();
+			}
 			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
 			try {
@@ -414,33 +418,20 @@
 			<option>23</option>
 			<option>24</option>
 			<option>25</option>
-		</select>
-		<applet id="e12" class="cc27"
-			code="applet-basic_files/wjhk.JUploadApplet" name="JUpload"
-			archive="applet-basic_files/wjhk.jar" mayscript="" height="300"
-			width="640">
-			<param name="CODE" value="wjhk.jupload2.JUploadApplet">
-			<param name="ARCHIVE" value="wjhk.jupload.jar">
-			<param name="type" value="application/x-java-applet;version=1.4">
-			<param name="scriptable" value="false">
-			<param name="postURL"
-				value="http://luscar.cs.ualberta.ca:8080/yuan/parseRequest.jsp?URLParam=URL+Parameter+Value">
-			<param name="nbFilesPerRequest" value="2">
-			Java 1.4 or higher plugin required.
-		</applet>
-
-		<input id="e11" class="cc28" type="submit" value="submit"
+		</select> <input id="e12" class="cc28" type="submit" value="Submit"
 			name="rSubmit">
-		<div id="e10" class="cc28">Record ID:</div>
-		<div id="e9" class="cc28">Patient Name:</div>
-		<div id="e8" class="cc28">Doctor:</div>
-		<div id="e7" class="cc28">Radiologist:</div>
-		<div id="e6" class="cc28">Test Type:</div>
-		<div id="e5" class="cc28">Prescribing Date:</div>
-		<div id="e4" class="cc28">Test Date:</div>
-		<div id="e3" class="cc28">Diagnosis:</div>
-		<div id="e2" class="cc28">Description:</div>
-		<div id="e1" class="cc28">Attach a Picture:</div>
+		<div id="e11" class="cc28">Record ID:</div>
+		<div id="e10" class="cc28">Patient Name:</div>
+		<div id="e9" class="cc28">Doctor:</div>
+		<div id="e8" class="cc28">Radiologist:</div>
+		<div id="e7" class="cc28">Test Type:</div>
+		<div id="e6" class="cc28">Prescribing Date:</div>
+		<div id="e5" class="cc28">Test Date:</div>
+		<div id="e4" class="cc28">Diagnosis:</div>
+		<div id="e3" class="cc28">Description:</div>
+		<input id="e2" class="cc28" type="checkbox" name="check_box"
+			onclick="alert('Check_Box')">
+		<div id="e1" class="cc29">Attach Photo</div>
 	</form>
 </body>
 </html>

@@ -14,6 +14,10 @@
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
 	}
+.cc29               { /* Common */
+	font            : 10pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	}
 img#e35             { /* cmput391011009.jpg */
 	position        : absolute;
 	left            :  23.25pt;
@@ -162,87 +166,87 @@ select#e13          { /* Combo Box Date_Year Year... */
 	top             : 247.50pt;
 	width           :  48.75pt;
 	}
-applet#e12           { /* File a_file  */
-	background-color: #ffffff;
+input#e12           { /* Submit  */
 	position        : absolute;
-	left            : 252.75pt;
-	top             : 327.75pt;
-	}
-input#e11           { /* Submit  */
-	position        : absolute;
-	left            : 436.00pt;
-	top             : 566.00pt;
+	left            : 342.00pt;
+	top             : 381.75pt;
 	width           :  56.25pt;
 	}
-div#e10             { /* Record ID:  */
+div#e11             { /* Record ID:  */
 	position        : absolute;
 	left            : 192.00pt;
 	top             :  99.75pt;
 	width           :  50.25pt;
 	height          :  12.75pt;
 	}
-div#e9              { /* Patient Name: */
+div#e10             { /* Patient Name: */
 	position        : absolute;
 	left            : 181.50pt;
 	top             : 125.25pt;
 	width           :  59.25pt;
 	height          :  12.75pt;
 	}
-div#e8              { /* Doctor: */
+div#e9              { /* Doctor: */
 	position        : absolute;
 	left            : 207.00pt;
 	top             : 147.75pt;
 	width           :  35.25pt;
 	height          :  12.75pt;
 	}
-div#e7              { /* Radiologist: */
+div#e8              { /* Radiologist: */
 	position        : absolute;
 	left            : 192.00pt;
 	top             : 177.00pt;
 	width           :  50.25pt;
 	height          :  12.75pt;
 	}
-div#e6              { /* Test Type: */
+div#e7              { /* Test Type: */
 	position        : absolute;
 	left            : 195.00pt;
 	top             : 201.75pt;
 	width           :  47.25pt;
 	height          :  12.75pt;
 	}
-div#e5              { /* Prescribing Date: */
+div#e6              { /* Prescribing Date: */
 	position        : absolute;
 	left            : 172.50pt;
 	top             : 226.50pt;
 	width           :  69.75pt;
 	height          :  12.75pt;
 	}
-div#e4              { /* Test Date: */
+div#e5              { /* Test Date: */
 	position        : absolute;
 	left            : 195.75pt;
 	top             : 250.50pt;
 	width           :  46.50pt;
 	height          :  12.75pt;
 	}
-div#e3              { /* Diagnosis: */
+div#e4              { /* Diagnosis: */
 	position        : absolute;
 	left            : 198.75pt;
 	top             : 273.00pt;
 	width           :  43.50pt;
 	height          :  12.00pt;
 	}
-div#e2              { /* Description: */
+div#e3              { /* Description: */
 	position        : absolute;
 	left            : 191.25pt;
 	top             : 297.00pt;
 	width           :  51.00pt;
 	height          :  12.75pt;
 	}
-div#e1              { /* Attach a Picture: */
+input#e2            { /* Check Box check_box oncl... */
 	position        : absolute;
-	left            : 174.00pt;
-	top             : 332.25pt;
-	width           :  68.25pt;
-	height          :  12.75pt;
+	left            : 243.00pt;
+	top             : 322.50pt;
+	height          :  13.50pt;
+	}
+div#e1              { /* Attach Photo */
+	position        : absolute;
+	left            : 262.50pt;
+	top             : 324.00pt;
+	width           :  75.75pt;
+	height          :  14.25pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
