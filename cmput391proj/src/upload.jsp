@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<h4>Click Submit To Upload A Picture and Finish To Go Back</h4>
+	<h4>Click Submit To Upload A Picture and Return to return to add records</h4>
 	<p>
 	<hr>
 	Please input or select the path of the image!
@@ -25,6 +25,10 @@
 			<tr>
 				<td ALIGN=CENTER COLSPAN="2"><input type="submit"
 					name=".submit" value="Upload"></td>
+			</tr>
+			<tr>
+				<td ALIGN=CENTER COLSPAN="2"><input type="button"
+					 value="Return" onclick="location.href='addRecords.jsp'"></td>
 			</tr>
 		</table>
 	</form>

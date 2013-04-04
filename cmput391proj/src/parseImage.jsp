@@ -11,7 +11,7 @@
 			HttpServletResponse response, JspWriter out) {
 		try {
 			int recordID = record.getRecordID();
-			int pic_id = recordID + 1;
+			int pic_id = record.getImgID();
 
 			DiskFileUpload fu = new DiskFileUpload();
 			List FileItems = fu.parseRequest(request);
@@ -38,7 +38,7 @@
 			stmt = UserConnection.getConnection().getConn().createStatement();
 			stmt.executeQuery(sql);
 
-			sql = "SELECT * FROM pacs_images WHERE pic_id = " + pic_id
+			sql = "SELECT * FROM pacs_images WHERE image_id = " + pic_id
 					+ " FOR UPDATE";
 			rset = null;
 			rset = stmt.executeQuery(sql);
@@ -86,6 +86,7 @@
 
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
+			request.sendRedirect("upload.jsp");
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
