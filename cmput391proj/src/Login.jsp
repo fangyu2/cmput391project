@@ -77,7 +77,7 @@
 		}
 	}%>
 	
-	<%
+	<%request.getSession().removeAttribute("loggedUser");
 if(request.getParameter("bSubmit")!=null)
 {
     queryUser(request, response, out);
