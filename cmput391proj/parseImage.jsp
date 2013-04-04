@@ -1,41 +1,22 @@
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.sql.*;
-import java.util.*;
-import oracle.sql.*;
-import oracle.jdbc.*;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import cmput391.*;
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<%@ page
+	import="java.io.*,javax.servlet.*,javax.servlet.http.*,java.sql.*,java.util.*,oracle.sql.*,oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO,cmput391.*,org.apache.commons.fileupload.DiskFileUpload,org.apache.commons.fileupload.FileItem"%>
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
+<%!private Record record;%>
 
-public class parseImage extends HttpServlet {
-	public void doPost(HttpServletRequest request,HttpServletResponse response)
-			throws ServletException, IOException {
-		Record record = (Record) request.getSession().getAttribute("record");
-		if(record == null) {
-			response.sendRedirect("addRecords.jsp");
-		}
+<%!public void addImage(HttpServletRequest request,
+			HttpServletResponse response, JspWriter out) {
 		try {
 			int recordID = record.getRecordID();
 			int pic_id = recordID + 1;
 
-			DiskFileUpload fu = new DiskFileUpload();
-			List FileItems = fu.parseRequest(request);
-
-			// Process the uploaded items, assuming only 1 image file uploaded
-			Iterator i = FileItems.iterator();
-			FileItem item = (FileItem) i.next();
-			while (i.hasNext() && item.isFormField()) {
-				item = (FileItem) i.next();
-			}
-
+			
+			String fileName = request.getParameter("file-path");
 			//Get the image stream
-			InputStream instream = item.getInputStream();
+			FileInputStream instream = new FileInputStream(fileName);
 
 			BufferedImage img = ImageIO.read(instream);
 			BufferedImage thumbNail = shrink(img, 10);
@@ -104,6 +85,7 @@ public class parseImage extends HttpServlet {
 
 		}
 	}
+
 	public static BufferedImage shrink(BufferedImage image, int n) {
 
 		int w = image.getWidth() / n;
@@ -130,5 +112,20 @@ public class parseImage extends HttpServlet {
 				growImage.setRGB(x, y, image.getRGB(x * n, y * n));
 
 		return growImage;
+	}%>
+
+<%
+	record = (Record) request.getSession().getAttribute("record");
+	if (record == null) {
+		response.sendRedirect("addRecords.jsp");
 	}
-}
+	addImage(request, response, out);
+%>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
