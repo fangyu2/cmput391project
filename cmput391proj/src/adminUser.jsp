@@ -32,7 +32,7 @@
 			String fromyear = (request.getParameter("fromyear")).trim();
 			String todate = (request.getParameter("todate")).trim();
 			String tomonth = (request.getParameter("tomonth")).trim();
-			String toyear = (request.getParameter("todate")).trim();
+			String toyear = (request.getParameter("toyear")).trim();
 			String dash = "-";
 
 			if (diagnosis == null) {
@@ -55,7 +55,8 @@
 			Statement stmt = null;
 			ResultSet rset = null;
 
-			stmt = UserConnection.getConnection().getConn().createStatement();
+			stmt = UserConnection.getConnection().getConn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
 			try {
@@ -180,7 +181,7 @@
 	<input id="e12" class="cc08" type="submit" value="Generate Report" 
 	name="rSubmit">
 	<input id="e11" class="cc09" type="text" name="diagnosis" size="23">
-	<select id="e10" class="cc08" size="1" name="todate" title="Day">
+	<select id="e10" class="cc08" size="1" name="fromdate" title="Day">
 		<option>01</option>
 		<option>02</option>
 		<option>03</option>
@@ -213,7 +214,7 @@
 		<option>30</option>
 		<option>31</option>
 	</select>
-	<select id="e9" class="cc08" size="1" name="tomonth" title="Month">
+	<select id="e9" class="cc08" size="1" name="frommonth" title="Month">
 		<option>Jan</option>
 		<option>Feb</option>
 		<option>Mar</option>
@@ -227,7 +228,7 @@
 		<option>Nov</option>
 		<option>Dec</option>
 	</select>
-	<select id="e8" class="cc08" size="1" name="toyear" title="Year">
+	<select id="e8" class="cc08" size="1" name="fromyear" title="Year">
 		<option>03</option>
 		<option>04</option>
 		<option>05</option>
@@ -250,7 +251,7 @@
 		<option>22</option>
 		<option>23</option>
 	</select>
-	<select id="e7" class="cc08" size="1" name="fromdate" title="Day">
+	<select id="e7" class="cc08" size="1" name="todate" title="Day">
 		<option>01</option>
 		<option>02</option>
 		<option>03</option>
@@ -283,7 +284,7 @@
 		<option>30</option>
 		<option>31</option>
 	</select>
-	<select id="e6" class="cc08" size="1" name="frommonth" title="Month">
+	<select id="e6" class="cc08" size="1" name="tomonth" title="Month">
 		<option>Jan</option>
 		<option>Feb</option>
 		<option>Mar</option>
@@ -297,7 +298,7 @@
 		<option>Nov</option>
 		<option>Dec</option>
 	</select>
-	<select id="e5" class="cc08" size="1" name="fromyear" title="Year">
+	<select id="e5" class="cc08" size="1" name="toyear" title="Year">
 		<option>03</option>
 		<option>04</option>
 		<option>05</option>
