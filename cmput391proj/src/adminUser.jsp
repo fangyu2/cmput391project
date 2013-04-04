@@ -49,9 +49,10 @@
 					+ "r.test_date from radiology_record r, persons p where "
 					+ " r.user_name = p.patient_name and r.diagnosis = \'"
 					+ diagnosis
-					+ "\' and r.test_date between "
+					+ "\' and r.test_date between to_date(\'"
 					+ fromDateKey
-					+ " and " + toDateKey + " order by r.test_date asc";
+					+ "\', 'DD-MM-YY') and to_date(\'" + toDateKey +  
+						"\', DD-MM-YY) order by r.test_date asc";
 			Statement stmt = null;
 			ResultSet rset = null;
 
@@ -104,7 +105,7 @@
 			stmt.close();
 
 		} catch (Exception ex) {
-
+			System.out.println("" + ex.getMessage() + "");
 		}
 
 	}%>
