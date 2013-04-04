@@ -13,11 +13,18 @@
 			int recordID = record.getRecordID();
 			int pic_id = recordID + 1;
 
-			
-			String fileName = request.getParameter("file-path");
-			//Get the image stream
-			FileInputStream instream = new FileInputStream(fileName);
+			DiskFileUpload fu = new DiskFileUpload();
+			List FileItems = fu.parseRequest(request);
 
+			// Process the uploaded items, assuming only 1 image file uploaded
+			Iterator i = FileItems.iterator();
+			FileItem item = (FileItem) i.next();
+			while (i.hasNext() && item.isFormField()) {
+				item = (FileItem) i.next();
+			}
+
+			//Get the image stream
+			InputStream instream = item.getInputStream();
 			BufferedImage img = ImageIO.read(instream);
 			BufferedImage thumbNail = shrink(img, 10);
 			BufferedImage largeimg = grow(img, 2);
