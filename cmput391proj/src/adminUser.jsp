@@ -79,8 +79,8 @@
 				 *   generate answers, one tuple at a time
 				 */
 				while (rset != null && rset.next()) {
-					if (!names.contains(rset.getString(0))) {
-						names.add(rset.getString(0));
+					if (!names.contains(rset.getString(1))) {
+						names.add(rset.getString(1));
 
 						out.println("<tr valign = \"top\">");
 
