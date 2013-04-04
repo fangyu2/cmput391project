@@ -2,7 +2,7 @@
 <html>
 <%@ page import="cmput391.*" %>
 <%
-	Record record = (Record) request.getSession().getAttribute("recordID");
+	Record record = (Record) request.getSession().getAttribute("record");
 	if(record == null) {
 		response.sendRedirect("addRecords.jsp");
 	}%>

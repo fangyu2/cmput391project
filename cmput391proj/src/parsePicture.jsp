@@ -16,32 +16,11 @@
 	if(record == null) {
 		response.sendRedirect("addRecords.jsp");
 	}
-	
-
-		//Insert an empty blob into the table first. Note that you have to 
-		PreparedStatement stmt = conn
-				.prepareStatement("insert into photos values(10, ?)");
-		stmt.setBinaryStream(1, instream, (int) size);
-
-		// execute the insert statement
-		stmt.executeUpdate();
-		stmt.executeUpdate("commit");
-		conn.close();
-		response_message = "the file has been uploaded";
-	} catch (Exception ex) {
-		response_message = ex.getMessage();
-	}
-
-	//Output response to the client
-	response.setContentType("text/html");
-	out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 "
-			+ "Transitional//EN\">\n" + "<HTML>\n"
-			+ "<HEAD><TITLE>Upload Message</TITLE></HEAD>\n"
-			+ "<BODY>\n" + "<H1>" + response_message + "</H1>\n"
-			+ "</BODY></HTML>");
+	addImg(request, response, out);
 %>
 
-<%!public void addImg(FileItem item) {
+<%!public void addImg(HttpServletRequest request, HttpServletResponse response
+		, JspWriter out) {
 
 		try {
 			int recordID = record.getRecordID();
