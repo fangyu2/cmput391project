@@ -27,7 +27,9 @@
 <%!private User loggedUser;
 	private Record record;%>
 
-<%!public void addRecord(HttpServletRequest request,
+<%!
+// add a record provided by the user into the radiology record table
+public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
 
 		int ID = 0;
@@ -44,6 +46,7 @@
 		}
 
 		try {
+			//retrieve the fields entered by the user
 			String patientName = (request.getParameter("patient")).trim();
 			String doctorName = (request.getParameter("docName")).trim();
 			String radiologist = (request.getParameter("radname")).trim();
@@ -56,6 +59,17 @@
 			String tempyr;
 			String tempmon;
 			String dash = "-";
+			
+			//checks if user left any fields blank, if so then display a
+			//message
+			if(patientName.length() == 0 || doctorName.length() == 0 ||
+					radiologist.length() == 0 || testType.length() == 0 ||
+					testType.length() == 0 || diagnosis.length() == 0 ||
+					description.length() == 0){
+				out.println("<center><p><b> One or More Necessary Fields Not" +
+						"Entered!!</b></p></center>");
+				return;
+			}
 			tempday = (request.getParameter("pdd")).trim();
 			tempyr = (request.getParameter("pdy")).trim();
 			tempmon = (request.getParameter("pdm")).trim();
@@ -69,6 +83,7 @@
 
 			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
 					.concat(tempyr);
+			
 			String sql = "INSERT INTO radiology_record VALUES(" + ID + ", '"
 					+ patientName + "', '" + doctorName + "', '" + radiologist
 					+ "', '" + testType + "', '" + pres_date + "', '"
@@ -83,6 +98,9 @@
 			UserConnection.getConnection().getConn().commit();
 			record = new Record(ID);
 			String checked = request.getParameter("addPic");			
+			
+			//checks if the user checked add photo option or not
+			//if yes the user is taken to upload photo page
 			if(checked != null){
 				request.getSession().setAttribute("record", record);
 				response.sendRedirect("upload.jsp");
@@ -101,6 +119,8 @@
 
 <%
 	request.getSession().removeAttribute("record");
+
+	//checks if the user logged on is a radiologist
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
 		response.sendRedirect("Home.jsp");

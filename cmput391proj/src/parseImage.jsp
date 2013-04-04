@@ -7,7 +7,9 @@
 
 <%!private Record record;%>
 
-<%!public void addImage(HttpServletRequest request,
+<%!
+// stores the images into sql table as thumbnails, regular sized and fullsized
+public void addImage(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
 		try {
 			int recordID = record.getRecordID();
@@ -51,11 +53,11 @@
 			OutputStream outstream = myblob.getBinaryOutputStream();
 			ImageIO.write(thumbNail, "jpg", outstream);
 
-			int size = myblob.getBufferSize();
-			byte[] buffer = new byte[size];
-			int length = -1;
-			while ((length = instream.read(buffer)) != -1)
-				outstream.write(buffer, 0, length);
+			//int size = myblob.getBufferSize();
+			//byte[] buffer = new byte[size];
+			//int length = -1;
+			//while ((length = instream.read(buffer)) != -1)
+			//	outstream.write(buffer, 0, length);
 
 			outstream.close();
 
@@ -63,11 +65,11 @@
 			OutputStream outstream2 = myblob2.getBinaryOutputStream();
 			ImageIO.write(img, "jpg", outstream2);
 
-			int size2 = myblob2.getBufferSize();
-			byte[] buffer2 = new byte[size2];
-			int length2 = -1;
-			while ((length2 = instream.read(buffer2)) != -1)
-				outstream2.write(buffer2, 0, length2);
+			//int size2 = myblob2.getBufferSize();
+			//byte[] buffer2 = new byte[size2];
+			// length2 = -1;
+			//while ((length2 = instream.read(buffer2)) != -1)
+			//	outstream2.write(buffer2, 0, length2);
 
 			outstream2.close();
 
@@ -75,11 +77,11 @@
 			OutputStream outstream3 = myblob3.getBinaryOutputStream();
 			ImageIO.write(largeimg, "jpg", outstream3);
 
-			int size3 = myblob3.getBufferSize();
-			byte[] buffer3 = new byte[size3];
-			int length3 = -1;
-			while ((length3 = instream.read(buffer3)) != -1)
-				outstream3.write(buffer3, 0, length3);
+			//int size3 = myblob3.getBufferSize();
+			//byte[] buffer3 = new byte[size3];
+		//	int length3 = -1;
+			//while ((length3 = instream.read(buffer3)) != -1)
+			//	outstream3.write(buffer3, 0, length3);
 
 			instream.close();
 			outstream3.close();
@@ -89,11 +91,16 @@
 			response.sendRedirect("upload.jsp");
 
 		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
+			try{
+				out.println("<body onLoad=\"setTimeout(\'delayer()\',5000)\">");
+				out.println("<center><b> Either Images too big or Out of SQL"
+						+ "</b></center></body>");
+			}
+			catch(Exception ex2){}
 
 		}
 	}
-
+	//shrinks the given buffered image by factor of n
 	public static BufferedImage shrink(BufferedImage image, int n) {
 
 		int w = image.getWidth() / n;
@@ -107,7 +114,7 @@
 		}
 		return shrunkImage;
 	}
-
+	// grows the given buffered image by n times
 	public static BufferedImage grow(BufferedImage image, int n) {
 
 		int w = image.getWidth() * n;
@@ -123,6 +130,8 @@
 	}%>
 
 <%
+	//checks whether a record is in the given session, if not then
+	//return to the addRecords page
 	record = (Record) request.getSession().getAttribute("record");
 	if (record == null) {
 		response.sendRedirect("addRecords.jsp");
@@ -133,7 +142,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
-</body>
 </html>

@@ -5,7 +5,7 @@
 <%@ page import="cmput391.*"%>
 <%!private User loggedUser;%>
 
-<%
+<%	//checks whether the logged in user is a radiologist or not
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
 		response.sendRedirect("Home.jsp");

@@ -22,9 +22,12 @@
 
 <%!private User loggedUser;%>
 
-<%!public void generateReport(HttpServletRequest request, JspWriter out) {
+<%!
+//generates user report for administrators with given diagnosis and time frame
+public void generateReport(HttpServletRequest request, JspWriter out) {
 
 		try {
+			//get the fields entered by the users
 			List<String> names = new ArrayList<String>();
 			String diagnosis = (request.getParameter("diagnosis")).trim();
 			String fromdate = (request.getParameter("fromdate")).trim();
