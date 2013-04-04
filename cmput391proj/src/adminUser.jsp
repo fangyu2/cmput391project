@@ -103,6 +103,7 @@
 			}
 
 			stmt.close();
+			UserConnection.getConnection().closeConn();
 
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
