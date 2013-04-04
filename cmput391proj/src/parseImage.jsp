@@ -86,7 +86,7 @@
 
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
-			request.sendRedirect("upload.jsp");
+			response.sendRedirect("upload.jsp");
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
