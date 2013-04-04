@@ -12,7 +12,8 @@
 	<script src="cmput391_g.js" type="text/javascript"></script>		<!--// Document Script //-->
 	<script src="index_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
-<% request.getSession().removeAttribute("loggedUser"); %>
+<% UserConnection.getConnection().closeConn();
+request.getSession().removeAttribute("loggedUser"); %>
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img4,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img4,0,0)">

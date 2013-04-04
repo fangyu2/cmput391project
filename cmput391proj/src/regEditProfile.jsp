@@ -49,7 +49,6 @@
 			if (stmt != null) {
 				stmt.close();
 			}
-			UserConnection.getConnection().closeConn();
 		} catch (SQLException ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
@@ -83,7 +82,6 @@
 			if (stmt != null) {
 				stmt.close();
 			}
-			UserConnection.getConnection().closeConn();
 		} catch (SQLException ex) {
 
 		}
@@ -113,7 +111,6 @@
 			if (stmt != null) {
 				stmt.close();
 			}
-			UserConnection.getConnection().closeConn();
 		} catch (SQLException ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
