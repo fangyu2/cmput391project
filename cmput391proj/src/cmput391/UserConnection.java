@@ -20,14 +20,6 @@ public class UserConnection {
 		catch(Exception ex) {
 			System.out.println("<hr>" + ex.getMessage() + "<hr>");
 		}
-
-		try {
-			conn = DriverManager.getConnection(dbstring, userName, userPassword);
-			conn.setAutoCommit(false);
-		}
-		catch(Exception ex) {
-			System.out.println("<hr>" + ex.getMessage() + "<hr>");
-		}
 	}
 
 	public static UserConnection getConnection() {
@@ -38,6 +30,22 @@ public class UserConnection {
 	}
 
 	public Connection getConn() {
+		try {
+			conn = DriverManager.getConnection(dbstring, userName, userPassword);
+			conn.setAutoCommit(false);
+		}
+		catch(Exception ex) {
+			System.out.println("<hr>" + ex.getMessage() + "<hr>");
+		}
 		return conn;
+	}
+	
+	public void closeConn() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

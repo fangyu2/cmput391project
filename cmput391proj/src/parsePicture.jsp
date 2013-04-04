@@ -1,99 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java"
-	import="cmput391.*,java.io.*, java.sql.*, java.util.*"%>
-<%! private int recordID; %>
+<%!private Record record;
+	public String response_message;%>
 
-
-
-<%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
-<%@ page import="javax.servlet.http.*"%>
+<%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@ page import="javax.servlet.http.*,java.sql.*, cmput391.*"%>
 <%@ page import="org.apache.commons.fileupload.*"%>
 <%@ page import="org.apache.commons.fileupload.disk.*"%>
 <%@ page import="org.apache.commons.fileupload.servlet.*"%>
 <%@ page import="org.apache.commons.io.output.*"%>
 
 <%
- File file ;
-   int maxFileSize = 5000 * 1024;
-   int maxMemSize = 5000 * 1024;
-   ServletContext context = pageContext.getServletContext();
-   String filePath = context.getInitParameter("file-upload");
+	record = (Record) request.getSession().getAttribute("recordID");
+	if(record == null) {
+		response.sendRedirect("addRecords.jsp");
+	}
+	
 
-   // Verify the content type
-   String contentType = request.getContentType();
-   if ((contentType.indexOf("multipart/form-data") >= 0)) {
+		//Insert an empty blob into the table first. Note that you have to 
+		PreparedStatement stmt = conn
+				.prepareStatement("insert into photos values(10, ?)");
+		stmt.setBinaryStream(1, instream, (int) size);
 
-      DiskFileItemFactory factory = new DiskFileItemFactory();
-      // maximum size that will be stored in memory
-      factory.setSizeThreshold(maxMemSize);
-      // Location to save data that is larger than maxMemSize.
-      factory.setRepository(new File("c:\\temp"));
+		// execute the insert statement
+		stmt.executeUpdate();
+		stmt.executeUpdate("commit");
+		conn.close();
+		response_message = "the file has been uploaded";
+	} catch (Exception ex) {
+		response_message = ex.getMessage();
+	}
 
-      // Create a new file upload handler
-      ServletFileUpload upload = new ServletFileUpload(factory);
-      // maximum file size to be uploaded.
-      upload.setSizeMax( maxFileSize );
-      try{ 
-         // Parse the request to get file items.
-         List fileItems = upload.parseRequest(request);
-
-         // Process the uploaded file items
-         Iterator i = fileItems.iterator();
-
-         out.println("<html>");
-         out.println("<head>");
-         out.println("<title>JSP File upload</title>");  
-         out.println("</head>");
-         out.println("<body>");
-         while ( i.hasNext () ) 
-         {
-            FileItem fi = (FileItem)i.next();
-            if ( !fi.isFormField () )	
-            {
-            // Get the uploaded file parameters
-            String fieldName = fi.getFieldName();
-            String fileName = fi.getName();
-            boolean isInMemory = fi.isInMemory();
-            long sizeInBytes = fi.getSize();
-            // Write the file
-            if( fileName.lastIndexOf("\\") >= 0 ){
-            file = new File( filePath + 
-            fileName.substring( fileName.lastIndexOf("\\"))) ;
-            }else{
-            file = new File( filePath + 
-            fileName.substring(fileName.lastIndexOf("\\")+1)) ;
-            }
-            fi.write( file ) ;
-            out.println("Uploaded Filename: " + filePath + 
-            fileName + "<br>");
-            }
-         }
-         out.println("</body>");
-         out.println("</html>");
-      }catch(Exception ex) {
-         System.out.println(ex);
-      }
-   }else{
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<title>Servlet upload</title>");  
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<p>No file uploaded</p>"); 
-      out.println("</body>");
-      out.println("</html>");
-   }
-}
+	//Output response to the client
+	response.setContentType("text/html");
+	out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 "
+			+ "Transitional//EN\">\n" + "<HTML>\n"
+			+ "<HEAD><TITLE>Upload Message</TITLE></HEAD>\n"
+			+ "<BODY>\n" + "<H1>" + response_message + "</H1>\n"
+			+ "</BODY></HTML>");
 %>
 
-<%!
-	public void addImg(FileItem item) {
+<%!public void addImg(FileItem item) {
 
 		try {
-
+			int recordID = record.getRecordID();
 			int pic_id = recordID + 1;
+			
+			DiskFileUpload fu = new DiskFileUpload();
+			List FileItems = fu.parseRequest(request);
+
+			// Process the uploaded items, assuming only 1 image file uploaded
+			Iterator i = FileItems.iterator();
+			FileItem item = (FileItem) i.next();
+			while (i.hasNext() && item.isFormField()) {
+				item = (FileItem) i.next();
+			}
+			long size = item.getSize();
 
 			//Get the image stream
 			InputStream instream = item.getInputStream();
@@ -193,73 +156,4 @@
 				growImage.setRGB(x, y, image.getRGB(x * n, y * n));
 
 		return growImage;
-	}%>%>
-<%
-
- recordID = (int) request.getSession().getAttribute("recordID");
-  //Initialization for chunk management.
-  boolean bLastChunk = false;
-  int numChunk = 0;
-
-  response.setContentType("text/plain");
-  try{
-    // Get URL Parameters.
-    Enumeration paraNames = request.getParameterNames();
-    out.println(" ------------------------------ ");
-    String pname;
-    String pvalue;
-    while (paraNames.hasMoreElements()) {
-      pname = (String)paraNames.nextElement();
-      pvalue = request.getParameter(pname);
-      out.println(pname + " = " + pvalue);
-      if (pname.equals("jufinal")) {
-      	bLastChunk = pvalue.equals("1");
-      } else if (pname.equals("jupart")) {
-      	numChunk = Integer.parseInt(pvalue);
-      }
-    }
-    out.println(" ------------------------------ ");
-
-    int ourMaxMemorySize  = 10000000;
-    int ourMaxRequestSize = 2000000000;
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-	//The code below is directly taken from the jakarta fileupload common classes
-	//All informations, and download, available here : http://jakarta.apache.org/commons/fileupload/
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// Create a factory for disk-based file items
-	DiskFileItemFactory factory = new DiskFileItemFactory();
-	
-	// Set factory constraints
-	factory.setSizeThreshold(ourMaxMemorySize);
-	
-	// Create a new file upload handler
-	ServletFileUpload upload = new ServletFileUpload(factory);
-	
-	// Set overall request size constraint
-	upload.setSizeMax(ourMaxRequestSize);
-	
-	// Parse the request
-	List<FileItem>items = upload.parseRequest(request);
-	// Process the uploaded items
-	Iterator iter = items.iterator();
-	FileItem fileItem;
-    File fout;
-	while (iter.hasNext()) {
-	    fileItem = (FileItem) iter.next();
-	
-	    if (fileItem.isFormField()) {
-	    } else {
-	        addImg(fileItem);
-	        
-	        fileItem.delete();
-	    }
-	    out.println("SUCCESS");
-	}//while
-  }catch(Exception e){
-    out.println("Exception e = " + e.toString());
-  }
-  
-  out.close();
-%>
+	}%>

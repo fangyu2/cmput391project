@@ -1,5 +1,11 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
+<%@ page import="cmput391.*" %>
+<%
+	Record record = (Record) request.getSession().getAttribute("recordID");
+	if(record == null) {
+		response.sendRedirect("addRecords.jsp");
+	}%>
 <head>
 <title>Upload image</title>
 </head>
@@ -18,7 +24,7 @@
 			</tr>
 			<tr>
 				<td ALIGN=CENTER COLSPAN="2"><input type="submit"
-					name="rsubmit" value="Upload"></td>
+					name=".submit" value="Upload"></td>
 			</tr>
 		</table>
 	</form>
