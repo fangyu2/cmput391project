@@ -78,7 +78,7 @@
 			int size3 = myblob3.getBufferSize();
 			byte[] buffer3 = new byte[size3];
 			int length3 = -1;
-			while ((length = instream.read(buffer3)) != -1)
+			while ((length3 = instream.read(buffer3)) != -1)
 				outstream3.write(buffer3, 0, length3);
 
 			instream.close();
