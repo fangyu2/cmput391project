@@ -13,7 +13,7 @@
 <%@ page import="org.apache.commons.io.output.*"%>
 
 <%
-	record = (Record) request.getSession().getAttribute("recordID");
+	record = (Record) request.getSession().getAttribute("record");
 	if(record == null) {
 		response.sendRedirect("addRecords.jsp");
 	}
