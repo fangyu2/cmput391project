@@ -71,9 +71,9 @@
 					.concat(tempyr);
 			String sql = "INSERT INTO radiology_record VALUES(" + ID + ", '"
 					+ patientName + "', '" + doctorName + "', '" + radiologist
-					+ "', '" + testType + "', to_date(" + pres_date
-					+ ",'DD-MON-YY), to_date(" + test_date + ",'DD-MON-YY'), '"
-					+ diagnosis + "', '" + description + "')";
+					+ "', '" + testType + "', '" + pres_date + "', '"
+					+ test_date + "', '" + diagnosis + "', '" + description
+					+ "')";
 			Statement stmt = null;
 			ResultSet rset = null;
 
@@ -82,8 +82,8 @@
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
 			record = new Record(ID);
-			String checked = request.getParameter("addPic");
-			if (checked != null) {
+			String checked = request.getParameter("addPic");			
+			if(checked != null){
 				request.getSession().setAttribute("record", record);
 				response.sendRedirect("upload.jsp");
 			}
@@ -96,7 +96,9 @@
 			}
 		}
 
-	}%>
+	}
+
+	%>
 
 <%
 	request.getSession().removeAttribute("record");
