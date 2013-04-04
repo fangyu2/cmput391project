@@ -87,7 +87,6 @@
 				request.getSession().setAttribute("record", record);
 				response.sendRedirect("upload.jsp");
 			}
-			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
 			try {
 				out.println("<br /> <br />");

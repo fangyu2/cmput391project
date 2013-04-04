@@ -12,7 +12,7 @@
 	<script src="cmput391_g.js" type="text/javascript"></script>		<!--// Document Script //-->
 	<script src="index_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
-<% UserConnection.getConnection().closeConn();
+<%
 request.getSession().removeAttribute("loggedUser"); %>
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
