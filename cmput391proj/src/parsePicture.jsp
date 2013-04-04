@@ -36,7 +36,6 @@
 			while (i.hasNext() && item.isFormField()) {
 				item = (FileItem) i.next();
 			}
-			long size = item.getSize();
 
 			//Get the image stream
 			InputStream instream = item.getInputStream();
