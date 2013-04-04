@@ -24,7 +24,6 @@
 if(request.getParameter("rSubmit")!=null)
 {
     checkUser(request, response, out);
-    openPage(response, out);
 }
 %>
 
@@ -42,7 +41,7 @@ if(request.getParameter("rSubmit")!=null)
 				trueuser = (rset.getString(1)).trim();
 			}
 			if (username.equals(trueuser)) {
-				out.println("<p><b> This user name already exists! </b></p>");
+				updateUser(username,request, response, out);
 			} 
 			if (username.equals("")) {
 				out.println("<p><b> Username field not filled! </b></p>");
@@ -57,7 +56,7 @@ if(request.getParameter("rSubmit")!=null)
 	
 	
 	public void checkPassword(String username, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-		try {
+		try {	
 		String password = (request.getParameter("password")).trim();
 		String retypepassword = (request.getParameter("retypepassword")).trim();
 		if(!password.equals(retypepassword)){
@@ -69,7 +68,7 @@ if(request.getParameter("rSubmit")!=null)
 		if (password.equals(retypepassword) && !password.equals("")){
 			checkEmail(username, password, request, response, out);
 		}
-
+				
 		} catch (Exception ex) {
 		System.out.println("" + ex.getMessage() + "");
 		}
@@ -79,11 +78,11 @@ if(request.getParameter("rSubmit")!=null)
 			HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try {
 		
-		String email = (request.getParameter("email"));
-		String sql = "select * from persons where email = '" + email + "'";
-		Statement stmt = null;
-		ResultSet rset = null;
-
+			String email = (request.getParameter("email"));
+			String sql = "select * from persons where email = '" + email + "'";
+			Statement stmt = null;
+			ResultSet rset = null;
+	
 			stmt = UserConnection.getConnection().getConn().createStatement();
 			rset = stmt.executeQuery(sql);
 
@@ -99,7 +98,7 @@ if(request.getParameter("rSubmit")!=null)
 			if (email.equals("")) {
 				out.println("<p><b> Email field not filled! </b></p>");
 			}
-			if (!email.equals(trueEmail) && !email.equals("")) {
+			if (!email.equals(trueEmail) && !email.equals("") && !username.equals(trueuser)) {
 				registerUser(username, password, email, request, response, out);
 			}
 		} catch (Exception ex) {
@@ -128,7 +127,6 @@ if(request.getParameter("rSubmit")!=null)
 			comboBox = "a";
 		}
 		
-		try{
 		String sql = "insert into users values ('" +username+ "','" +password+ "', '" +comboBox+ "', SYSDATE)";
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -136,45 +134,209 @@ if(request.getParameter("rSubmit")!=null)
 			stmt = UserConnection.getConnection().getConn().createStatement();
 			rset = stmt.executeQuery(sql);
 			UserConnection.getConnection().getConn().commit();
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		}
 		
 		String firstname = (request.getParameter("firstname"));
 		String lastname = (request.getParameter("lastname"));
 		String address = (request.getParameter("address"));
 		String phone = (request.getParameter("phone"));
-		try {
 		String sql2 = "insert into persons values ('" +username+ "', '" +firstname+ "', '" +lastname+ "','" +address+ "', '" +email+ "', '" +phone+ "')";
-		Statement stmt = null;
-		ResultSet rset = null;
+		Statement stmt2 = null;
+		ResultSet rset2 = null;
 		
-			stmt = UserConnection.getConnection().getConn().createStatement();
-			rset = stmt.executeQuery(sql2);
+			stmt2 = UserConnection.getConnection().getConn().createStatement();
+			rset2 = stmt.executeQuery(sql2);
 			UserConnection.getConnection().getConn().commit();
+	 	
+		if(comboBox.equals("d")){
+			String doctorname = (request.getParameter("doctorname"));
+			String patientname = (request.getParameter("patientname"));
+			String sql3 = "select class from users where user_name = '" + patientname + "'";
+			Statement stmt3 = null;
+			ResultSet rset3 = null;
+	
+			stmt3 = UserConnection.getConnection().getConn().createStatement();
+			rset3 = stmt3.executeQuery(sql3);
+
+			String trueClass = "";
+
+			while (rset3 != null && rset3.next()) {
+				trueClass = (rset3.getString(1)).trim();
+			}
+			if(!doctorname.equals("") && !doctorname.equals(username) && !patientname.equals("")){
+				out.println("<p><b>Sorry your UserName and doctor name dont match!</b></p>");
+			}
+			if(!trueClass.equals("p")){
+				out.println("<p><b>Sorry that user is not a patient or doesn't exist!</b></p>");
+			}
+			else{
+				String sql4 = "insert into family_doctor values ('" +doctorname+ "', '" +patientname+ "')";
+				Statement stmt4 = null;
+				ResultSet rset4 = null;
+
+					stmt3 = UserConnection.getConnection().getConn().createStatement();
+					rset3 = stmt.executeQuery(sql3);
+					UserConnection.getConnection().getConn().commit();
+					
+			}
+		}
+		if(comboBox.equals("p")){
+			String doctorname = (request.getParameter("doctorname"));
+			String patientname = (request.getParameter("patientname"));
+			String sql3 = "select class from users where user_name = '" + patientname + "'";
+			Statement stmt3 = null;
+			ResultSet rset3 = null;
+	
+			stmt3 = UserConnection.getConnection().getConn().createStatement();
+			rset3 = stmt3.executeQuery(sql3);
+
+			String trueClass = "";
+
+			while (rset3 != null && rset3.next()) {
+				trueClass = (rset3.getString(1)).trim();
+			}
+			if(!patientname.equals("") && !patientname.equals(username) && !doctorname.equals("")){
+				out.println("<p><b>Sorry your UserName and patient name dont match!</b></p>");
+			}
+			if(!trueClass.equals("d")){
+				out.println("<p><b>Sorry that user is not a doctor or doesn't exist!</b></p>");
+			}
+			else{
+				String sql4 = "insert into family_doctor values ('" +doctorname+ "', '" +patientname+ "')";
+				Statement stmt4 = null;
+				ResultSet rset4 = null;
+
+					stmt3 = UserConnection.getConnection().getConn().createStatement();
+					rset3 = stmt.executeQuery(sql3);
+					UserConnection.getConnection().getConn().commit();
+					
+					
+			}
+		}
+		
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
 		
+}
+	
+	
+	public void updateUser(String username, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
+		try {
+			
+			
+			
+			String comboBox = (request.getParameter("combo_box"));
+			
+			if(comboBox.equals("1. Patient")){
+				comboBox = "p";
+			}
+			if(comboBox.equals("2. Doctor")){
+				comboBox = "d";
+			}
+			if(comboBox.equals("3. Radiologist")){
+				comboBox = "r";
+			}
+			if(comboBox.equals("4. Admin")){
+				comboBox = "a";
+			}
+				
+			String sql6 = "select class from users where user_name = '" +username+ "'";
+			Statement stmt6 = null;
+			ResultSet rset6 = null;
+
+			stmt6 = UserConnection.getConnection().getConn().createStatement();
+			rset6 = stmt6.executeQuery(sql6);
+
+			String trueClass = "";
+
+			while (rset6 != null && rset6.next()) {
+					trueClass = (rset6.getString(1)).trim();
+				}
+			if(!comboBox.equals(trueClass)){
+				out.println("<p><b>Cannot change class type!</b></p>");
+			}
+			
+			String firstname = (request.getParameter("firstname"));
+			String lastname = (request.getParameter("lastname"));
+			String address = (request.getParameter("address"));
+			String phone = (request.getParameter("phone"));
+			
+			String sql2 = "update users set user_name = '" +username+ "', password = '" +password+ "', class = '" +comboBox+ "', registered_date = SYSDATE where user_name = '"+username+"'";
+			Statement stmt2 = null;
+			ResultSet rset2 = null;
+
+				stmt2 = UserConnection.getConnection().getConn().createStatement();
+				rset2 = stmt2.executeQuery(sql2);
+				UserConnection.getConnection().getConn().commit();
+			
+			String sql3 = "update persons set user_name = '" +username+ "', first_name = '" +firstname+ "', last_name = '" +lastname+ "', email = '" +email+ "', address = '" +address+ "', phone = '" +phone+ "', where user_name = '"+username+"'";
+			Statement stmt3 = null;
+			ResultSet rset3 = null;
+			
+				stmt3 = UserConnection.getConnection().getConn().createStatement();
+				rset3 = stmt3.executeQuery(sql3);
+				UserConnection.getConnection().getConn().commit();
+			
+			if(comboBox.equals("d")){
+				String doctorname = (request.getParameter("doctorname"));
+				String patientname = (request.getParameter("patientname"));
+				out.println(doctorname);
+				out.println(patientname);
+				if(!username.equals(doctorname)){
+					out.println("<p><b>Sorry your UserName and doctor name dont match!</b></p>");
+				}
+				else{
+					String sql4 = "insert into family_doctor values ('" +username+ "', '" +patientname+ "')";
+					Statement stmt4 = null;
+					ResultSet rset4 = null;
+
+						stmt4 = UserConnection.getConnection().getConn().createStatement();
+						rset4 = stmt4.executeQuery(sql4);
+						UserConnection.getConnection().getConn().commit();
+				}
+			}
+			if(comboBox.equals("p")){
+				String doctorname = (request.getParameter("doctorname"));
+				String patientname = (request.getParameter("patientname"));
+				out.println(doctorname);
+				out.println(patientname);
+				if(!username.equals(patientname)){
+					out.println("<p><b>Sorry your UserName and patient name dont match!</b></p>");
+				}
+				else{
+					String sql5 = "insert into family_doctor values ('" +doctorname+ "', '" +username+ "')";
+					Statement stmt5 = null;
+					ResultSet rset5 = null;
+
+						stmt5 = UserConnection.getConnection().getConn().createStatement();
+						rset5 = stmt5.executeQuery(sql5);
+						UserConnection.getConnection().getConn().commit();
+				}
+			}
+			
+		    openPage(response, out);
+		} catch (Exception ex) {
+			System.out.println("" + ex.getMessage() + "");
+		}
+		
+}
+	
+	public void openPage(HttpServletResponse response, JspWriter out) {
+		try{
+			response.sendRedirect("manageUsers.jsp");
 		}catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
 		}
 	}
 	
-	public void openPage(HttpServletResponse response, JspWriter out) {
-		try{
-			response.sendRedirect("Login.jsp");
-		}catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		}
-	}
+	
 	%>
 
 
 <form method="post">
-	<input id="e24" class="cc49" type="text" name="text_box" value="userName" size="23">
+	<input id="e24" class="cc49" type="text" name="username" value="userName" size="23">
 	<input id="e23" class="cc49" type="password" name="password" size="23">
-	<input id="e22" class="cc50" type="button" value="Register" onclick="alert('Button')">
+	<input id="e22" class="cc50" type="submit" value="Modify/Add" name="rSubmit">
 	<div id="e21" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 	</div>
@@ -184,7 +346,7 @@ if(request.getParameter("rSubmit")!=null)
 	<div id="e19" class="cc51">
 		Modify/Add:
 	</div>
-	<input id="e18" class="cc49" type="password" name="password" size="23">
+	<input id="e18" class="cc49" type="password" name="retypepassword" size="23">
 	<div id="e17" class="cc50">
 		Retype Password:
 	</div>
@@ -194,31 +356,31 @@ if(request.getParameter("rSubmit")!=null)
 	<div id="e15" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:
 	</div>
-	<input id="e14" class="cc49" type="text" name="text_box" value="FirstName" size="23">
+	<input id="e14" class="cc49" type="text" name="firstname" value="FirstName" size="23">
 	<div id="e13" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First Name:
 	</div>
-	<input id="e12" class="cc49" type="text" name="text_box" value="lastName" size="23">
+	<input id="e12" class="cc49" type="text" name="lastname" value="lastName" size="23">
 	<div id="e11" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name:
 	</div>
-	<input id="e10" class="cc49" type="text" name="text_box" value="phone" size="23">
+	<input id="e10" class="cc49" type="text" name="phone" value="phone" size="23">
 	<div id="e9" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone:
 	</div>
-	<input id="e8" class="cc49" type="text" name="text_box" value="address" size="23">
+	<input id="e8" class="cc49" type="text" name="address" value="address" size="23">
 	<div id="e7" class="cc50">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:
 	</div>
-	<input id="e6" class="cc49" type="text" name="text_box" value="email" size="23">
-	<select id="e5" class="cc52" size="1" name="combo_box" onchange="alert('Combo_Box'+'['+this.selectedIndex+']')">
+	<input id="e6" class="cc49" type="text" name="email" value="email" size="23">
+	<select id="e5" class="cc52" size="1" name="combo_box">
 	<option> 1. Patient</option>
 	<option> 2. Doctor</option>
 	<option> 3. Radiologist</option>
 	<option> 4. Admin</option>
 	</select>
-	<input id="e4" class="cc49" type="text" name="text_box" size="23">
-	<input id="e3" class="cc49" type="text" name="text_box" size="23">
+	<input id="e4" class="cc49" type="text" name="doctorname" size="23">
+	<input id="e3" class="cc49" type="text" name="patientname" size="23">
 	<div id="e2" class="cc50">
 		Doctor Name:
 	</div>
