@@ -22,146 +22,153 @@
 	font            : 10pt 'Arial', Helvetica, sans-serif;
 	color           : #000000;
 	}
-img#e21             { /* cmput391010009.jpg */
+img#e22             { /* cmput391010009.jpg */
 	position        : absolute;
 	left            :  23.25pt;
 	top             :  79.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e20             { /* Home */
+div#e21             { /* Home */
 	position        : absolute;
 	left            :  54.00pt;
 	top             :  89.25pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e19             { /* cmput391010007.jpg */
+img#e20             { /* cmput391010007.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 172.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e18             { /* Edit Profile */
+div#e19             { /* Edit Profile */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 177.00pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e17             { /* cmput391010005.jpg */
+img#e18             { /* cmput391010005.jpg */
 	position        : absolute;
 	left            :  20.25pt;
 	top             : 265.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e16             { /* Logout */
+div#e17             { /* Logout */
 	position        : absolute;
 	left            :  51.00pt;
 	top             : 275.25pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e15             { /* cmput391010003.jpg */
+img#e16             { /* cmput391010003.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 218.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e14             { /* Add Records */
+div#e15             { /* Add Records */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 223.50pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e13             { /* cmput391010001.jpg */
+img#e14             { /* cmput391010001.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 126.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e12             { /* Search */
+div#e13             { /* Search */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 135.75pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-input#e11           { /* Text text_box  */
+input#e12           { /* Text text_box  */
 	position        : absolute;
 	left            : 197.25pt;
 	top             : 167.25pt;
 	width           : 122.25pt;
 	height          :  10.50pt;
 	}
-input#e10           { /* Button onclick="alert('B... */
+input#e11           { /* Button onclick="alert('B... */
 	position        : absolute;
-	left            : 389.25pt;
-	top             : 163.50pt;
+	left            : 417.75pt;
+	top             : 162.00pt;
 	width           :  57.75pt;
 	height          :  21.00pt;
 	}
-div#e9              { /* Enter Patient Name: */
+div#e10             { /* Enter Search Term(s): */
 	position        : absolute;
 	left            : 197.25pt;
 	top             : 143.25pt;
 	width           : 110.25pt;
-	height          :  12.00pt;
+	height          :  24.75pt;
 	}
-div#e8              { /* From: */
+div#e9              { /* From: */
 	position        : absolute;
 	left            : 199.50pt;
 	top             : 205.50pt;
 	width           :  90.75pt;
 	height          :  14.25pt;
 	}
-select#e7           { /* Combo Box Date_Day Day  */
+select#e8           { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 198.00pt;
 	top             : 222.75pt;
 	width           :  42.00pt;
 	}
-select#e6           { /* Combo Box Date_Month Mon... */
+select#e7           { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 243.00pt;
 	top             : 222.75pt;
 	width           :  72.00pt;
 	}
-select#e5           { /* Combo Box Date_Year Year... */
+select#e6           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 318.00pt;
 	top             : 222.75pt;
 	width           :  49.50pt;
 	}
-div#e4              { /* To: */
+div#e5              { /* To: */
 	position        : absolute;
 	left            : 200.25pt;
 	top             : 245.25pt;
 	width           :  90.75pt;
 	height          :  14.25pt;
 	}
-select#e3           { /* Combo Box Date_Day Day  */
+select#e4           { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 198.75pt;
 	top             : 262.50pt;
 	width           :  42.00pt;
 	}
-select#e2           { /* Combo Box Date_Month Mon... */
+select#e3           { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 243.75pt;
 	top             : 262.50pt;
 	width           :  72.00pt;
 	}
-select#e1           { /* Combo Box Date_Year Year... */
+select#e2           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 318.75pt;
 	top             : 262.50pt;
 	width           :  49.50pt;
+	}
+select#e1           { /* Combo Box combo_box onCh... */
+	position        : absolute;
+	left            : 342.75pt;
+	top             : 163.50pt;
+	width           :  65.25pt;
+	height          :  15.00pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;
