@@ -5,7 +5,7 @@
 	public String response_message;%>
 
 <%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
-<%@ page import="javax.servlet.http.*,java.sql.*, cmput391.*"%>
+<%@ page import="javax.servlet.http.*,java.sql.*, cmput391.*,java.awt.image.*"%>
 <%@ page import="oracle.sql.*,oracle.jdbc.*,javax.imageio.ImageIO" %>
 <%@ page import="org.apache.commons.fileupload.*,java.awt.Image"%>
 <%@ page import="org.apache.commons.fileupload.disk.*"%>
