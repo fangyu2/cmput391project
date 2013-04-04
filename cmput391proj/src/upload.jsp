@@ -16,7 +16,7 @@
 	<hr>
 	Please input or select the path of the image!
 	<form name="upload-image" method="POST" enctype="multipart/form-data"
-		action="parsePicture.jsp">
+		action="servlet/parseImage">
 		<table>
 			<tr>
 				<th>File path:</th>

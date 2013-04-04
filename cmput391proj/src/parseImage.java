@@ -1,32 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%!private Record record;
-	public String response_message;%>
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+import java.util.*;
+import oracle.sql.*;
+import oracle.jdbc.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import cmput391.*;
 
-<%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
-<%@ page import="javax.servlet.http.*,java.sql.*, cmput391.*,java.awt.image.*"%>
-<%@ page import="oracle.sql.*,oracle.jdbc.*,javax.imageio.ImageIO" %>
-<%@ page import="org.apache.commons.fileupload.*,java.awt.Image"%>
-<%@ page import="org.apache.commons.fileupload.disk.*"%>
-<%@ page import="org.apache.commons.fileupload.servlet.*"%>
-<%@ page import="org.apache.commons.io.output.*"%>
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
 
-<%
-	record = (Record) request.getSession().getAttribute("record");
-	if(record == null) {
-		response.sendRedirect("addRecords.jsp");
-	}
-	addImg(request, response, out);
-%>
-
-<%!public void addImg(HttpServletRequest request, HttpServletResponse response
-		, JspWriter out) {
-
+public class parseImage extends HttpServlet {
+	public void doPost(HttpServletRequest request,HttpServletResponse response)
+			throws ServletException, IOException {
+		Record record = (Record) request.getSession().getAttribute("record");
+		if(record == null) {
+			response.sendRedirect("addRecords.jsp");
+		}
 		try {
 			int recordID = record.getRecordID();
 			int pic_id = recordID + 1;
-			
+
 			DiskFileUpload fu = new DiskFileUpload();
 			List FileItems = fu.parseRequest(request);
 
@@ -106,9 +103,7 @@
 			System.out.println(ex.getMessage());
 
 		}
-
 	}
-
 	public static BufferedImage shrink(BufferedImage image, int n) {
 
 		int w = image.getWidth() / n;
@@ -135,4 +130,5 @@
 				growImage.setRGB(x, y, image.getRGB(x * n, y * n));
 
 		return growImage;
-	}%>
+	}
+}
