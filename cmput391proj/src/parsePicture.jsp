@@ -6,7 +6,7 @@
 
 <%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
 <%@ page import="javax.servlet.http.*,java.sql.*, cmput391.*"%>
-<%@ page import="org.apache.commons.fileupload.*"%>
+<%@ page import="org.apache.commons.fileupload.*,java.awt.Image.*"%>
 <%@ page import="org.apache.commons.fileupload.disk.*"%>
 <%@ page import="org.apache.commons.fileupload.servlet.*"%>
 <%@ page import="org.apache.commons.io.output.*"%>
