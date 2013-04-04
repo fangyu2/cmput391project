@@ -14,10 +14,10 @@
 
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
-<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img20,'cmput391_003.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img20,0,0)">
+<a href="regUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img20,'cmput391_003.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img20,0,0)">
 		<img id="e20" name="e20" src="cmput391014007.jpg" title="" alt="cmput391014007.jpg" align="right" border="0"></a>
 	<div id="e19" class="cc44">
-		<a href="Home.jsp">
+		<a href="regUser.jsp">
 		Home</a>
 	</div>
 	<a href="regEditProfile.jsp" onmouseover="OnWeOver(0,0,0,IDP[3],Img18,'cmput391_013.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[3],Img18,0,0)">
