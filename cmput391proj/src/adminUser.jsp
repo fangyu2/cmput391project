@@ -35,7 +35,7 @@
 			String toyear = (request.getParameter("toyear")).trim();
 			String dash = "-";
 
-			if (diagnosis == null) {
+			if (diagnosis == null || diagnosis.length() == 0) {
 				out.println("<center><b> No diagnosis filled </b></center>");
 				return;
 			}
