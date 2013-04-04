@@ -47,12 +47,12 @@
 
 			String sql = "select p.first_name, p.last_name, p.address, p.phone, "
 					+ "r.test_date from radiology_record r, persons p where "
-					+ " r.user_name = p.patient_name and r.diagnosis = \'"
+					+ " p.user_name = r.patient_name and r.diagnosis = \'"
 					+ diagnosis
 					+ "\' and r.test_date between to_date(\'"
 					+ fromDateKey
 					+ "\', 'DD-MM-YY') and to_date(\'" + toDateKey +  
-						"\', DD-MM-YY) order by r.test_date asc";
+						"\', 'DD-MM-YY') order by r.test_date asc";
 			Statement stmt = null;
 			ResultSet rset = null;
 
