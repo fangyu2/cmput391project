@@ -117,7 +117,7 @@
 
 		for (int y = 0; y < h; ++y)
 			for (int x = 0; x < w; ++x)
-				growImage.setRGB(x, y, image.getRGB(x * n, y * n));
+				growImage.setRGB(x, y, image.getRGB(x / n, y / n));
 
 		return growImage;
 	}%>
