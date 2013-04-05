@@ -21,6 +21,16 @@
 <%@ page import="java.sql.*" %>
 
 <%
+
+User loggedUser = (User) request.getSession().getAttribute(
+		"loggedUser");
+if (loggedUser == null) {
+	response.sendRedirect("Home.jsp");
+} else {
+	String uClass = loggedUser.getUserClass();
+	if (uClass.compareTo("a") != 0)
+		response.sendRedirect("Home.jsp");
+}
 //waits for the register button to be clicked
 //on click will return the user back to the manage user page
 if(request.getParameter("rSubmit")!=null)

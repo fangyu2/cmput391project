@@ -25,6 +25,16 @@
 <%@ page import="java.sql.*" %>
 
 	<%
+	
+	User loggedUser = (User) request.getSession().getAttribute(
+			"loggedUser");
+	if (loggedUser == null) {
+		response.sendRedirect("Home.jsp");
+	} else {
+		String uClass = loggedUser.getUserClass();
+		if (uClass.compareTo("a") != 0)
+			response.sendRedirect("Home.jsp");
+	}
 	   //deals with the action of hiting the submit/enter button, and calls the appropriate method
 	   if (request.getParameter("mSubmit") != null)
 	   {
