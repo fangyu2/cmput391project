@@ -40,7 +40,7 @@ if(request.getParameter("bSubmit") != null) {
 		<strong>Searching:</strong><br /> <br /> To use the search by date
 		all three fields from, to, and ascending or descending need to be
 		filled out, if you are just searching without dates for patient name,
-		diagnosis or description then just type in the terms. (up to 2 max)
+		diagnosis or description then just type in the terms. (up to 2 terms max)
 	</p>
 	<p>
 		<strong>Editing Profile:</strong>
@@ -58,9 +58,9 @@ if(request.getParameter("bSubmit") != null) {
 	</p>
 	<p>
 		<strong>Adding a Record:</strong><br /> <br /> To add a record
-		simply fill out the necessary information on the page and especially
-		the record ID since record ID is unique and mandatory. If you wish to
-		attach photos simply check box the attach photo option. There user is
+		simply fill out the necessary information on the page. If you wish to
+		attach photos simply check box the attach photo option. Then user is 
+		taken to the upload picture page. There user is
 		prompt to continue uploading photos till the user presses return
 		button.
 	</p>

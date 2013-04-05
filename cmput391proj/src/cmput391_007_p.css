@@ -179,12 +179,10 @@ div#e8              { /* Patient Name: */
 	width           :  62.25pt;
 	height          :  21.75pt;
 	}
-select#e7           { /* List select_list onChang... */
+table#e7           { /* List select_list onChang... */
 	position        : absolute;
 	left            : 148.50pt;
 	top             : 143.25pt;
-	width           : 567.00pt;
-	height          : 395.25pt;
 	}
 input#e6            { /* Text text_box  */
 	position        : absolute;
