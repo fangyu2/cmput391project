@@ -73,18 +73,6 @@ CREATE TABLE pacs_images (
 );
 
 
-GRANT ALL ON users TO hwen3;
-GRANT ALL ON persons TO hwen3;
-GRANT ALL ON family_doctor TO hwen3;
-GRANT ALL ON radiology_record TO hwen3;
-GRANT ALL ON pacs_images TO hwen3;
-
-GRANT ALL ON users TO fangyu2;
-GRANT ALL ON persons TO fangyu2;
-GRANT ALL ON family_doctor TO fangyu2;
-GRANT ALL ON radiology_record TO fangyu2;
-GRANT ALL ON pacs_images TO fangyu2;
-
 INSERT INTO users VALUES( 'jon', '123', 'a', SYSDATE );
 
 INSERT INTO persons VALUES( 'jon', 'jon', 'emery', '9908 123 street, calgary, alberta', 'jon@radiology.com', '7804567891' );
@@ -106,7 +94,7 @@ commit;
 define idxname = "descindex"
 define idxname2 = "userindex"
 define idxname3 = "diagindex"
-define interval = "30"
+define interval = "15"
 
 set serveroutput on
 declare
