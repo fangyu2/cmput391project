@@ -21,17 +21,27 @@
 <%@ page import="java.sql.*" %>
 
 <%
+//waits for the register button to be clicked
+//on click will return the user back to the manage user page
 if(request.getParameter("rSubmit")!=null)
 {
     checkUser(request, response, out);
 }
+//waits for the delete button to be clicked
+//on click will return the user back to the manage user page
 if(request.getParameter("dSubmit")!=null){
 	deleteUser(request, response, out);
+}
+if(request.getParameter("mSubmit")!=null){
+	openPage(response, out);
 }
 
 %>
 
-<%!public void checkUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
+<%!
+//checks for a valid user input
+//if the user exists it then it be passed into the updateUser() method
+public void checkUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 	
 	try {
 			String username = (request.getParameter("username")).trim();
@@ -58,7 +68,8 @@ if(request.getParameter("dSubmit")!=null){
 		}
 	}
 	
-	
+//checks that password is matching for the password field and retypepassword
+//field
 	public void checkPassword(String username, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try {	
 		String password = (request.getParameter("password")).trim();
@@ -77,7 +88,8 @@ if(request.getParameter("dSubmit")!=null){
 		System.out.println("" + ex.getMessage() + "");
 		}
 	}
-	
+//checks that the email input does not already exist within the database
+//all users have an unique email
 	public void checkEmail(String username, String password, 
 			HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try {
@@ -111,7 +123,8 @@ if(request.getParameter("dSubmit")!=null){
 
 	}
 	
-	
+//will create the user and add all information into the their respective 
+//tables
 	public void registerUser(String username, String password, String email, 
 			HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try {
@@ -148,7 +161,7 @@ if(request.getParameter("dSubmit")!=null){
 		ResultSet rset2 = null;
 		
 			stmt2 = UserConnection.getConnection().getConn().createStatement();
-			rset2 = stmt.executeQuery(sql2);
+			rset2 = stmt2.executeQuery(sql2);
 			UserConnection.getConnection().getConn().commit();
 	 	
 		if(comboBox.equals("d")){
@@ -178,9 +191,9 @@ if(request.getParameter("dSubmit")!=null){
 				ResultSet rset4 = null;
 
 					stmt4 = UserConnection.getConnection().getConn().createStatement();
-					rset4 = stmt.executeQuery(sql4);
+					rset4 = stmt4.executeQuery(sql4);
 					UserConnection.getConnection().getConn().commit();
-					openPage(response, out);
+
 					
 			}
 		}
@@ -211,14 +224,12 @@ if(request.getParameter("dSubmit")!=null){
 				ResultSet rset4 = null;
 
 					stmt4 = UserConnection.getConnection().getConn().createStatement();
-					rset4 = stmt.executeQuery(sql4);
+					rset4 = stmt4.executeQuery(sql4);
 					UserConnection.getConnection().getConn().commit();
-					openPage(response, out);
 					
 					
 			}
 		}
-		openPage(response, out);
 		
 		} catch (Exception ex) {
 			System.out.println("" + ex.getMessage() + "");
@@ -226,7 +237,8 @@ if(request.getParameter("dSubmit")!=null){
 		
 }
 	
-	
+//updates the user information if the username already exists in the database
+
 	public void updateUser(String username, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try {
 			String password = (request.getParameter("password"));
@@ -324,9 +336,6 @@ if(request.getParameter("dSubmit")!=null){
 			}
 
 			if(doctorname.equals(username)){
-				out.println(username);
-				out.println(doctorname);
-				out.println(patientname);
 				
 				String sql = "select class from users where user_name = '" + doctorname + "'";
 				Statement stmt = null;
@@ -340,14 +349,13 @@ if(request.getParameter("dSubmit")!=null){
 				while (rset != null && rset.next()) {
 					trueDoctorClass = (rset.getString(1)).trim();
 				}
-				out.println(trueDoctorClass);
 				
 				String sql2 = "select class from users where user_name = '" + patientname + "'";
 				Statement stmt2 = null;
 				ResultSet rset2 = null;
 		
 				stmt2 = UserConnection.getConnection().getConn().createStatement();
-				rset2 = stmt.executeQuery(sql2);
+				rset2 = stmt2.executeQuery(sql2);
 
 				String truePatientClass = "";
 
@@ -360,7 +368,7 @@ if(request.getParameter("dSubmit")!=null){
 				ResultSet rset3 = null;
 		
 				stmt3 = UserConnection.getConnection().getConn().createStatement();
-				rset3 = stmt.executeQuery(sql3);
+				rset3 = stmt3.executeQuery(sql3);
 
 				String trueDoctor = "";
 				String truePatient = "";
@@ -385,7 +393,7 @@ if(request.getParameter("dSubmit")!=null){
 					ResultSet rset4 = null;
 
 						stmt4 = UserConnection.getConnection().getConn().createStatement();
-						rset4 = stmt.executeQuery(sql4);
+						rset4 = stmt4.executeQuery(sql4);
 						UserConnection.getConnection().getConn().commit();
 				}
 			}
@@ -408,7 +416,7 @@ if(request.getParameter("dSubmit")!=null){
 				ResultSet rset2 = null;
 		
 				stmt2 = UserConnection.getConnection().getConn().createStatement();
-				rset2 = stmt.executeQuery(sql2);
+				rset2 = stmt2.executeQuery(sql2);
 
 				String trueDoctorClass = "";
 
@@ -420,7 +428,7 @@ if(request.getParameter("dSubmit")!=null){
 				ResultSet rset3 = null;
 		
 				stmt3 = UserConnection.getConnection().getConn().createStatement();
-				rset3 = stmt.executeQuery(sql3);
+				rset3 = stmt3.executeQuery(sql3);
 
 				String trueDoctor = "";
 				String truePatient = "";
@@ -444,7 +452,7 @@ if(request.getParameter("dSubmit")!=null){
 					ResultSet rset4 = null;
 
 						stmt4 = UserConnection.getConnection().getConn().createStatement();
-						rset4 = stmt.executeQuery(sql4);
+						rset4 = stmt4.executeQuery(sql4);
 						UserConnection.getConnection().getConn().commit();
 				}
 			}
@@ -453,6 +461,7 @@ if(request.getParameter("dSubmit")!=null){
 		}
 		
 }
+//delete an existing user from the database based on the user name input
 	public void deleteUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
 		try{
 			String username = (request.getParameter("username")).trim();
@@ -536,7 +545,7 @@ if(request.getParameter("dSubmit")!=null){
 			System.out.println("" + ex.getMessage() + "");
 		}
 	}
-	
+//opens the manageUsers.jsp page	
 	public void openPage(HttpServletResponse response, JspWriter out) {
 		try{
 			response.sendRedirect("manageUsers.jsp");
@@ -550,6 +559,7 @@ if(request.getParameter("dSubmit")!=null){
 
 
 <form method="post">
+	<input type="submit" value="Manage" name="mSubmit">
     <BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR><BR></BR>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

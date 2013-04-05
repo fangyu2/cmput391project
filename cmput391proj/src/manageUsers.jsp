@@ -44,6 +44,11 @@
 //basic user guideance
 	   try
 	   {
+	       int i = 14;
+	         for (int n = 0; n < i; n++)
+	         {
+	            out.println("<BR>&nbsp;</BR>");
+	         }
 
 	      out.println("<center>");
 	      out.println("<form method=POST>");
@@ -132,8 +137,40 @@
             Statement stmt2 = null;
             ResultSet rset2 = null;
             stmt2 = UserConnection.getConnection().getConn().createStatement();
-            rset2 = stmt.executeQuery(sql2);
+            rset2 = stmt2.executeQuery(sql2);
             displayResultSet(out, rset2, request);
+
+         }
+         
+         if (classID.equals("d"))
+         {
+             
+             String sql2 = "select doctor_name from family_doctor where doctor_name = '" + username
+                     + "'";
+               String trueuser = "";
+               Statement stmt2 = null;
+               ResultSet rset2 = null;
+
+               stmt2 = UserConnection.getConnection().getConn().createStatement();
+               rset2 = stmt2.executeQuery(sql2);
+
+               while (rset2 != null && rset2.next())
+               {
+                  trueuser = (rset2.getString(1)).trim();
+               }
+               
+            if(!username.equals(trueuser)){
+                out.println("<center>");
+                out.println(username);
+                String sql3 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone "
+                      + "from users u join persons p on u.user_name = p.user_name where u.user_name = '"
+                      + username + "'";
+                Statement stmt3 = null;
+                ResultSet rset3 = null;
+                stmt3 = UserConnection.getConnection().getConn().createStatement();
+                rset3 = stmt3.executeQuery(sql3);
+                displayResultSet(out, rset3, request);
+            }
 
          }
 
@@ -147,10 +184,43 @@
             Statement stmt2 = null;
             ResultSet rset2 = null;
             stmt2 = UserConnection.getConnection().getConn().createStatement();
-            rset2 = stmt.executeQuery(sql2);
+            rset2 = stmt2.executeQuery(sql2);
             displayResultSet(out, rset2, request);
 
          }
+         
+         if (classID.equals("p"))
+         {
+             
+             String sql2 = "select patient_name from family_doctor where patient_name = '" + username
+                     + "'";
+               String trueuser = "";
+               Statement stmt2 = null;
+               ResultSet rset2 = null;
+
+               stmt2 = UserConnection.getConnection().getConn().createStatement();
+               rset2 = stmt2.executeQuery(sql2);
+
+               while (rset2 != null && rset2.next())
+               {
+                  trueuser = (rset2.getString(1)).trim();
+               }
+               
+            if(!username.equals(trueuser)){
+                out.println("<center>");
+                out.println(username);
+                String sql3 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone "
+                      + "from users u join persons p on u.user_name = p.user_name where u.user_name = '"
+                      + username + "'";
+                Statement stmt3 = null;
+                ResultSet rset3 = null;
+                stmt3 = UserConnection.getConnection().getConn().createStatement();
+                rset3 = stmt3.executeQuery(sql3);
+                displayResultSet(out, rset3, request);
+            }
+
+         }
+         
          if (classID.equals("r"))
          {
             out.println("<center>");
@@ -161,7 +231,7 @@
             Statement stmt2 = null;
             ResultSet rset2 = null;
             stmt2 = UserConnection.getConnection().getConn().createStatement();
-            rset2 = stmt.executeQuery(sql2);
+            rset2 = stmt2.executeQuery(sql2);
             displayResultSet(out, rset2, request);
          }
 
@@ -175,7 +245,7 @@
             Statement stmt2 = null;
             ResultSet rset2 = null;
             stmt2 = UserConnection.getConnection().getConn().createStatement();
-            rset2 = stmt.executeQuery(sql2);
+            rset2 = stmt2.executeQuery(sql2);
             displayResultSet(out, rset2, request);
          }
 
@@ -199,7 +269,7 @@
          HttpSession session = request.getSession(true);
          // set the maximum inactive interv al of the current session to be 5 minutes
          session.setMaxInactiveInterval(300);
-         int i = 1;
+         int i = 15;
          for (int n = 0; n < i; n++)
          {
             out.println("<BR>&nbsp;</BR>");
