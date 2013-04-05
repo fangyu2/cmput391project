@@ -1,176 +1,187 @@
 /*--- Avanquest WebEasy Page Style ---*/
 
 
-.cc07               { /* Common */
+.cc08               { /* Common */
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
-	}
-.cc08               { /* Common */
-	font            : 8pt 'MS Sans Serif';
-	color           : #000000;
 	}
 .cc09               { /* Common */
 	font            : 8pt 'MS Sans Serif';
 	color           : #000000;
+	}
+.cc10               { /* Common */
+	font            : 8pt 'MS Sans Serif';
+	color           : #000000;
 	padding         :   1.50pt;
 	}
-img#e24             { /* cmput391004011.jpg */
+.cc11               { /* Common */
+	font            : 8pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+img#e25             { /* cmput391004011.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             :  63.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e23             { /* Home */
+div#e24             { /* Home */
 	position        : absolute;
 	left            :  51.75pt;
 	top             :  73.50pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e22             { /* cmput391004009.jpg */
+img#e23             { /* cmput391004009.jpg */
 	position        : absolute;
 	left            :  18.75pt;
 	top             : 156.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e21             { /* Edit Profile */
+div#e22             { /* Edit Profile */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 161.25pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e20             { /* cmput391004007.jpg */
+img#e21             { /* cmput391004007.jpg */
 	position        : absolute;
 	left            :  22.50pt;
 	top             : 296.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e19             { /* Logout */
+div#e20             { /* Logout */
 	position        : absolute;
 	left            :  53.25pt;
 	top             : 306.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e18             { /* cmput391004005.jpg */
+img#e19             { /* cmput391004005.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 202.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e17             { /* Manage Users */
+div#e18             { /* Manage Users */
 	position        : absolute;
 	left            :  49.50pt;
 	top             : 207.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e16             { /* cmput391004003.jpg */
+img#e17             { /* cmput391004003.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 249.75pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e15             { /* View Logs */
+div#e16             { /* View Logs */
 	position        : absolute;
 	left            :  45.75pt;
 	top             : 258.75pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e14             { /* cmput391004001.jpg */
+img#e15             { /* cmput391004001.jpg */
 	position        : absolute;
 	left            :  19.50pt;
 	top             : 110.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e13             { /* Search */
+div#e14             { /* Search */
 	position        : absolute;
 	left            :  50.25pt;
 	top             : 120.00pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-input#e12           { /* Submit  */
+input#e13           { /* Submit  */
 	position        : absolute;
 	left            : 525.00pt;
 	top             :  29.25pt;
 	width           :  78.75pt;
 	}
-input#e11           { /* Text text_box  */
+input#e12           { /* Text text_box  */
 	position        : absolute;
 	left            : 176.25pt;
 	top             :  37.50pt;
 	width           : 120.75pt;
 	}
-select#e10          { /* Combo Box Date_Day Day  */
+select#e11          { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 175.50pt;
 	top             :  60.75pt;
 	width           :  41.25pt;
 	}
-select#e9           { /* Combo Box Date_Month Mon... */
+select#e10          { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 220.50pt;
 	top             :  60.75pt;
 	width           :  71.25pt;
 	}
-select#e8           { /* Combo Box Date_Year Year... */
+select#e9           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 295.50pt;
 	top             :  60.75pt;
 	width           :  48.75pt;
 	}
-select#e7           { /* Combo Box Date_Day Day  */
+select#e8           { /* Combo Box Date_Day Day  */
 	position        : absolute;
 	left            : 174.75pt;
 	top             :  93.00pt;
 	width           :  41.25pt;
 	}
-select#e6           { /* Combo Box Date_Month Mon... */
+select#e7           { /* Combo Box Date_Month Mon... */
 	position        : absolute;
 	left            : 219.75pt;
 	top             :  93.00pt;
 	width           :  71.25pt;
 	}
-select#e5           { /* Combo Box Date_Year Year... */
+select#e6           { /* Combo Box Date_Year Year... */
 	position        : absolute;
 	left            : 294.75pt;
 	top             :  93.00pt;
 	width           :  48.75pt;
 	}
-div#e4              { /* From: */
+div#e5              { /* From: */
 	position        : absolute;
 	left            : 134.25pt;
 	top             :  62.25pt;
 	width           :  28.50pt;
 	height          :  12.75pt;
 	}
-div#e3              { /* To: */
+div#e4              { /* To: */
 	position        : absolute;
 	left            : 141.75pt;
 	top             :  92.25pt;
 	width           :  21.00pt;
 	height          :  12.75pt;
 	}
-div#e2              { /* Diagnosis: */
+div#e3              { /* Diagnosis: */
 	position        : absolute;
 	left            : 129.75pt;
 	top             :  37.50pt;
 	width           :  45.75pt;
 	height          :  12.75pt;
 	}
-table#e1           { /* List select_list onChang... */
+table#e2           { /* List select_list onChang... */
 	position        : absolute;
 	left            : 141.00pt;
 	top             : 126.75pt;
+	}
+input#e1            { /* Button onclick="alert('B... */
+	background-color: #009999;
+	position        : absolute;
+	left            : 689.25pt;
+	top             :   0.00pt;
+	width           :  56.25pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;

@@ -15,6 +15,9 @@
 	private String uLastName = "";
 	private boolean existingEmail = true;
 
+	//retrieves the users information that is currently logged in
+	//if checkforuseremail is true then we are only searching whether a user
+	//already exists with the email
 	public void queryUser(boolean checkForUser) {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -23,7 +26,7 @@
 		if (!checkForUser) {
 			sql = "select * from persons where user_name = \'" + uName + "\'";
 		} else {
-			sql = "select * from persons where user_name = \'" + uEmail + "\'";
+			sql = "select * from persons where email = \'" + uEmail + "\'";
 		}
 
 		try {
@@ -34,8 +37,14 @@
 							ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
+			//if checkforuseremail is true then we check if a user already exists
+			//with such email
 			if (!rset.isBeforeFirst()) {
 				existingEmail = false;
+				if (stmt != null) {
+					stmt.close();
+				}
+				return;
 			}
 
 			while (rset != null && rset.next()) {
@@ -54,6 +63,7 @@
 		}
 	}
 
+	//updates the user info with the provided
 	public void updateUserInfo() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -87,6 +97,7 @@
 		}
 	}
 
+	//updates the password with the provided when called
 	public void updatePassword() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -120,6 +131,7 @@
 <%
 	String temp;
 	try {
+		//checks whether the user logged in is a patient or doctor
 		loggedUser = (User) request.getSession().getAttribute(
 				"loggedUser");
 		if (loggedUser == null) {
@@ -154,6 +166,9 @@
 			temp = request.getParameter("newemail").trim();
 			verifyUEmail = request.getParameter("renewemail").trim();
 			if (!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
+				
+				//query the data base to see if a user already exist with the
+				//specified email
 				queryUser(true);
 				if (!existingEmail) {
 					uEmail = temp;

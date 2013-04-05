@@ -1,79 +1,91 @@
 /*--- Avanquest WebEasy Page Style ---*/
 
 
-.cc21               { /* Common */
+.cc26               { /* Common */
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
 	}
-img#e10             { /* cmput391009009.jpg */
+.cc27               { /* Common */
+	font            : 8pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+img#e11             { /* cmput391009009.jpg */
 	position        : absolute;
 	left            :  23.25pt;
 	top             :  79.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e9              { /* Home */
+div#e10             { /* Home */
 	position        : absolute;
 	left            :  54.00pt;
 	top             :  89.25pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e8              { /* cmput391009007.jpg */
+img#e9              { /* cmput391009007.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 172.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e7              { /* Edit Profile */
+div#e8              { /* Edit Profile */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 177.00pt;
 	width           :  56.25pt;
 	height          :  38.25pt;
 	}
-img#e6              { /* cmput391009005.jpg */
+img#e7              { /* cmput391009005.jpg */
 	position        : absolute;
 	left            :  20.25pt;
 	top             : 265.50pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e5              { /* Logout */
+div#e6              { /* Logout */
 	position        : absolute;
 	left            :  51.00pt;
 	top             : 275.25pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
 	}
-img#e4              { /* cmput391009003.jpg */
+img#e5              { /* cmput391009003.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 218.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e3              { /* Add Records */
+div#e4              { /* Add Records */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 223.50pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
-img#e2              { /* cmput391009001.jpg */
+img#e3              { /* cmput391009001.jpg */
 	position        : absolute;
 	left            :  21.75pt;
 	top             : 126.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e1              { /* Search */
+div#e2              { /* Search */
 	position        : absolute;
 	left            :  52.50pt;
 	top             : 135.75pt;
 	width           :  56.25pt;
 	height          :  14.25pt;
+	}
+input#e1            { /* Button onclick="alert('B... */
+	background-color: #009999;
+	position        : absolute;
+	left            : 685.50pt;
+	top             :   3.75pt;
+	width           :  57.00pt;
+	height          :  20.25pt;
 	}
 body#page           { /* Page Body */
 	background-color: #ffffff;

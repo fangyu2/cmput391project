@@ -15,15 +15,18 @@
 	private String uLastName = "";
 	private boolean existingEmail = true;
 
-	public void queryUser(boolean checkForUser) {
+	//retrieves the users information that is currently logged in
+	//if checkforuseremail is true then we are only searching whether a user
+	//already exists with the email
+	public void queryUser(boolean checkForUserEmail) {
 		ResultSet rset = null;
 		Statement stmt = null;
 		String sql;
 
-		if (!checkForUser) {
+		if (!checkForUserEmail) {
 			sql = "select * from persons where user_name = \'" + uName + "\'";
 		} else {
-			sql = "select * from persons where user_name = \'" + uEmail + "\'";
+			sql = "select * from persons where email = \'" + uEmail + "\'";
 		}
 
 		try {
@@ -34,8 +37,14 @@
 							ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
 
+			//if checkforuseremail is true then we check if a user already exists
+			//with such email
 			if (!rset.isBeforeFirst()) {
 				existingEmail = false;
+				if (stmt != null) {
+					stmt.close();
+				}
+				return;
 			}
 
 			while (rset != null && rset.next()) {
@@ -45,6 +54,8 @@
 				uEmail = (rset.getString(5)).trim();
 				uPhone = (rset.getString(6)).trim();
 			}
+			
+			//set the verify email text field as email to be displayed
 			verifyUEmail = uEmail;
 			if (stmt != null) {
 				stmt.close();
@@ -54,6 +65,7 @@
 		}
 	}
 
+	//updates the user information 
 	public void updateUserInfo() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -87,6 +99,7 @@
 		}
 	}
 
+	//change the users password
 	public void updatePassword() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -120,6 +133,8 @@
 <%
 	String temp;
 	try {
+		//checks if the user logged on is an admin if not then redirect user
+		//back to home
 		loggedUser = (User) request.getSession().getAttribute(
 				"loggedUser");
 		if (loggedUser == null) {
@@ -130,6 +145,8 @@
 				response.sendRedirect("Home.jsp");
 		}
 		uName = loggedUser.getUserName();
+		
+		//obtain the current user info
 		queryUser(false);
 		if (request.getParameter("bSubmit") != null) {
 			uPass = request.getParameter("password").trim();
@@ -153,6 +170,9 @@
 			temp = request.getParameter("newemail").trim();
 			verifyUEmail = request.getParameter("renewemail").trim();
 			if (!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
+				
+				//check for whether a user already exist with the new email
+				//provided
 				queryUser(true);
 				if (!existingEmail) {
 					uEmail = temp;
@@ -162,9 +182,11 @@
 			} else {
 				out.println("<center><p><b> Emails Entered Did Not Match </b></p></center");
 			}
-
+			//update the users new information if and only if the 
+			// new emails entered matches
 			updateUserInfo();
 
+			//if the new password entered matches then update the user password
 			if (uPass.compareTo(verifyUPass) == 0) {
 				updatePassword();
 			} else {
