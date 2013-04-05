@@ -25,25 +25,42 @@
 	import="oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO"%>
 
 <%!private User loggedUser;
-	private Record record;%>
+	private Record record;
+	private int recordID;%>
 
 <%!
+
+//get the highest record_id currently in database then assign it as the new
+//record_id after incremeting it
+public void getRecordID() {
+	try {
+		
+		recordID = 1; // assign record_id as 1 if the database is unpopulated
+		
+		String sql = "select record_id from radiology_record order by record_id"
+				+ "desc";
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		stmt = UserConnection.getConnection().getConn().createStatement(
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		rset = stmt.executeQuery(sql);
+		
+		if(rset.first()){
+			recordID = rset.getInt(1);
+			recordID++;
+		}
+		stmt.close();	
+	
+	} catch (Exception ex) {
+	}
+}
+
 // add a record provided by the user into the radiology record table
 public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
-
-		int ID = 0;
-		try {
-			String recordID = (request.getParameter("recordID")).trim();
-			ID = Integer.parseInt(recordID);
-		} catch (NumberFormatException ex) {
-			try {
-				out.println("<br /> <br />");
-				out.println("<center><p><b> ID entered is not a number!! </b></p></center");
-			} catch (Exception exp) {
-			}
-			return;
-		}
+		
 
 		try {
 			//retrieve the fields entered by the user
@@ -84,7 +101,7 @@ public void addRecord(HttpServletRequest request,
 			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
 					.concat(tempyr);
 			
-			String sql = "INSERT INTO radiology_record VALUES(" + ID + ", '"
+			String sql = "INSERT INTO radiology_record VALUES(" + recordID + ", '"
 					+ patientName + "', '" + doctorName + "', '" + radiologist
 					+ "', '" + testType + "', '" + pres_date + "', '"
 					+ test_date + "', '" + diagnosis + "', '" + description
@@ -96,7 +113,7 @@ public void addRecord(HttpServletRequest request,
 			stmt.executeQuery(sql);
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
-			record = new Record(ID);
+			record = new Record(recordID);
 			String checked = request.getParameter("addPic");			
 			
 			//checks if the user checked add photo option or not
@@ -106,11 +123,6 @@ public void addRecord(HttpServletRequest request,
 				response.sendRedirect("upload.jsp");
 			}
 		} catch (Exception ex) {
-			try {
-				out.println("<br /> <br />");
-				out.println("<center><p><b> Record ID already exist!!! </b></p></center");
-			} catch (Exception exp) {
-			}
 		}
 
 	}
@@ -130,6 +142,7 @@ public void addRecord(HttpServletRequest request,
 			response.sendRedirect("Home.jsp");
 	}
 	if (request.getParameter("rSubmit") != null) {
+		getRecordID();
 		addRecord(request, response, out);
 	}
 %>
@@ -177,8 +190,7 @@ public void addRecord(HttpServletRequest request,
 		<div id="e26" class="cc26">
 			<a href="radioSearch.jsp"> Search</a>
 		</div>
-		<input id="e25" class="cc27" type="text" name="recordID" value=""
-			size="23"> <input id="e24" class="cc27" type="text"
+		 <input id="e24" class="cc27" type="text"
 			name="patient" value="" size="23"> <input id="e23"
 			class="cc27" type="text" name="docName" value="" size="23"> <input
 			id="e22" class="cc27" type="text" name="radname" value="" size="23">
@@ -326,7 +338,6 @@ public void addRecord(HttpServletRequest request,
 			<option>25</option>
 		</select> <input id="e12" class="cc28" type="submit" value="Submit"
 			name="rSubmit">
-		<div id="e11" class="cc28">Record ID:</div>
 		<div id="e10" class="cc28">Patient Name:</div>
 		<div id="e9" class="cc28">Doctor:</div>
 		<div id="e8" class="cc28">Radiologist:</div>

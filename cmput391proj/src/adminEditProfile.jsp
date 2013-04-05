@@ -70,11 +70,10 @@
 				}
 				return false;
 			}
-			
-			return true;
 		} catch(Exception ex){
 			
 		}
+		return true;
 	}
 
 	//updates the user information 

@@ -8,7 +8,7 @@
 <%
 //checks what class the user is then send him/her back to their respective home
 //page
-if(request.getParameter("pressed")!=null) {
+if(request.getParameter("bSubmit") != null) {
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if(loggedUser.getUserClass().compareTo("r") == 0 ){
 		response.sendRedirect("radioUser.jsp");
@@ -28,7 +28,9 @@ if(request.getParameter("pressed")!=null) {
 </head>
 <body>
 <p>&nbsp;</p>
-<input type="submit" name="pressed" value="Click To Return">
+<form method="post">
+<input type="submit" name="bSubmit" value="Click To Return">
+</form>
 <p>&nbsp;</p>
 	<p>
 		<strong><span style="text-decoration: underline;">General

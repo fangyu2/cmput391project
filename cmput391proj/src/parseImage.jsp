@@ -5,15 +5,40 @@
 <%@ page
 	import="java.io.*,javax.servlet.*,javax.servlet.http.*,java.sql.*,java.util.*,oracle.sql.*,oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO,cmput391.*,org.apache.commons.fileupload.DiskFileUpload,org.apache.commons.fileupload.FileItem"%>
 
-<%!private Record record;%>
+<%!private Record record;
+private int pic_id;%>
 
 <%!
-// stores the images into sql table as thumbnails, regular sized and fullsized
+//get the highest image_id currently in database then assign it as the new
+//picture id after incremeting it by 1
+public void getPicID() {
+	try {
+		
+		pic_id = 1; // assign pic_id as 1 if the database is unpopulated
+		
+		String sql = "select image_id from pacs_images order by image_id desc";
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		stmt = UserConnection.getConnection().getConn().createStatement(
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		rset = stmt.executeQuery(sql);
+		
+		if(rset.first()){
+			pic_id = rset.getInt(1);
+			pic_id++;
+		}
+		stmt.close();	
+	
+	} catch (Exception ex) {
+	}
+}
+//stores the images into sql table as thumbnails, regular sized and fullsized
 public void addImage(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
 		try {
 			int recordID = record.getRecordID();
-			int pic_id = record.getImgID();
 
 			DiskFileUpload fu = new DiskFileUpload();
 			List FileItems = fu.parseRequest(request);
@@ -53,23 +78,11 @@ public void addImage(HttpServletRequest request,
 			OutputStream outstream = myblob.getBinaryOutputStream();
 			ImageIO.write(thumbNail, "jpg", outstream);
 
-			//int size = myblob.getBufferSize();
-			//byte[] buffer = new byte[size];
-			//int length = -1;
-			//while ((length = instream.read(buffer)) != -1)
-			//	outstream.write(buffer, 0, length);
-
 			outstream.close();
 
 			//Write the image to the blob object
 			OutputStream outstream2 = myblob2.getBinaryOutputStream();
 			ImageIO.write(img, "jpg", outstream2);
-
-			//int size2 = myblob2.getBufferSize();
-			//byte[] buffer2 = new byte[size2];
-			// length2 = -1;
-			//while ((length2 = instream.read(buffer2)) != -1)
-			//	outstream2.write(buffer2, 0, length2);
 
 			outstream2.close();
 
@@ -77,17 +90,12 @@ public void addImage(HttpServletRequest request,
 			OutputStream outstream3 = myblob3.getBinaryOutputStream();
 			ImageIO.write(largeimg, "jpg", outstream3);
 
-			//int size3 = myblob3.getBufferSize();
-			//byte[] buffer3 = new byte[size3];
-		//	int length3 = -1;
-			//while ((length3 = instream.read(buffer3)) != -1)
-			//	outstream3.write(buffer3, 0, length3);
-
 			instream.close();
 			outstream3.close();
 
 			stmt.close();
 			UserConnection.getConnection().getConn().commit();
+			request.getSession().setAttribute("record", record);
 			response.sendRedirect("upload.jsp");
 
 		} catch (Exception ex) {
@@ -136,6 +144,7 @@ public void addImage(HttpServletRequest request,
 	if (record == null) {
 		response.sendRedirect("addRecords.jsp");
 	}
+	getPicID();
 	addImage(request, response, out);
 %>
 <head>
