@@ -75,8 +75,10 @@
 			System.out.println("" + ex.getMessage() + "");
 		}
 	}%>
-	
-	<%
+
+<% request.getSession().removeAttribute("record");	
+UserConnection.getConnection();
+	request.getSession().removeAttribute("loggedUser");
 if(request.getParameter("bSubmit")!=null)
 {
     queryUser(request, response, out);
@@ -102,7 +104,7 @@ if(request.getParameter("bSubmit")!=null)
 		</div>
 		<input id="e7" class="cc03" type="text" name="userName" size="23">
 		<input id="e6" class="cc03" type="password" name="password" size="23">
-		<input id="e5" class="cc04" type="submit" value="Login" name = "bSubmit">
+		<input id="e5" class="cc04" type="submit" value="Login" name="bSubmit">
 		<div id="e4" class="cc04">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:
 		</div>

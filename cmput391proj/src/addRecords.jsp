@@ -27,7 +27,9 @@
 <%!private User loggedUser;
 	private Record record;%>
 
-<%!public void addRecord(HttpServletRequest request,
+<%!
+// add a record provided by the user into the radiology record table
+public void addRecord(HttpServletRequest request,
 			HttpServletResponse response, JspWriter out) {
 
 		int ID = 0;
@@ -44,6 +46,7 @@
 		}
 
 		try {
+			//retrieve the fields entered by the user
 			String patientName = (request.getParameter("patient")).trim();
 			String doctorName = (request.getParameter("docName")).trim();
 			String radiologist = (request.getParameter("radname")).trim();
@@ -56,6 +59,17 @@
 			String tempyr;
 			String tempmon;
 			String dash = "-";
+			
+			//checks if user left any fields blank, if so then display a
+			//message
+			if(patientName.length() == 0 || doctorName.length() == 0 ||
+					radiologist.length() == 0 || testType.length() == 0 ||
+					testType.length() == 0 || diagnosis.length() == 0 ||
+					description.length() == 0){
+				out.println("<center><p><b> One or More Necessary Fields Not" +
+						"Entered!!</b></p></center>");
+				return;
+			}
 			tempday = (request.getParameter("pdd")).trim();
 			tempyr = (request.getParameter("pdy")).trim();
 			tempmon = (request.getParameter("pdm")).trim();
@@ -69,6 +83,7 @@
 
 			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
 					.concat(tempyr);
+			
 			String sql = "INSERT INTO radiology_record VALUES(" + ID + ", '"
 					+ patientName + "', '" + doctorName + "', '" + radiologist
 					+ "', '" + testType + "', '" + pres_date + "', '"
@@ -83,11 +98,13 @@
 			UserConnection.getConnection().getConn().commit();
 			record = new Record(ID);
 			String checked = request.getParameter("addPic");			
+			
+			//checks if the user checked add photo option or not
+			//if yes the user is taken to upload photo page
 			if(checked != null){
 				request.getSession().setAttribute("record", record);
 				response.sendRedirect("upload.jsp");
 			}
-			//addImg(ID, request, response, out);
 		} catch (Exception ex) {
 			try {
 				out.println("<br /> <br />");
@@ -98,123 +115,12 @@
 
 	}
 
-	public void addImg(Integer recordID, HttpServletRequest request,
-			HttpServletResponse response, JspWriter out) {
-
-		try {
-
-			DiskFileUpload fu = new DiskFileUpload();
-			List FileItems = fu.parseRequest(request);
-
-			Iterator i = FileItems.iterator();
-			FileItem item = (FileItem) i.next();
-			while (i.hasNext() && item.isFormField()) {
-				item = (FileItem) i.next();
-			}
-			int pic_id = recordID + 1;
-
-			//Get the image stream
-			InputStream instream = item.getInputStream();
-
-			BufferedImage img = ImageIO.read(instream);
-			BufferedImage thumbNail = shrink(img, 10);
-			BufferedImage largeimg = grow(img, 2);
-
-			ResultSet rset = null;
-			Statement stmt = null;
-
-			String sql = "INSERT INTO pacs_images VALUES(" + recordID + ", "
-					+ pic_id + ",empty_blob(),empty_blob(),empty_blob())";
-
-			stmt = UserConnection.getConnection().getConn().createStatement();
-			stmt.executeQuery(sql);
-
-			sql = "SELECT * FROM pacs_images WHERE pic_id = " + pic_id
-					+ " FOR UPDATE";
-			rset = null;
-			rset = stmt.executeQuery(sql);
-			rset.next();
-			BLOB myblob = ((OracleResultSet) rset).getBLOB(3);
-			BLOB myblob2 = ((OracleResultSet) rset).getBLOB(4);
-			BLOB myblob3 = ((OracleResultSet) rset).getBLOB(5);
-
-			//Write the image to the blob object
-			OutputStream outstream = myblob.getBinaryOutputStream();
-			ImageIO.write(thumbNail, "jpg", outstream);
-
-			int size = myblob.getBufferSize();
-			byte[] buffer = new byte[size];
-			int length = -1;
-			while ((length = instream.read(buffer)) != -1)
-				outstream.write(buffer, 0, length);
-
-			outstream.close();
-
-			//Write the image to the blob object
-			OutputStream outstream2 = myblob2.getBinaryOutputStream();
-			ImageIO.write(img, "jpg", outstream2);
-
-			int size2 = myblob2.getBufferSize();
-			byte[] buffer2 = new byte[size2];
-			int length2 = -1;
-			while ((length2 = instream.read(buffer2)) != -1)
-				outstream2.write(buffer2, 0, length2);
-
-			outstream2.close();
-
-			//Write the image to the blob object
-			OutputStream outstream3 = myblob3.getBinaryOutputStream();
-			ImageIO.write(largeimg, "jpg", outstream3);
-
-			int size3 = myblob3.getBufferSize();
-			byte[] buffer3 = new byte[size3];
-			int length3 = -1;
-			while ((length = instream.read(buffer3)) != -1)
-				outstream3.write(buffer3, 0, length3);
-
-			instream.close();
-			outstream3.close();
-
-			stmt.close();
-			UserConnection.getConnection().getConn().commit();
-
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-
-		}
-
-	}
-
-	public static BufferedImage shrink(BufferedImage image, int n) {
-
-		int w = image.getWidth() / n;
-		int h = image.getHeight() / n;
-
-		BufferedImage shrunkImage = new BufferedImage(w, h, image.getType());
-
-		for (int y = 0; y < h; ++y) {
-			for (int x = 0; x < w; ++x)
-				shrunkImage.setRGB(x, y, image.getRGB(x * n, y * n));
-		}
-		return shrunkImage;
-	}
-
-	public static BufferedImage grow(BufferedImage image, int n) {
-
-		int w = image.getWidth() * n;
-		int h = image.getHeight() * n;
-
-		BufferedImage growImage = new BufferedImage(w, h, image.getType());
-
-		for (int y = 0; y < h; ++y)
-			for (int x = 0; x < w; ++x)
-				growImage.setRGB(x, y, image.getRGB(x * n, y * n));
-
-		return growImage;
-	}%>
+	%>
 
 <%
 	request.getSession().removeAttribute("record");
+
+	//checks if the user logged on is a radiologist
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
 		response.sendRedirect("Home.jsp");

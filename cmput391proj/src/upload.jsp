@@ -1,16 +1,22 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
+<%@ page import="cmput391.*" %>
+<%
+	Record record = (Record) request.getSession().getAttribute("record");
+	if(record == null) {
+		response.sendRedirect("addRecords.jsp");
+	}%>
 <head>
 <title>Upload image</title>
 </head>
 <body>
 
-	<h4>Click Submit To Upload A Picture and Finish To Go Back</h4>
+	<h4>Click Submit To Upload A Picture and Return to return to add records</h4>
 	<p>
 	<hr>
 	Please input or select the path of the image!
 	<form name="upload-image" method="POST" enctype="multipart/form-data"
-		action="parsePicture.jsp">
+		action="parseImage.jsp">
 		<table>
 			<tr>
 				<th>File path:</th>
@@ -18,7 +24,11 @@
 			</tr>
 			<tr>
 				<td ALIGN=CENTER COLSPAN="2"><input type="submit"
-					name="rsubmit" value="Upload"></td>
+					name=".submit" value="Upload"></td>
+			</tr>
+			<tr>
+				<td ALIGN=CENTER COLSPAN="2"><input type="button"
+					 value="Return" onclick="location.href='addRecords.jsp'"></td>
 			</tr>
 		</table>
 	</form>

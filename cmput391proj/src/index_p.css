@@ -5,36 +5,65 @@
 	font            : bold 10pt 'Verdana', 'Lucida Grande', Arial, sans-serif;
 	color           : #c0c0c0;
 	}
-img#e4              { /* cmput391001003.jpg */
+.cc02               { /* Common */
+	font            : 18pt 'Arial Rounded MT Bold', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc03               { /* Common */
+	font            : bold 12pt 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+	color           : #000000;
+	}
+img#e7              { /* cmput391001003.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 102.00pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e3              { /* Home */
+div#e6              { /* Home */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 111.75pt;
 	width           :  56.25pt;
 	height          :  17.25pt;
 	}
-img#e2              { /* cmput391001001.jpg */
+img#e5              { /* cmput391001001.jpg */
 	position        : absolute;
 	left            :  21.00pt;
 	top             : 149.25pt;
 	width           :  90.75pt;
 	height          :  42.00pt;
 	}
-div#e1              { /* Login */
+div#e4              { /* Login */
 	position        : absolute;
 	left            :  51.75pt;
 	top             : 159.00pt;
 	width           :  56.25pt;
 	height          :  26.25pt;
 	}
+div#e3              { /* WELCOME TO CMPUT391 Grou... */
+	position        : absolute;
+	left            : 174.75pt;
+	top             :  82.50pt;
+	width           : 393.00pt;
+	height          :  91.50pt;
+	}
+div#e2              { /* To login simple click on... */
+	position        : absolute;
+	left            : 192.75pt;
+	top             : 175.50pt;
+	width           : 390.75pt;
+	height          :  42.75pt;
+	}
+div#e1              { /* To logout simple click o... */
+	position        : absolute;
+	left            : 216.00pt;
+	top             : 258.00pt;
+	width           : 304.50pt;
+	height          :  42.75pt;
+	}
 body#page           { /* Page Body */
-	background-color: #c0c0c0;
+	background-color: #ffffff;
 	}
 
 

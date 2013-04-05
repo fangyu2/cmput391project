@@ -15,51 +15,51 @@
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 <form method="post">
-	<a href="adminUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[6],Img23,'cmput391_004.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[6],Img23,0,0)">
-		<img id="e23" name="e23" src="cmput391008011.jpg" title="" alt="cmput391008011.jpg" align="right" border="0"></a>
-	<div id="e22" class="cc19">
+	<a href="adminUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[6],Img24,'cmput391_004.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[6],Img24,0,0)">
+		<img id="e24" name="e24" src="cmput391008011.jpg" title="" alt="cmput391008011.jpg" align="right" border="0"></a>
+	<div id="e23" class="cc19">
 		<a href="adminUser.jsp">
 		Home</a>
 	</div>
-	<a href="adminEditUsers.jsp" onmouseover="OnWeOver(0,0,0,IDP[5],Img21,'cmput391_005.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[5],Img21,0,0)">
-		<img id="e21" name="e21" src="cmput391008009.jpg" title="" alt="cmput391008009.jpg" align="right" border="0"></a>
-	<div id="e20" class="cc19">
-		<a href="adminEditUsers.jsp">
+	<a href="adminEditProfile.jsp" onmouseover="OnWeOver(0,0,0,IDP[5],Img22,'cmput391_005.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[5],Img22,0,0)">
+		<img id="e22" name="e22" src="cmput391008009.jpg" title="" alt="cmput391008009.jpg" align="right" border="0"></a>
+	<div id="e21" class="cc19">
+		<a href="adminEditProfile.jsp">
 		Edit Profile</a>
 	</div>
-	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img19,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img19,0,0)">
-		<img id="e19" name="e19" src="cmput391008007.jpg" title="" alt="cmput391008007.jpg" align="right" border="0"></a>
-	<div id="e18" class="cc19">
+	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img20,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img20,0,0)">
+		<img id="e20" name="e20" src="cmput391008007.jpg" title="" alt="cmput391008007.jpg" align="right" border="0"></a>
+	<div id="e19" class="cc19">
 		<a href="Home.jsp">
 		Logout</a>
 	</div>
-	<a href="manageUsers.jsp" onmouseover="OnWeOver(0,0,0,IDP[3],Img17,'cmput391_006.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[3],Img17,0,0)">
-		<img id="e17" name="e17" src="cmput391008005.jpg" title="" alt="cmput391008005.jpg" align="right" border="0"></a>
-	<div id="e16" class="cc19">
+	<a href="manageUsers.jsp" onmouseover="OnWeOver(0,0,0,IDP[3],Img18,'cmput391_006.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[3],Img18,0,0)">
+		<img id="e18" name="e18" src="cmput391008005.jpg" title="" alt="cmput391008005.jpg" align="right" border="0"></a>
+	<div id="e17" class="cc19">
 		<a href="manageUsers.jsp">
 		Manage Users</a>
 	</div>
-	<a href="viewLogs.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img15,'cmput391_007.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img15,0,0)">
-		<img id="e15" name="e15" src="cmput391008003.jpg" title="" alt="cmput391008003.jpg" align="right" border="0"></a>
-	<div id="e14" class="cc19">
+	<a href="viewLogs.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img16,'cmput391_007.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img16,0,0)">
+		<img id="e16" name="e16" src="cmput391008003.jpg" title="" alt="cmput391008003.jpg" align="right" border="0"></a>
+	<div id="e15" class="cc19">
 		<a href="viewLogs.jsp">
 		View Logs</a>
 	</div>
-	<a href="adminSearch.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img13,'cmput391_008.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img13,0,0)">
-		<img id="e13" name="e13" src="cmput391008001.jpg" title="" alt="cmput391008001.jpg" align="right" border="0"></a>
-	<div id="e12" class="cc19">
+	<a href="adminSearch.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img14,'cmput391_008.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img14,0,0)">
+		<img id="e14" name="e14" src="cmput391008001.jpg" title="" alt="cmput391008001.jpg" align="right" border="0"></a>
+	<div id="e13" class="cc19">
 		<a href="adminSearch.jsp">
 		Search</a>
 	</div>
-	<input id="e11" class="cc20" type="text" name="text_box" size="23">
-	<input id="e10" class="cc21" type="button" value="Search" onclick="alert('Button')">
-	<div id="e9" class="cc22">
-		Enter Patient Name:
+	<input id="e12" class="cc20" type="text" name="text_box" size="24">
+	<input id="e11" class="cc21" type="button" value="Search" onclick="alert('Button')">
+	<div id="e10" class="cc22">
+		Enter Search Term(s):
 	</div>
-	<div id="e8" class="cc23">
+	<div id="e9" class="cc23">
 		From:
 	</div>
-	<select id="e7" class="cc21" size="1" name="Date_Day" title="Day">
+	<select id="e8" class="cc21" size="1" name="Date_Day" title="Day">
 	<option> 01</option>
 	<option> 02</option>
 	<option> 03</option>
@@ -92,8 +92,8 @@
 	<option> 30</option>
 	<option> 31</option>
 	</select>
-	<select id="e6" class="cc21" size="1" name="Date_Month" title="Month">
-	<option> Jan</option>
+	<select id="e7" class="cc21" size="1" name="Date_Month" title="Month">
+<option> Jan</option>
 	<option> Feb</option>
 	<option> Mar</option>
 	<option> Apr</option>
@@ -106,7 +106,7 @@
 	<option> Nov</option>
 	<option> Dec</option>
 	</select>
-	<select id="e5" class="cc21" size="1" name="Date_Year" title="Year">
+	<select id="e6" class="cc21" size="1" name="Date_Year" title="Year">
 	<option> 03</option>
 	<option> 04</option>
 	<option> 05</option>
@@ -116,10 +116,10 @@
 	<option> 09</option>
 	<option> 10</option>
 	</select>
-	<div id="e4" class="cc23">
+	<div id="e5" class="cc23">
 		To:
 	</div>
-	<select id="e3" class="cc21" size="1" name="Date_Day" title="Day">
+	<select id="e4" class="cc21" size="1" name="Date_Day" title="Day">
 	<option> 01</option>
 	<option> 02</option>
 	<option> 03</option>
@@ -152,7 +152,7 @@
 	<option> 30</option>
 	<option> 31</option>
 	</select>
-	<select id="e2" class="cc21" size="1" name="Date_Month" title="Month">
+	<select id="e3" class="cc21" size="1" name="Date_Month" title="Month">
 	<option> Jan</option>
 	<option> Feb</option>
 	<option> Mar</option>
@@ -166,7 +166,7 @@
 	<option> Nov</option>
 	<option> Dec</option>
 	</select>
-	<select id="e1" class="cc21" size="1" name="Date_Year" title="Year">
+	<select id="e2" class="cc21" size="1" name="Date_Year" title="Year">
 	<option> 03</option>
 	<option> 04</option>
 	<option> 05</option>
@@ -175,6 +175,10 @@
 	<option> 08</option>
 	<option> 09</option>
 	<option> 10</option>
+	</select>
+	<select id="e1" class="cc21" size="1" name="combo_box" onchange="alert('Combo_Box'+'['+this.selectedIndex+']')">
+	<option> 1. Acending</option>
+	<option> 2. Descending</option>
 	</select>
 </form>
 </body>

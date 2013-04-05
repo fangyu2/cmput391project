@@ -20,7 +20,6 @@ public class UserConnection {
 		catch(Exception ex) {
 			System.out.println("<hr>" + ex.getMessage() + "<hr>");
 		}
-
 		try {
 			conn = DriverManager.getConnection(dbstring, userName, userPassword);
 			conn.setAutoCommit(false);
@@ -39,5 +38,14 @@ public class UserConnection {
 
 	public Connection getConn() {
 		return conn;
+	}
+	
+	public void closeConn() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
