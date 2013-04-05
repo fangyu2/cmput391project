@@ -12,6 +12,9 @@ public class UserConnection {
 	private String userPassword = "";
 
 
+	/**
+	 * start the connection when userconnection class
+	 */
 	protected UserConnection() {
 		try {
 			Class drvClass = Class.forName(driverName);
@@ -29,6 +32,10 @@ public class UserConnection {
 		}
 	}
 
+	/**
+	 * 
+	 * @return a user connection singleton
+	 */
 	public static UserConnection getConnection() {
 		if(userConnection == null) {
 			userConnection = new UserConnection();
@@ -36,16 +43,12 @@ public class UserConnection {
 		return userConnection;
 	}
 
+	/**
+	 * 
+	 * @return the sql connection
+	 */
 	public Connection getConn() {
 		return conn;
 	}
 	
-	public void closeConn() {
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
