@@ -13,21 +13,14 @@
 	private String Address = "";
 	private String uFirstName = "";
 	private String uLastName = "";
-	private boolean existingEmail = true;
 
 	//retrieves the users information that is currently logged in
-	//if checkforuseremail is true then we are only searching whether a user
-	//already exists with the email
-	public void queryUser(boolean checkForUser) {
+	public void queryUser() {
 		ResultSet rset = null;
 		Statement stmt = null;
 		String sql;
 
-		if (!checkForUser) {
-			sql = "select * from persons where user_name = \'" + uName + "\'";
-		} else {
-			sql = "select * from persons where email = \'" + uEmail + "\'";
-		}
+		sql = "select * from persons where user_name = \'" + uName + "\'";
 
 		try {
 			stmt = UserConnection
@@ -36,16 +29,6 @@
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 							ResultSet.CONCUR_READ_ONLY);
 			rset = stmt.executeQuery(sql);
-
-			//if checkforuseremail is true then we check if a user already exists
-			//with such email
-			if (!rset.isBeforeFirst()) {
-				existingEmail = false;
-				if (stmt != null) {
-					stmt.close();
-				}
-				return;
-			}
 
 			while (rset != null && rset.next()) {
 				uFirstName = (rset.getString(2)).trim();
@@ -97,6 +80,34 @@
 		}
 	}
 
+	//if checkforuseremail is true then we check if a user already exists
+	//with such email
+	public boolean checkForExistingEmail() {
+		ResultSet rset = null;
+		Statement stmt = null;
+		String sql = "select * from persons where email = \'" + uEmail + "\'";
+
+		try {
+			stmt = UserConnection
+					.getConnection()
+					.getConn()
+					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+							ResultSet.CONCUR_READ_ONLY);
+			rset = stmt.executeQuery(sql);
+
+			if (!rset.isBeforeFirst()) {
+				if (stmt != null) {
+					stmt.close();
+				}
+				return false;
+			}
+
+			return true;
+		} catch (Exception ex) {
+
+		}
+	}
+
 	//updates the password with the provided when called
 	public void updatePassword() {
 		ResultSet rset = null;
@@ -143,7 +154,7 @@
 				response.sendRedirect("Home.jsp");
 		}
 		uName = loggedUser.getUserName();
-		queryUser(false);
+		queryUser();
 		if (request.getParameter("bSubmit") != null) {
 			uPass = request.getParameter("password").trim();
 			verifyUPass = request.getParameter("veripassword").trim();
@@ -166,11 +177,10 @@
 			temp = request.getParameter("newemail").trim();
 			verifyUEmail = request.getParameter("renewemail").trim();
 			if (!temp.equals("") && (verifyUEmail.compareTo(temp) == 0)) {
-				
+
 				//query the data base to see if a user already exist with the
 				//specified email
-				queryUser(true);
-				if (!existingEmail) {
+				if (!checkForExistingEmail()) {
 					uEmail = temp;
 				} else {
 					out.println("<center><p><b> Email Already Exist </b></p></center");
