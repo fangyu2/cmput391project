@@ -39,6 +39,7 @@ if(request.getParameter("rSubmit")!=null){
 }
 
 try {
+
 	out.println("<center>");
 	out.println("<form method=POST>");
 	out.println("<h3>Enter a user you would like to see info for</h3>");
@@ -126,6 +127,18 @@ public void queryUser(String username, HttpServletRequest request, HttpServletRe
 				
 				}
 			if(classID.equals("r")){
+				out.println("<center>");
+				out.println(username);
+				String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone " +
+						"from users u join persons p on u.user_name = p.user_name where u.user_name = '"+username+"'";
+				Statement stmt2 = null;
+				ResultSet rset2 = null;
+				stmt2 = UserConnection.getConnection().getConn().createStatement();
+				rset2 = stmt.executeQuery(sql2);
+				displayResultSet(out, rset2, request);
+				}
+			
+			if(classID.equals("a")){
 				out.println("<center>");
 				out.println(username);
 				String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone " +
