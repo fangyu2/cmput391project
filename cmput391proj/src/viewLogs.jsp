@@ -1,64 +1,232 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-	<title> ViewLogs </title>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<meta http-equiv="Content-Style-Type" content="text/css;">
-	<link rel="stylesheet" href="cmput391_g.css" type="text/css" media="screen,projection,print">	<!--// Document Style //-->
-	<link rel="stylesheet" href="cmput391_007_p.css" type="text/css" media="screen,projection,print">	<!--// Page Style //-->
-	<script src="cmput391_g.js" type="text/javascript"></script>		<!--// Document Script //-->
-	<script src="cmput391_007_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
+<title>ViewLogs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css;">
+<link rel="stylesheet" href="cmput391_g.css" type="text/css"
+	media="screen,projection,print">
+<!--// Document Style //-->
+<link rel="stylesheet" href="cmput391_007_p.css" type="text/css"
+	media="screen,projection,print">
+<!--// Page Style //-->
+<script src="cmput391_g.js" type="text/javascript"></script>
+<!--// Document Script //-->
+<script src="cmput391_007_a.js" type="text/javascript"></script>
+<!--// Motion Script //-->
 </head>
 
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
-<form method="post">
-	<a href="adminUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[6],Img14,'cmput391_004.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[6],Img14,0,0)">
-		<img id="e14" name="e14" src="cmput391007011.jpg" title="" alt="cmput391007011.jpg" align="right" border="0"></a>
-	<div id="e13" class="cc14">
-		<a href="adminUser.jsp">
-		Home</a>
-	</div>
-	<a href="adminEditProfile.jsp" onmouseover="OnWeOver(0,0,0,IDP[5],Img12,'cmput391_005.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[5],Img12,0,0)">
-		<img id="e12" name="e12" src="cmput391007009.jpg" title="" alt="cmput391007009.jpg" align="right" border="0"></a>
-	<div id="e11" class="cc14">
-		<a href="adminEditProfile.jsp">
-		Edit Profile</a>
-	</div>
-	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img10,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img10,0,0)">
-		<img id="e10" name="e10" src="cmput391007007.jpg" title="" alt="cmput391007007.jpg" align="right" border="0"></a>
-	<div id="e9" class="cc14">
-		<a href="Home.jsp">
-		Logout</a>
-	</div>
-	<a href="manageUsers.jsp" onmouseover="OnWeOver(0,0,0,IDP[3],Img8,'cmput391_006.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[3],Img8,0,0)">
-		<img id="e8" name="e8" src="cmput391007005.jpg" title="" alt="cmput391007005.jpg" align="right" border="0"></a>
-	<div id="e7" class="cc14">
-		<a href="manageUsers.jsp">
-		Manage Users</a>
-	</div>
-	<a href="viewLogs.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img6,'cmput391_007.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img6,0,0)">
-		<img id="e6" name="e6" src="cmput391007003.jpg" title="" alt="cmput391007003.jpg" align="right" border="0"></a>
-	<div id="e5" class="cc14">
-		<a href="viewLogs.jsp">
-		View Logs</a>
-	</div>
-	<a href="adminSearch.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img4,'cmput391_008.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img4,0,0)">
-		<img id="e4" name="e4" src="cmput391007001.jpg" title="" alt="cmput391007001.jpg" align="right" border="0"></a>
-	<div id="e3" class="cc14">
-		<a href="adminSearch.jsp">
-		Search</a>
-	</div>
-	<select id="e2" class="cc15" name="select_list" size="15" onchange="alert('List_Field'+'['+this.selectedIndex+']')">
-	<option> 1. List Field</option>
-	<option> 2. List Field</option>
-	<option> 3. List Field</option>
-	</select>
-	<div id="e1" class="cc16">
-		User Logs:
-	</div>
-</form>
+	<form method="post">
+		<a href="cmput391_004.htm"
+			onmouseover="OnWeOver(0,0,0,IDP[6],Img31,'cmput391_004.htm',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[6],Img31,0,0)"> <img id="e31"
+			name="e31" src="cmput391007011.jpg" title="" alt="cmput391007011.jpg"
+			align="right" border="0"></a>
+		<div id="e30" class="cc20">
+			<a href="index.html"> Home</a>
+		</div>
+		<a href="cmput391_005.htm"
+			onmouseover="OnWeOver(0,0,0,IDP[5],Img29,'cmput391_005.htm',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[5],Img29,0,0)"> <img id="e29"
+			name="e29" src="cmput391007009.jpg" title="" alt="cmput391007009.jpg"
+			align="right" border="0"></a>
+		<div id="e28" class="cc20">
+			<a href="cmput391_004.htm"> Edit Profile</a>
+		</div>
+		<a href="index.html"
+			onmouseover="OnWeOver(0,0,0,IDP[4],Img27,'index.html',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[4],Img27,0,0)"> <img id="e27"
+			name="e27" src="cmput391007007.jpg" title="" alt="cmput391007007.jpg"
+			align="right" border="0"></a>
+		<div id="e26" class="cc20">
+			<a href="index.html"> Logout</a>
+		</div>
+		<a href="cmput391_006.htm"
+			onmouseover="OnWeOver(0,0,0,IDP[3],Img25,'cmput391_006.htm',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[3],Img25,0,0)"> <img id="e25"
+			name="e25" src="cmput391007005.jpg" title="" alt="cmput391007005.jpg"
+			align="right" border="0"></a>
+		<div id="e24" class="cc20">
+			<a href="index.html"> Manage Users</a>
+		</div>
+		<a href="cmput391_007.htm"
+			onmouseover="OnWeOver(0,0,0,IDP[2],Img23,'cmput391_007.htm',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[2],Img23,0,0)"> <img id="e23"
+			name="e23" src="cmput391007003.jpg" title="" alt="cmput391007003.jpg"
+			align="right" border="0"></a>
+		<div id="e22" class="cc20">
+			<a href="cmput391_002.htm"> View Logs</a>
+		</div>
+		<a href="cmput391_008.htm"
+			onmouseover="OnWeOver(0,0,0,IDP[1],Img21,'cmput391_008.htm',1)"
+			onmouseout="OnWeOver(0,0,0,IDP[1],Img21,0,0)"> <img id="e21"
+			name="e21" src="cmput391007001.jpg" title="" alt="cmput391007001.jpg"
+			align="right" border="0"></a>
+		<div id="e20" class="cc20">
+			<a href="index.html"> Search</a>
+		</div>
+		<div id="e19" class="cc21">User Logs:</div>
+		<input id="e18" class="cc22" type="submit" value="Generate Report">
+		<input id="e17" class="cc23" type="text" name="text_box" size="23">
+		<select id="e16" class="cc22" size="1" name="Date_Day" title="Day">
+			<option>01</option>
+			<option>02</option>
+			<option>03</option>
+			<option>04</option>
+			<option>05</option>
+			<option>06</option>
+			<option>07</option>
+			<option>08</option>
+			<option>09</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+			<option>21</option>
+			<option>22</option>
+			<option>23</option>
+			<option>24</option>
+			<option>25</option>
+			<option>26</option>
+			<option>27</option>
+			<option>28</option>
+			<option>29</option>
+			<option>30</option>
+			<option>31</option>
+		</select> <select id="e15" class="cc22" size="1" name="Date_Month"
+			title="Month">
+			<option>Jan</option>
+			<option>Feb</option>
+			<option>Mar</option>
+			<option>Apr</option>
+			<option>May</option>
+			<option>Jun</option>
+			<option>Jul</option>
+			<option>Aug</option>
+			<option>Sept</option>
+			<option>Oct</option>
+			<option>Nov</option>
+			<option>Dec</option>
+		</select> <select id="e14" class="cc22" size="1" name="Date_Year" title="Year">
+			<option>03</option>
+			<option>04</option>
+			<option>05</option>
+			<option>06</option>
+			<option>07</option>
+			<option>08</option>
+			<option>09</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+			<option>21</option>
+			<option>22</option>
+			<option>23</option>
+		</select> <select id="e13" class="cc22" size="1" name="Date_Day" title="Day">
+			<option>01</option>
+			<option>02</option>
+			<option>03</option>
+			<option>04</option>
+			<option>05</option>
+			<option>06</option>
+			<option>07</option>
+			<option>08</option>
+			<option>09</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+			<option>21</option>
+			<option>22</option>
+			<option>23</option>
+			<option>24</option>
+			<option>25</option>
+			<option>26</option>
+			<option>27</option>
+			<option>28</option>
+			<option>29</option>
+			<option>30</option>
+			<option>31</option>
+		</select> <select id="e12" class="cc22" size="1" name="Date_Month"
+			title="Month">
+			<option>Jan</option>
+			<option>Feb</option>
+			<option>Mar</option>
+			<option>Apr</option>
+			<option>May</option>
+			<option>Jun</option>
+			<option>Jul</option>
+			<option>Aug</option>
+			<option>Sept</option>
+			<option>Oct</option>
+			<option>Nov</option>
+			<option>Dec</option>
+		</select> <select id="e11" class="cc22" size="1" name="Date_Year" title="Year">
+			<option>03</option>
+			<option>04</option>
+			<option>05</option>
+			<option>06</option>
+			<option>07</option>
+			<option>08</option>
+			<option>09</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
+			<option>16</option>
+			<option>17</option>
+			<option>18</option>
+			<option>19</option>
+			<option>20</option>
+			<option>21</option>
+			<option>22</option>
+			<option>23</option>
+		</select>
+		<div id="e10" class="cc22">From:</div>
+		<div id="e9" class="cc22">To:</div>
+		<div id="e8" class="cc22">Patient Name:</div>
+		<select id="e7" class="cc22" name="select_list" size="26"
+			onchange="alert('List_Field'+'['+this.selectedIndex+']')">
+			<option>1. List Field</option>
+			<option>2. List Field</option>
+			<option>3. List Field</option>
+		</select> <input id="e6" class="cc23" type="text" name="text_box" size="23">
+		<div id="e5" class="cc22">Test Type:</div>
+		<select id="e4" class="cc22" size="1" name="combo_box"
+			onchange="alert('Combo_Box'+'['+this.selectedIndex+']')">
+			<option>1. Weekly</option>
+			<option>2. Monthly</option>
+			<option>3. Yearly</option>
+		</select> <input id="e3" class="cc22" type="submit" value="Drill Down">
+		<input id="e2" class="cc22" type="submit" value="Roll Up">
+		<div id="e1" class="cc22">&nbsp;View Mode:</div>
+	</form>
 </body>
 </html>
