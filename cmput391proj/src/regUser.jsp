@@ -5,7 +5,8 @@
 <%@ page import="java.sql.*,cmput391.*"%>
 <%!private User loggedUser;%>
 
-<%	//checks whether the user logged in is a radiologist
+<%
+	//checks whether the user logged in is a radiologist
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
 		response.sendRedirect("Home.jsp");
@@ -33,30 +34,39 @@
 
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">
-	<a href="regUser.jsp" onmouseover="OnWeOver(0,0,0,IDP[4],Img9,'cmput391_003.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[4],Img9,0,0)">
-		<img id="e9" name="e9" src="cmput391003007.jpg" title="" alt="cmput391003007.jpg" align="right" border="0"></a>
+	<a href="regUser.jsp"
+		onmouseover="OnWeOver(0,0,0,IDP[4],Img9,'cmput391_003.htm',1)"
+		onmouseout="OnWeOver(0,0,0,IDP[4],Img9,0,0)"> <img id="e9"
+		name="e9" src="cmput391003007.jpg" title="" alt="cmput391003007.jpg"
+		align="right" border="0"></a>
 	<div id="e8" class="cc06">
-		<a href="regUser.jsp">
-		Home</a>
+		<a href="regUser.jsp"> Home</a>
 	</div>
-	<a href="regEditProfile.jsp" onmouseover="OnWeOver(0,0,0,IDP[3],Img7,'cmput391_013.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[3],Img7,0,0)">
-		<img id="e7" name="e7" src="cmput391003005.jpg" title="" alt="cmput391003005.jpg" align="right" border="0"></a>
+	<a href="regEditProfile.jsp"
+		onmouseover="OnWeOver(0,0,0,IDP[3],Img7,'cmput391_013.htm',1)"
+		onmouseout="OnWeOver(0,0,0,IDP[3],Img7,0,0)"> <img id="e7"
+		name="e7" src="cmput391003005.jpg" title="" alt="cmput391003005.jpg"
+		align="right" border="0"></a>
 	<div id="e6" class="cc06">
-		<a href="regEditProfile.jsp">
-		Edit Profile</a>
+		<a href="regEditProfile.jsp"> Edit Profile</a>
 	</div>
-	<a href="Home.jsp" onmouseover="OnWeOver(0,0,0,IDP[2],Img5,'index.html',1)" onmouseout="OnWeOver(0,0,0,IDP[2],Img5,0,0)">
-		<img id="e5" name="e5" src="cmput391003003.jpg" title="" alt="cmput391003003.jpg" align="right" border="0"></a>
+	<a href="Home.jsp"
+		onmouseover="OnWeOver(0,0,0,IDP[2],Img5,'index.html',1)"
+		onmouseout="OnWeOver(0,0,0,IDP[2],Img5,0,0)"> <img id="e5"
+		name="e5" src="cmput391003003.jpg" title="" alt="cmput391003003.jpg"
+		align="right" border="0"></a>
 	<div id="e4" class="cc06">
-		<a href="Home.jsp">
-		Logout</a>
+		<a href="Home.jsp"> Logout</a>
 	</div>
-	<a href="regSearch.jsp" onmouseover="OnWeOver(0,0,0,IDP[1],Img3,'cmput391_014.htm',1)" onmouseout="OnWeOver(0,0,0,IDP[1],Img3,0,0)">
-		<img id="e3" name="e3" src="cmput391003001.jpg" title="" alt="cmput391003001.jpg" align="right" border="0"></a>
+	<a href="regSearch.jsp"
+		onmouseover="OnWeOver(0,0,0,IDP[1],Img3,'cmput391_014.htm',1)"
+		onmouseout="OnWeOver(0,0,0,IDP[1],Img3,0,0)"> <img id="e3"
+		name="e3" src="cmput391003001.jpg" title="" alt="cmput391003001.jpg"
+		align="right" border="0"></a>
 	<div id="e2" class="cc06">
-		<a href="regSearch.jsp">
-		Search</a>
+		<a href="regSearch.jsp"> Search</a>
 	</div>
-	<input id="e1" class="cc07" type="button" value="Help" onclick="alert('Button')">
+	<input id="e1" class="cc07" type="button" value="Help"
+		onclick="location.href='help.jsp'">
 </body>
 </html>

@@ -13,6 +13,7 @@
 	<script src="index_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
 <%
+request.getSession().removeAttribute("record");
 request.getSession().removeAttribute("loggedUser"); %>
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">

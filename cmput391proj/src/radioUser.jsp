@@ -6,6 +6,7 @@
 <%!private User loggedUser;%>
 
 <%
+request.getSession().removeAttribute("record");
 	//checks whether the logged in user is a radiologist or not
 	loggedUser = (User) request.getSession().getAttribute("loggedUser");
 	if (loggedUser == null) {
@@ -75,6 +76,6 @@
 		<a href="radioSearch.jsp"> Search</a>
 	</div>
 	<input id="e1" class="cc27" type="button" value="Help"
-		onclick="alert('Button')">
+		onclick="location.href='help.jsp'">
 </body>
 </html>

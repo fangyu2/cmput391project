@@ -327,7 +327,7 @@
 		<div id="e4" class="cc09">To:</div>
 		<div id="e3" class="cc09">Diagnosis:</div>
 		<input id="e1" class="cc11" type="button" value="Help"
-			onclick="alert('Button')">
+			onclick="location.href='help.jsp'">
 	</form>
 </body>
 </html>

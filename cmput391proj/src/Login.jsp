@@ -76,7 +76,8 @@
 		}
 	}%>
 
-<%	UserConnection.getConnection();
+<% request.getSession().removeAttribute("record");	
+UserConnection.getConnection();
 	request.getSession().removeAttribute("loggedUser");
 if(request.getParameter("bSubmit")!=null)
 {
