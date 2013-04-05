@@ -52,11 +52,8 @@ implements SingleThreadModel {
       /*
        *   to execute the given query
        */
-      //Connection conn = null;
       try {
-         //conn = getConnected();
-         //Statement stmt = conn.createStatement();
-         //ResultSet rset = stmt.executeQuery(query);
+
          Statement stmt = null;
          ResultSet rset = null;
 

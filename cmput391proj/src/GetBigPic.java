@@ -8,7 +8,9 @@ import java.text.*;
 import java.net.*;
 import cmput391.*;
 
-/** This servlet is mostly the same as the provided example, except  
+/** This servlet is mostly the same as the provided example, except we import our
+ * userconnection class into it, to simpliy the opening and closing of the connections
+ * to the database.  
  * 
  * 
  *  This servlet sends one picture stored in the table below to the client 
@@ -51,11 +53,8 @@ implements SingleThreadModel {
       /*
        *   to execute the given query
        */
-      //Connection conn = null;
       try {
-         //conn = getConnected();
-         //Statement stmt = conn.createStatement();
-         //ResultSet rset = stmt.executeQuery(query);
+
          Statement stmt = null;
          ResultSet rset = null;
 
