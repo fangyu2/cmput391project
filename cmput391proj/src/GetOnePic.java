@@ -3,9 +3,11 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
+
 import oracle.jdbc.driver.*;
 import java.text.*;
 import java.net.*;
+import cmput391.*;
 
 /**
  *  This servlet sends one picture stored in the table below to the client 
@@ -22,81 +24,63 @@ import java.net.*;
  *
  */
 public class GetOnePic extends HttpServlet 
-    implements SingleThreadModel {
+implements SingleThreadModel {
 
-    /**
-     *    This method first gets the query string indicating PHOTO_ID,
-     *    and then executes the query 
-     *          select image from yuan.photos where photo_id = PHOTO_ID   
-     *    Finally, it sends the picture to the client
-     */
+   /**
+    *    This method first gets the query string indicating PHOTO_ID,
+    *    and then executes the query 
+    *          select image from yuan.photos where photo_id = PHOTO_ID   
+    *    Finally, it sends the picture to the client
+    */
 
-    public void doGet(HttpServletRequest request,
-		      HttpServletResponse response)
-	throws ServletException, IOException {
-	
-	//  construct the query  from the client's QueryString
-	String picid  = request.getQueryString();
-	String query;
+   public void doGet(HttpServletRequest request,
+         HttpServletResponse response)
+               throws ServletException, IOException {
 
-	if ( picid.startsWith("big") )  
-	    query = 
-	     "select full_size from pacs_images where image_id=" + picid.substring(3);
-	else
-	    query = "select thumbnail from pacs_images where image_id=" + picid;
+      //  construct the query  from the client's QueryString
+      String picid  = request.getQueryString();
+      String query;
 
-	ServletOutputStream out = response.getOutputStream();
+      if ( picid.startsWith("big") )  
+         query = 
+         "select full_size from pacs_images where image_id=" + picid.substring(3);
+      else
+         query = "select thumbnail from pacs_images where image_id=" + picid;
 
-	/*
-	 *   to execute the given query
-	 */
-	Connection conn = null;
-	try {
-	    conn = getConnected();
-	    Statement stmt = conn.createStatement();
-	    ResultSet rset = stmt.executeQuery(query);
+      ServletOutputStream out = response.getOutputStream();
 
-	    if ( rset.next() ) {
-		response.setContentType("image/jpg");
-		InputStream input = rset.getBinaryStream(1);	    
-		int imageByte;
-		while((imageByte = input.read()) != -1) {
-		    out.write(imageByte);
-		}
-		input.close();
-	    } 
-	    else 
-		out.println("no picture available");
-	} catch( Exception ex ) {
-	    out.println(ex.getMessage() );
-	}
-	// to close the connection
-	finally {
-	    try {
-		conn.close();
-	    } catch ( SQLException ex) {
-		out.println( ex.getMessage() );
-	    }
-	}
-    }
+      /*
+       *   to execute the given query
+       */
+      //Connection conn = null;
+      try {
+         //conn = getConnected();
+         //Statement stmt = conn.createStatement();
+         //ResultSet rset = stmt.executeQuery(query);
+         Statement stmt = null;
+         ResultSet rset = null;
 
-    /*
-     *   Connect to the specified database
-     */
-    private Connection getConnected() throws Exception {
+         stmt = UserConnection.getConnection().getConn().createStatement();
+         rset = stmt.executeQuery(query);
 
-	String username = "jdemery";
-	String password = "jim12345";
-        /* one may replace the following for the specified database */
-	String dbstring = "jdbc:oracle:thin:@gwynne.cs.ualberta.ca:1521:CRS";
-	String driverName = "oracle.jdbc.driver.OracleDriver";
+         if ( rset.next() ) {
+            response.setContentType("image/jpg");
+            InputStream input = rset.getBinaryStream(1);	    
+            int imageByte;
+            while((imageByte = input.read()) != -1) {
+               out.write(imageByte);
+            }
+            input.close();
+         } 
+         else 
+            out.println("no picture available");
 
-	/*
-	 *  to connect to the database
-	 */
-	Class drvClass = Class.forName(driverName); 
-	DriverManager.registerDriver((Driver) drvClass.newInstance());
-	return( DriverManager.getConnection(dbstring,username,password) );
-    }
+         stmt.close();
+      } catch( Exception ex ) {
+         out.println(ex.getMessage() );
+      }
+
+   }
+
 }
 
