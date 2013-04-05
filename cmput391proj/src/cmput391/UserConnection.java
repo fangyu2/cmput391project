@@ -2,6 +2,19 @@ package cmput391;
 
 import java.sql.*;
 
+
+/*
+ * This class is responsible for creating our connections in all of our 
+ * pages, so we aren't required to specifically enter in database 
+ * connections and drivers etc. 
+ * 
+ * To create a connection using this class we simply invoke:
+ *    stmt = UserConnection.getConnection().getConn().createStatement();
+ * and to close the connection we use:
+ *    stmt.close();
+ * 
+ */
+
 public class UserConnection {
 
 	public static UserConnection userConnection = null;

@@ -1,5 +1,11 @@
 package cmput391;
 
+/*
+ * Used to store the recordID that the radiologist has uploaded
+ * allowing for the images they upload after to use the same recordID
+ * 
+ */
+
 public class Record {
 	
 	private int recordID;

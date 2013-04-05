@@ -16,6 +16,8 @@
 <%!   private User loggedUser;
 private String uName = "";
 
+//parses the filled out form information to display the appropriate results for the users selected search
+//this method calls the sqlBuilder method to generate the right sql select statement
 public void search(HttpServletRequest request,
       HttpServletResponse response, JspWriter out){
    try {
@@ -32,7 +34,7 @@ public void search(HttpServletRequest request,
       String tempmon = "";
 
 
-
+//simple check to see if the user is performing a date search or not
       if (dateSearch != 0) {
 
 
@@ -51,9 +53,10 @@ public void search(HttpServletRequest request,
                .concat(tempyr);
       }
 
-
+//breaks the users input into tokens to pase each string individually
       StringTokenizer queryTokens = new StringTokenizer(search);
 
+//builds the required sql select statement
       sql = sqlBuilder(dateSearch, sort, start_date, end_date, queryTokens, out);
 
       Statement stmt = null;
@@ -65,6 +68,7 @@ public void search(HttpServletRequest request,
             .createStatement();
       rset = stmt.executeQuery(sql);
 
+      //blank space to format the page for the table properly
       try{
          int i = 11;
          for(int n = 0; n<i; n++){
@@ -106,7 +110,7 @@ public void search(HttpServletRequest request,
          out.println("</tr>");
 
          /*
-          *   generate answers, one tuple at a time
+          *   generate answers, one tuple at a time, including all the images stored for each recordID
           */
          while (rset.next() ) {
 
@@ -162,6 +166,7 @@ public void search(HttpServletRequest request,
 
 }
 
+//parses the rest of the user input and ensures the right select statement is generated
 public String sqlBuilder(int dateSearch, String sort, String s_date, String e_date, StringTokenizer query, JspWriter out) {
    String sql = "";
    try {    

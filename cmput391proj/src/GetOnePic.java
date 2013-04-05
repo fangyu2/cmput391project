@@ -48,7 +48,7 @@ implements SingleThreadModel {
       //  construct the query  from the client's QueryString
       String picid  = request.getQueryString();
       String query;
-      
+
       //query to return the full_size image to the user
       if ( picid.startsWith("big") )  
          query = 

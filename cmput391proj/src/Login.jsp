@@ -20,69 +20,94 @@
 
 <%@ page import="java.sql.*,cmput391.*,java.util.UUID"%>
 
-<%! private User loggedUser;
-%>
+<%!private User loggedUser;%>
 
-<%!public void openPage(String uClass, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-	try{
-		request.getSession().setAttribute("loggedUser", loggedUser);
-	if (uClass.equals("a")) {
-			response.sendRedirect("adminUser.jsp");
-		} else if (uClass.equals("p") || uClass.equals("d")) {
-			response.sendRedirect("regUser.jsp");
-		} else if (uClass.equals("r")) {
-			response.sendRedirect("radioUser.jsp");
-		}
-	}
-	catch(Exception ex) {
-		
-		System.out.println("" + ex.getMessage() +"");
-	}
-}
+<%!
+//Opens up the associated user homepage depending on what user class they are logged in as
+	public void openPage(String uClass, HttpServletRequest request,
+         HttpServletResponse response, JspWriter out)
+   {
 
-	public void queryUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-		String uName = request.getParameter("userName").trim();
-		String uPass = request.getParameter("password").trim();
-		String tempClass = null;
-		String sql = "select * from Users where user_name = \'" + uName
-				+ "\'";
-		Statement stmt = null;
-		ResultSet rset = null;
+      try
+      {
+         request.getSession().setAttribute("loggedUser", loggedUser);
+         if (uClass.equals("a"))
+         {
+            response.sendRedirect("adminUser.jsp");
+         } else if (uClass.equals("p") || uClass.equals("d"))
+         {
+            response.sendRedirect("regUser.jsp");
+         } else if (uClass.equals("r"))
+         {
+            response.sendRedirect("radioUser.jsp");
+         }
+      } catch (Exception ex)
+      {
 
-		try {
-			stmt = UserConnection.getConnection().getConn().createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			rset = stmt.executeQuery(sql);
+         System.out.println("" + ex.getMessage() + "");
+      }
+   }
 
-			String truepwd = "";
+//parses the information that the user has entered to ensure they are a proper user of the system
+//and verifies their credentials with the databases. Sends them to the method above to redirect to the
+//proper homepage for that user type.
+   public void queryUser(HttpServletRequest request,
+         HttpServletResponse response, JspWriter out)
+   {
 
-			while (rset != null && rset.next()) {
-				truepwd = (rset.getString(2)).trim();
-				tempClass = (rset.getString(3)).trim();
-			}
+      String uName = request.getParameter("userName").trim();
+      String uPass = request.getParameter("password").trim();
+      String tempClass = null;
+      String sql = "select * from Users where user_name = \'" + uName + "\'";
+      Statement stmt = null;
+      ResultSet rset = null;
 
-			if (uPass.equals(truepwd)) {
-				loggedUser = new User(uName,tempClass);
-				//UserManager.getUserManager().setUser(new User(uName,tempClass));
-				openPage(tempClass, request, response, out);
-			} else {
-				out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
-			}
-			
-				if(stmt != null) { stmt.close();}
+      try
+      {
+         stmt = UserConnection
+               .getConnection()
+               .getConn()
+               .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_READ_ONLY);
+         rset = stmt.executeQuery(sql);
 
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		}
-	}%>
+         String truepwd = "";
 
-<% request.getSession().removeAttribute("record");	
-UserConnection.getConnection();
-	request.getSession().removeAttribute("loggedUser");
-if(request.getParameter("bSubmit")!=null)
-{
-    queryUser(request, response, out);
-}
+         while (rset != null && rset.next())
+         {
+            truepwd = (rset.getString(2)).trim();
+            tempClass = (rset.getString(3)).trim();
+         }
+
+         if (uPass.equals(truepwd))
+         {
+            loggedUser = new User(uName, tempClass);
+            openPage(tempClass, request, response, out);
+         } else
+         {
+            out.println("<center><p><b> Either You Username or Your password is invald </b></p></center>");
+         }
+
+         if (stmt != null)
+         {
+            stmt.close();
+         }
+
+      } catch (Exception ex)
+      {
+         System.out.println("" + ex.getMessage() + "");
+      }
+   }%>
+
+<%
+//ensures the current recordID is removed, to prevent any changes that are not permitted
+   request.getSession().removeAttribute("record");
+   UserConnection.getConnection();
+   request.getSession().removeAttribute("loggedUser");
+   if (request.getParameter("bSubmit") != null)
+   {
+      queryUser(request, response, out);
+   }
 %>
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<form method="post">

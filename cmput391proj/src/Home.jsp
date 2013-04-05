@@ -13,6 +13,7 @@
 	<script src="index_a.js" type="text/javascript"></script>		<!--// Motion Script //-->
 </head>
 <%
+//removes the user attributes to ensure they are logged out properly from the system
 request.getSession().removeAttribute("record");
 request.getSession().removeAttribute("loggedUser"); %>
 

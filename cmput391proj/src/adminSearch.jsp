@@ -13,233 +13,327 @@
 </head>
 <%@ page import="java.sql.*,cmput391.*,java.util.*,java.io.*,javax.servlet.*"%>
 <%@ page import="javax.servlet.http.*,java.sql.*,oracle.jdbc.driver.*,java.text.*,java.net.*"%>
-<%!   private User loggedUser;
-private String uName = "";
+<%!//creates some public variables accessable by all the functions in the jsp page.
 
-public void search(HttpServletRequest request,
-      HttpServletResponse response, JspWriter out){
-   try {
+   private User   loggedUser;
+   private String uName = "";
 
-      String search = (request.getParameter("search")).trim();
-      String sql = "";   
-      String dash = "-";
-      String sort = request.getParameter("sort").trim();
-      int dateSearch = request.getParameter("sdd").trim().compareTo(dash);
-      String start_date = "";
-      String end_date = "";
-      String tempday = "";
-      String tempyr = "";
-      String tempmon = "";
+   //base function that gets called in the searching of the users desired input
+   //it uses the html/jsp variables that get updated by the page itself
+   //uses variables to parse each entry that the user enters and then builds the 
+   //appropriate sql command to retireve the proper information
+   public void search(HttpServletRequest request, HttpServletResponse response,
+         JspWriter out)
+   {
 
+      try
+      {
 
+         String search = (request.getParameter("search")).trim();
+         String sql = "";
+         String dash = "-";
+         String sort = request.getParameter("sort").trim();
+         int dateSearch = request.getParameter("sdd").trim().compareTo(dash);
+         String start_date = "";
+         String end_date = "";
+         String tempday = "";
+         String tempyr = "";
+         String tempmon = "";
 
-      if (dateSearch != 0) {
+         //sets a variable used to determine if the user is trying a date search or not
+         if (dateSearch != 0)
+         {
 
+            tempday = (request.getParameter("sdd")).trim();
+            tempyr = (request.getParameter("sdy")).trim();
+            tempmon = (request.getParameter("sdm")).trim();
 
-         tempday = (request.getParameter("sdd")).trim();
-         tempyr = (request.getParameter("sdy")).trim();
-         tempmon = (request.getParameter("sdm")).trim();
+            start_date = tempday.concat(dash).concat(tempmon).concat(dash)
+                  .concat(tempyr);
 
-         start_date = tempday.concat(dash).concat(tempmon).concat(dash)
-               .concat(tempyr);
+            tempday = (request.getParameter("edd")).trim();
+            tempyr = (request.getParameter("edy")).trim();
+            tempmon = (request.getParameter("edm")).trim();
 
-         tempday = (request.getParameter("edd")).trim();
-         tempyr = (request.getParameter("edy")).trim();
-         tempmon = (request.getParameter("edm")).trim();
-
-         end_date = tempday.concat(dash).concat(tempmon).concat(dash)
-               .concat(tempyr);
-      }
-
-
-      StringTokenizer queryTokens = new StringTokenizer(search);
-
-      sql = sqlBuilder(dateSearch, sort, start_date, end_date, queryTokens, out);
-
-
-
-
-      Statement stmt = null;
-      ResultSet rset = null;
-
-      stmt = UserConnection
-            .getConnection()
-            .getConn()
-            .createStatement();
-      rset = stmt.executeQuery(sql);
-
-      try{
-         int i = 12;
-         for(int n = 0; n<i; n++){
-            out.println("<BR>&nbsp;</BR>");
+            end_date = tempday.concat(dash).concat(tempmon).concat(dash)
+                  .concat(tempyr);
          }
 
-         out.println("<table border=1 align=right >");
+         //breaks the query they have entered into the seperate words that were entered
+         StringTokenizer queryTokens = new StringTokenizer(search);
+         //builds the required sql command based on what the user has entered into the fields
+         sql = sqlBuilder(dateSearch, sort, start_date, end_date, queryTokens,
+               out);
 
-         /*
-          *  to generate the column labels
-          */
+         Statement stmt = null;
+         ResultSet rset = null;
 
-         String value = null;
-         Object o = null;
-         ResultSetMetaData rsetMetaData = rset.getMetaData();
-         int columnCount = rsetMetaData.getColumnCount();
-
-         String r_id;
-         String i_id;
-         Statement stmt2 = null;
-    	 ResultSet rset2 = null;
-
-      	 stmt2 = UserConnection
-            .getConnection()
-            .getConn()
-            .createStatement();
-
-         out.println("<tr valign = \"top\">");
-
-         for ( int column = 1; column <= columnCount; column++) {
-            if (column<columnCount){
-            	value = rsetMetaData.getColumnLabel(column);
-            	out.print("<td>" + value + "</td>");
+         stmt = UserConnection.getConnection().getConn().createStatement();
+         rset = stmt.executeQuery(sql);
+         //formats to allow the proper display of the tables on the page
+         try
+         {
+            int i = 12;
+            for (int n = 0; n < i; n++)
+            {
+               out.println("<BR>&nbsp;</BR>");
             }
-           else {
-           	out.print("<td>Pictures</td>");
-            }
-         }
-         out.println("</tr>");
 
-         /*
-          *   generate answers, one tuple at a time
-          */
-         while (rset.next() ) {
+            out.println("<table border=1 align=right >");
 
-            out.println("<tr>");
+            /*
+             *  to generate the column labels for the output
+             */
 
-            for ( int index = 1; index <= columnCount; index++) {
-               o = rset.getObject(index);
-               if (o != null )
-                  value = o.toString();
-               else
-                  value = "null";
-               if (index < columnCount) {  		
-               		out.print("<td>" + value + "</td>");
-               	}
-             	else {
-             		out.print("<td>"); 
-             		
-             		r_id = (rset.getObject(1)).toString();
-             		sql = "select image_id from pacs_images where record_id = "+r_id;
-             		rset2 = stmt2.executeQuery(sql);
-             		
-             		while (rset2.next() ) {
-             			i_id = (rset2.getObject(1)).toString();
-             			// specify the servlet for the image
-           				out.print("<a href=\"GetOnePic?big"+i_id+"\">");
-	      				// specify the servlet for the themernail
-	       				out.print("<img src=\"GetOnePic?"+i_id +"\">");           		
-             		
-             		}            		
-             		out.print("</td>");
-             	}
+            String value = null;
+            Object o = null;
+            ResultSetMetaData rsetMetaData = rset.getMetaData();
+            int columnCount = rsetMetaData.getColumnCount();
 
+            String r_id;
+            String i_id;
+            Statement stmt2 = null;
+            ResultSet rset2 = null;
 
+            stmt2 = UserConnection.getConnection().getConn().createStatement();
+
+            out.println("<tr valign = \"top\">");
+
+            for (int column = 1; column <= columnCount; column++)
+            {
+               if (column < columnCount)
+               {
+                  value = rsetMetaData.getColumnLabel(column);
+                  out.print("<td>" + value + "</td>");
+               } else
+               {
+                  out.print("<td>Pictures</td>");
+               }
             }
             out.println("</tr>");
+
+            /*
+             *   generate answers, one tuple at a time, and displays all images for that record as thumbnails
+             *	  allowing the user to expand the image into fullsize
+             */
+            while (rset.next())
+            {
+
+               out.println("<tr>");
+
+               for (int index = 1; index <= columnCount; index++)
+               {
+                  o = rset.getObject(index);
+                  if (o != null)
+                     value = o.toString();
+                  else
+                     value = "null";
+                  if (index < columnCount)
+                  {
+                     out.print("<td>" + value + "</td>");
+                  } else
+                  {
+                     out.print("<td>");
+
+                     r_id = (rset.getObject(1)).toString();
+                     sql = "select image_id from pacs_images where record_id = "
+                           + r_id;
+                     rset2 = stmt2.executeQuery(sql);
+
+                     while (rset2.next())
+                     {
+                        i_id = (rset2.getObject(1)).toString();
+                        // specify the servlet for the image
+                        out.print("<a href=\"GetOnePic?big" + i_id + "\">");
+                        // specify the servlet for the thumbnail
+                        out.print("<img src=\"GetOnePic?" + i_id + "\">");
+                     }
+                     out.print("</td>");
+                  }
+               }
+               out.println("</tr>");
+            }
+
+            out.println("</table>");
+
+            stmt2.close();
+
+         } catch (Exception ex)
+         {
+            System.out.println("" + ex.getMessage() + "");
          }
 
-         out.println("</table>");
-         
-         stmt2.close();
-
-
-      }
-      catch (Exception ex) {
+         stmt.close();
+         UserConnection.getConnection().getConn().commit();
+      } catch (Exception ex)
+      {
          System.out.println("" + ex.getMessage() + "");
       }
 
-      stmt.close();
-      UserConnection.getConnection().getConn().commit();
-   } catch (Exception ex) {
-      System.out.println("" + ex.getMessage() + "");
    }
 
-}
+   //builds the required sql string based on their search terms
+   public String sqlBuilder(int dateSearch, String sort, String s_date,
+         String e_date, StringTokenizer query, JspWriter out)
+   {
 
-public String sqlBuilder(int dateSearch, String sort, String s_date, String e_date, StringTokenizer query, JspWriter out) {
+      String sql = "";
 
-   String sql = "";
-   
-   try {    
-      String search = "";
-      String search2 = "";
-      int tokenCount;
+      try
+      {
+         String search = "";
+         String search2 = "";
+         int tokenCount;
 
-      tokenCount = query.countTokens();   
-      if (query.hasMoreTokens()) {
-         search = query.nextToken();
-         if (tokenCount == 2) {
-            search2 = query.nextToken();
+         tokenCount = query.countTokens();
+         if (query.hasMoreTokens())
+         {
+            search = query.nextToken();
+            if (tokenCount == 2)
+            {
+               search2 = query.nextToken();
+            }
          }
+
+         if (dateSearch == 0)
+         {
+            if (tokenCount == 1)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0)) ORDER BY Score Desc";
+            }
+
+            if (tokenCount == 2)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0 OR contains(patient_name, '"
+                     + search2
+                     + "',4) > 0 OR contains(diagnosis, '"
+                     + search2
+                     + "',5) > 0 OR contains(description, '"
+                     + search2
+                     + "',6) > 0)) ORDER BY Score Desc";
+            }
+         } else if (sort.compareTo("Ascending") == 0 && dateSearch != 0)
+         {
+            if (tokenCount == 1)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0) AND (test_date between to_date('"
+                     + s_date
+                     + "', 'DD-Mon-YY') and to_date('"
+                     + e_date
+                     + "', 'DD-Mon-YY'))) ORDER BY test_date ASC";
+            }
+
+            if (tokenCount == 2)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0 OR contains(patient_name, '"
+                     + search2
+                     + "',4) > 0 OR contains(diagnosis, '"
+                     + search2
+                     + "',5) > 0 OR contains(description, '"
+                     + search2
+                     + "',6) > 0) AND (test_date between to_date('"
+                     + s_date
+                     + "', 'DD-Mon-YY') and to_date('"
+                     + e_date
+                     + "', 'DD-Mon-YY'))) ORDER BY test_date ASC";
+            }
+         } else if (sort.compareTo("Descending") == 0 && dateSearch != 0)
+         {
+            if (tokenCount == 1)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0) AND (test_date between to_date('"
+                     + s_date
+                     + "', 'DD-Mon-YY') and to_date('"
+                     + e_date
+                     + "', 'DD-Mon-YY'))) ORDER BY test_date DESC";
+            }
+
+            if (tokenCount == 2)
+            {
+               sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"
+                     + search
+                     + "',1) > 0 OR contains(diagnosis, '"
+                     + search
+                     + "',2) > 0 OR contains(description, '"
+                     + search
+                     + "',3) > 0 OR contains(patient_name, '"
+                     + search2
+                     + "',4) > 0 OR contains(diagnosis, '"
+                     + search2
+                     + "',5) > 0 OR contains(description, '"
+                     + search2
+                     + "',6) > 0) AND (test_date between to_date('"
+                     + s_date
+                     + "', 'DD-Mon-YY') and to_date('"
+                     + e_date
+                     + "', 'DD-Mon-YY'))) ORDER BY test_date DESC";
+
+            }
+         } else
+         {
+            out.println("You must both a start date, end date, and order in which to sort by.");
+         }
+
+      } catch (Exception ex)
+      {
+         System.out.println("" + ex.getMessage() + "");
       }
-
-      if (dateSearch == 0) {
-         if (tokenCount == 1) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0)) ORDER BY Score Desc"; 
-         }
-
-         if (tokenCount == 2) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0 OR contains(patient_name, '"+search2+"',4) > 0 OR contains(diagnosis, '"+search2+"',5) > 0 OR contains(description, '"+search2+"',6) > 0)) ORDER BY Score Desc";
-         }
-      }
-      else if (sort.compareTo("Ascending") == 0 && dateSearch != 0){
-         if (tokenCount == 1) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0) AND (test_date between to_date('"+s_date+"', 'DD-Mon-YY') and to_date('"+e_date+"', 'DD-Mon-YY'))) ORDER BY test_date ASC"; 
-         }
-
-         if (tokenCount == 2) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0 OR contains(patient_name, '"+search2+"',4) > 0 OR contains(diagnosis, '"+search2+"',5) > 0 OR contains(description, '"+search2+"',6) > 0) AND (test_date between to_date('"+s_date+"', 'DD-Mon-YY') and to_date('"+e_date+"', 'DD-Mon-YY'))) ORDER BY test_date ASC";
-         }
-      }
-      else if (sort.compareTo("Descending") == 0 && dateSearch != 0) {
-         if (tokenCount == 1) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0) AND (test_date between to_date('"+s_date+"', 'DD-Mon-YY') and to_date('"+e_date+"', 'DD-Mon-YY'))) ORDER BY test_date DESC"; 
-         }
-
-         if (tokenCount == 2) {
-            sql = "SELECT radiology_record.*, Score(1)*6 + Score(2)*3 + Score(3) + Score(4)*6 + Score(5)*3 + Score(6) as Score FROM radiology_record WHERE ((contains(patient_name, '"+search+"',1) > 0 OR contains(diagnosis, '"+search+"',2) > 0 OR contains(description, '"+search+"',3) > 0 OR contains(patient_name, '"+search2+"',4) > 0 OR contains(diagnosis, '"+search2+"',5) > 0 OR contains(description, '"+search2+"',6) > 0) AND (test_date between to_date('"+s_date+"', 'DD-Mon-YY') and to_date('"+e_date+"', 'DD-Mon-YY'))) ORDER BY test_date DESC";
-
-         }
-      }
-      else {
-         out.println("You must both a start date, end date, and order in which to sort by.");
-      }
-
-   } catch (Exception ex) {
-      System.out.println("" + ex.getMessage() + "");
-   } 
-   return sql;
-}
-
-%>
+      return sql;
+   }%>
 
 <%
-try {
-   loggedUser = (User) request.getSession().getAttribute(
-         "loggedUser");
-   if (loggedUser == null) {
-      response.sendRedirect("Home.jsp");
-   } else {
-      String uClass = loggedUser.getUserClass();
-      if (uClass.compareTo("a") != 0)
+//security module to ensure the user has the appropriate priveledges to view the page, moves them to home.jsp if not
+   try
+   {
+      loggedUser = (User) request.getSession().getAttribute("loggedUser");
+      if (loggedUser == null)
+      {
          response.sendRedirect("Home.jsp");
+      } else
+      {
+         String uClass = loggedUser.getUserClass();
+         if (uClass.compareTo("a") != 0)
+            response.sendRedirect("Home.jsp");
+      }
+      uName = loggedUser.getUserName();
+      if (request.getParameter("bSubmit") != null)
+      {
+         search(request, response, out);
+      }
+   } catch (Exception ex)
+   {
+      System.out.println("" + ex.getMessage() + "");
    }
-   uName = loggedUser.getUserName();
-   if (request.getParameter("bSubmit") != null) {
-      search(request, response, out);
-   }
-} catch (Exception ex) {
-   System.out.println("" + ex.getMessage() + "");
-}
 %>
 
 <body id="page" onload="if(IE||V5) OnWeLoad()">

@@ -24,200 +24,234 @@
 <%@ page import="cmput391.*" %>
 <%@ page import="java.sql.*" %>
 
-<%
-if(request.getParameter("mSubmit")!=null)
-{
-    checkUser(request, response, out);
-}
-if(request.getParameter("rSubmit")!=null){
-	try{
-		response.sendRedirect("Register.jsp");
-	}
-	catch(Exception ex) {
-		System.out.println("" + ex.getMessage() +"");
-	}
-}
+	<%
+	   //deals with the action of hiting the submit/enter button, and calls the appropriate method
+	   if (request.getParameter("mSubmit") != null)
+	   {
+	      checkUser(request, response, out);
+	   }
+	   
+	   if (request.getParameter("rSubmit") != null)
+	   {
+	      try
+	      {
+	         response.sendRedirect("Register.jsp");
+	      } catch (Exception ex)
+	      {
+	         System.out.println("" + ex.getMessage() + "");
+	      }
+	   }
+//basic user guideance
+	   try
+	   {
 
-try {
+	      out.println("<center>");
+	      out.println("<form method=POST>");
+	      out.println("<h3>Enter a user you would like to see info for</h3>");
+	      out.println("<input class=cc41 type=text name=username value=userName size=23>");
+	      out.println("<input type=submit name=mSubmit value=Submit>");
+	      out.println("<input type=submit name=rSubmit value=\"Add/Update\">");
+	      out.println("</form>");
 
-	out.println("<center>");
-	out.println("<form method=POST>");
-	out.println("<h3>Enter a user you would like to see info for</h3>");
-	out.println("<input class=cc41 type=text name=username value=userName size=23>");
-	out.println("<input type=submit name=mSubmit value=Submit>");
-	out.println("<input type=submit name=rSubmit value=\"Add/Update\">");
-	out.println("</form>");
+	   } catch (Exception ex)
+	   {
+	      System.out.println("" + ex.getMessage() + "");
+	   }
+	%>
 
+	<%!
+	//Checks to make sure the user they are trying to edit exists
+	public void checkUser(HttpServletRequest request,
+         HttpServletResponse response, JspWriter out)
+   {
 
- }catch (Exception ex) {
-		System.out.println("" + ex.getMessage() + "");
-	}
-%>
+      try
+      {
+         String username = (request.getParameter("username")).trim();
+         String sql = "select * from users where user_name = '" + username
+               + "'";
+         Statement stmt = null;
+         ResultSet rset = null;
+         stmt = UserConnection.getConnection().getConn().createStatement();
+         rset = stmt.executeQuery(sql);
+         String trueuser = "";
+         while (rset != null && rset.next())
+         {
+            trueuser = (rset.getString(1)).trim();
+         }
+         if (!username.equals(trueuser))
+         {
+            out.println("<center>");
+            out.println("<p><b> That username does not exist! </b></p>");
+         }
+         if (username.equals(""))
+         {
+            out.println("<center>");
+            out.println("<p><b> Username field not filled! </b></p>");
+         }
+         if (!username.equals("") && username.equals(trueuser))
+         {
+            queryUser(username, request, response, out);
+         }
+      } catch (Exception ex)
+      {
+         System.out.println("" + ex.getMessage() + "");
+      }
+   }
 
-<%!
-public void checkUser(HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-	
-	try {
-			String username = (request.getParameter("username")).trim();
-			String sql = "select * from users where user_name = '" + username + "'";
-			Statement stmt = null;
-			ResultSet rset = null;
-			stmt = UserConnection.getConnection().getConn().createStatement();
-			rset = stmt.executeQuery(sql);
-			String trueuser = "";
-			while (rset != null && rset.next()) {
-				trueuser = (rset.getString(1)).trim();
-			}
-			if (!username.equals(trueuser)) {
-				out.println("<center>");
-				out.println("<p><b> That username does not exist! </b></p>");
-			} 
-			if (username.equals("")) {
-				out.println("<center>");
-				out.println("<p><b> Username field not filled! </b></p>");
-			}
-			if (!username.equals("") && username.equals(trueuser)) {
-				queryUser(username,request, response, out);
-			}
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		}
-	}
+	//parses the users associated input into the proper variables and performs the required 
+	//security checks.
+   public void queryUser(String username, HttpServletRequest request,
+         HttpServletResponse response, JspWriter out)
+   {
 
+      try
+      {
 
-public void queryUser(String username, HttpServletRequest request, HttpServletResponse response, JspWriter out) {
-	
-	try {	
-		
-			String sql = "select class from users where user_name = '" + username + "'";
-			String classID = "";
-			Statement stmt = null;
-			ResultSet rset = null;
+         String sql = "select class from users where user_name = '" + username
+               + "'";
+         String classID = "";
+         Statement stmt = null;
+         ResultSet rset = null;
 
-				stmt = UserConnection.getConnection().getConn().createStatement();
-				rset = stmt.executeQuery(sql);
-				
-			while (rset != null && rset.next()) {
-					classID = (rset.getString(1)).trim();
-				}
-			
-			if(classID.equals("d")){
-			out.println("<center>");
-			out.println(username);
-			String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone, fd.doctor_name, fd.patient_name " +
-					"from users u join persons p on u.user_name = p.user_name join family_doctor fd on u.user_name = fd.doctor_name where u.user_name = '"+username+"'";
-			Statement stmt2 = null;
-			ResultSet rset2 = null;
-			stmt2 = UserConnection.getConnection().getConn().createStatement();
-			rset2 = stmt.executeQuery(sql2);
-			displayResultSet(out, rset2, request);
-			
-			}
-			
-			if(classID.equals("p")){
-				out.println("<center>");
-				out.println(username);
-				String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone, fd.doctor_name, fd.patient_name " +
-						"from users u join persons p on u.user_name = p.user_name join family_doctor fd on u.user_name = fd.patient_name where u.user_name = '"+username+"'";
-				Statement stmt2 = null;
-				ResultSet rset2 = null;
-				stmt2 = UserConnection.getConnection().getConn().createStatement();
-				rset2 = stmt.executeQuery(sql2);
-				displayResultSet(out, rset2, request);
-				
-				}
-			if(classID.equals("r")){
-				out.println("<center>");
-				out.println(username);
-				String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone " +
-						"from users u join persons p on u.user_name = p.user_name where u.user_name = '"+username+"'";
-				Statement stmt2 = null;
-				ResultSet rset2 = null;
-				stmt2 = UserConnection.getConnection().getConn().createStatement();
-				rset2 = stmt.executeQuery(sql2);
-				displayResultSet(out, rset2, request);
-				}
-			
-			if(classID.equals("a")){
-				out.println("<center>");
-				out.println(username);
-				String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone " +
-						"from users u join persons p on u.user_name = p.user_name where u.user_name = '"+username+"'";
-				Statement stmt2 = null;
-				ResultSet rset2 = null;
-				stmt2 = UserConnection.getConnection().getConn().createStatement();
-				rset2 = stmt.executeQuery(sql2);
-				displayResultSet(out, rset2, request);
-				}
-			
-		} catch (Exception ex) {
-			System.out.println("" + ex.getMessage() + "");
-		}
-	}
+         stmt = UserConnection.getConnection().getConn().createStatement();
+         rset = stmt.executeQuery(sql);
 
+         while (rset != null && rset.next())
+         {
+            classID = (rset.getString(1)).trim();
+         }
 
-    /*
-     *   Display the result set in a generated HTML file
-     */
-     
+         if (classID.equals("d"))
+         {
+            out.println("<center>");
+            out.println(username);
+            String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone, fd.doctor_name, fd.patient_name "
+                  + "from users u join persons p on u.user_name = p.user_name join family_doctor fd on u.user_name = fd.doctor_name where u.user_name = '"
+                  + username + "'";
+            Statement stmt2 = null;
+            ResultSet rset2 = null;
+            stmt2 = UserConnection.getConnection().getConn().createStatement();
+            rset2 = stmt.executeQuery(sql2);
+            displayResultSet(out, rset2, request);
 
-    private void displayResultSet(JspWriter out, ResultSet rset, HttpServletRequest request ) {
-	try{
-		
-	HttpSession session = request.getSession(true);
-	// set the maximum inactive interv al of the current session to be 5 minutes
-	session.setMaxInactiveInterval(300); 
-	int i = 1;
-	for(int n = 0; n<i; n++){
-		out.println("<BR>&nbsp;</BR>");
-	}
-	
-	out.println("<table id=\"e13\" border = 1 alian ALIGN=center >");
-	
-	/* 
-	 *  to generate the column labels
-	 */
+         }
 
-		String value = null;
-		Object o = null;
-	    ResultSetMetaData rsetMetaData = rset.getMetaData();
-	    int columnCount = rsetMetaData.getColumnCount();
+         if (classID.equals("p"))
+         {
+            out.println("<center>");
+            out.println(username);
+            String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone, fd.doctor_name, fd.patient_name "
+                  + "from users u join persons p on u.user_name = p.user_name join family_doctor fd on u.user_name = fd.patient_name where u.user_name = '"
+                  + username + "'";
+            Statement stmt2 = null;
+            ResultSet rset2 = null;
+            stmt2 = UserConnection.getConnection().getConn().createStatement();
+            rset2 = stmt.executeQuery(sql2);
+            displayResultSet(out, rset2, request);
 
-	    out.println("<tr valign = \"top\">");
+         }
+         if (classID.equals("r"))
+         {
+            out.println("<center>");
+            out.println(username);
+            String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone "
+                  + "from users u join persons p on u.user_name = p.user_name where u.user_name = '"
+                  + username + "'";
+            Statement stmt2 = null;
+            ResultSet rset2 = null;
+            stmt2 = UserConnection.getConnection().getConn().createStatement();
+            rset2 = stmt.executeQuery(sql2);
+            displayResultSet(out, rset2, request);
+         }
 
-	    for ( int column = 1; column <= columnCount; column++) {
-		value = rsetMetaData.getColumnLabel(column);
-		out.print("<td>" + value + "</td>");
-	    }
-	    out.println("</tr>");
+         if (classID.equals("a"))
+         {
+            out.println("<center>");
+            out.println(username);
+            String sql2 = "select u.password, u.class, u.date_registered, p.first_name, p.last_name, p.address, p.email, p.phone "
+                  + "from users u join persons p on u.user_name = p.user_name where u.user_name = '"
+                  + username + "'";
+            Statement stmt2 = null;
+            ResultSet rset2 = null;
+            stmt2 = UserConnection.getConnection().getConn().createStatement();
+            rset2 = stmt.executeQuery(sql2);
+            displayResultSet(out, rset2, request);
+         }
 
-	    /*
-	     *   generate answers, one tuple at a time
-	     */
-	    while (rset.next() ) {
-	 
-		out.println("<tr valign = \"top\">");
+      } catch (Exception ex)
+      {
+         System.out.println("" + ex.getMessage() + "");
+      }
+   }
 
-		for ( int index = 1; index <= columnCount; index++) {
-		    o = rset.getObject(index);
-		    if (o != null )
-			value = o.toString();
-		    else 
-			value = "null";
-		    out.print("<td>" + value + "</td>");
-		}
-		out.println("</tr>");
-	    }
-	 
-	out.println("</table>");
-	
-    }
-	catch (Exception ex) {
-		System.out.println("" + ex.getMessage() + "");
-	}
-    }
-	
-%>
+   /*
+    *   Display the result set in a generated HTML file
+    */
+
+   private void displayResultSet(JspWriter out, ResultSet rset,
+         HttpServletRequest request)
+   {
+
+      try
+      {
+
+         HttpSession session = request.getSession(true);
+         // set the maximum inactive interv al of the current session to be 5 minutes
+         session.setMaxInactiveInterval(300);
+         int i = 1;
+         for (int n = 0; n < i; n++)
+         {
+            out.println("<BR>&nbsp;</BR>");
+         }
+
+         out.println("<table id=\"e13\" border = 1 alian ALIGN=center >");
+
+         /* 
+          *  to generate the column labels
+          */
+
+         String value = null;
+         Object o = null;
+         ResultSetMetaData rsetMetaData = rset.getMetaData();
+         int columnCount = rsetMetaData.getColumnCount();
+
+         out.println("<tr valign = \"top\">");
+
+         for (int column = 1; column <= columnCount; column++)
+         {
+            value = rsetMetaData.getColumnLabel(column);
+            out.print("<td>" + value + "</td>");
+         }
+         out.println("</tr>");
+
+         /*
+          *   generate answers, one tuple at a time
+          */
+         while (rset.next())
+         {
+
+            out.println("<tr valign = \"top\">");
+
+            for (int index = 1; index <= columnCount; index++)
+            {
+               o = rset.getObject(index);
+               if (o != null)
+                  value = o.toString();
+               else
+                  value = "null";
+               out.print("<td>" + value + "</td>");
+            }
+            out.println("</tr>");
+         }
+
+         out.println("</table>");
+
+      } catch (Exception ex)
+      {
+         System.out.println("" + ex.getMessage() + "");
+      }
+   }%>
 
 	<a href="adminUser.jsp"
 		onmouseover="OnWeOver(0,0,0,IDP[6],Img12,'cmput391_004.htm',1)"

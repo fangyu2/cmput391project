@@ -23,131 +23,142 @@
 	import="org.apache.commons.fileupload.FileItem,java.io.*,javax.servlet.*,java.util.*,oracle.sql.*"%>
 <%@ page
 	import="oracle.jdbc.*,java.awt.Image,java.awt.image.BufferedImage,javax.imageio.ImageIO"%>
-
-<%!private User loggedUser;
-	private Record record;
-	private int recordID;%>
-
-<%!
-
-//get the highest record_id currently in database then assign it as the new
-//record_id after incremeting it
-public void getRecordID() {
-	try {
-		
-		recordID = 1; // assign record_id as 1 if the database is unpopulated
-		
-		String sql = "select record_id from radiology_record order by record_id"
-				+ "desc";
-		Statement stmt = null;
-		ResultSet rset = null;
-
-		stmt = UserConnection.getConnection().getConn().createStatement(
-				ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_READ_ONLY);
-		rset = stmt.executeQuery(sql);
-		
-		if(rset.first()){
-			recordID = rset.getInt(1);
-			recordID++;
-		}
-		stmt.close();	
 	
-	} catch (Exception ex) {
-	}
-}
+<!--Declares public variables able to be used and modified by each method in the page.-->
+<%!private User   loggedUser;
+   private Record record;
+   private int    recordID;%>
 
-// add a record provided by the user into the radiology record table
-public void addRecord(HttpServletRequest request,
-			HttpServletResponse response, JspWriter out) {
-		
+<%!//get the highest record_id currently in database then assign it as the new
+   //record_id after incremeting it
+   public void getRecordID()
+   {
 
-		try {
-			//retrieve the fields entered by the user
-			String patientName = (request.getParameter("patient")).trim();
-			String doctorName = (request.getParameter("docName")).trim();
-			String radiologist = (request.getParameter("radname")).trim();
-			String testType = (request.getParameter("testtype")).trim();
-			String diagnosis = (request.getParameter("diagnosis")).trim();
-			String description = (request.getParameter("description")).trim();
-			String pres_date;
-			String test_date;
-			String tempday;
-			String tempyr;
-			String tempmon;
-			String dash = "-";
-			
-			//checks if user left any fields blank, if so then display a
-			//message
-			if(patientName.length() == 0 || doctorName.length() == 0 ||
-					radiologist.length() == 0 || testType.length() == 0 ||
-					testType.length() == 0 || diagnosis.length() == 0 ||
-					description.length() == 0){
-				out.println("<center><p><b> One or More Necessary Fields Not" +
-						"Entered!!</b></p></center>");
-				return;
-			}
-			tempday = (request.getParameter("pdd")).trim();
-			tempyr = (request.getParameter("pdy")).trim();
-			tempmon = (request.getParameter("pdm")).trim();
+      try
+      {
 
-			pres_date = tempday.concat(dash).concat(tempmon).concat(dash)
-					.concat(tempyr);
+         recordID = 1; // assign record_id as 1 if the database is unpopulated
 
-			tempday = (request.getParameter("tdd")).trim();
-			tempyr = (request.getParameter("tdy")).trim();
-			tempmon = (request.getParameter("tdm")).trim();
+         String sql = "select record_id from radiology_record order by record_id"
+               + "desc";
+         Statement stmt = null;
+         ResultSet rset = null;
 
-			test_date = tempday.concat(dash).concat(tempmon).concat(dash)
-					.concat(tempyr);
-			
-			String sql = "INSERT INTO radiology_record VALUES(" + recordID + ", '"
-					+ patientName + "', '" + doctorName + "', '" + radiologist
-					+ "', '" + testType + "', '" + pres_date + "', '"
-					+ test_date + "', '" + diagnosis + "', '" + description
-					+ "')";
-			Statement stmt = null;
-			ResultSet rset = null;
+         stmt = UserConnection
+               .getConnection()
+               .getConn()
+               .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_READ_ONLY);
+         rset = stmt.executeQuery(sql);
 
-			stmt = UserConnection.getConnection().getConn().createStatement();
-			stmt.executeQuery(sql);
-			stmt.close();
-			UserConnection.getConnection().getConn().commit();
-			record = new Record(recordID);
-			String checked = request.getParameter("addPic");			
-			
-			//checks if the user checked add photo option or not
-			//if yes the user is taken to upload photo page
-			if(checked != null){
-				request.getSession().setAttribute("record", record);
-				response.sendRedirect("upload.jsp");
-			}
-		} catch (Exception ex) {
-		}
+         if (rset.first())
+         {
+            recordID = rset.getInt(1);
+            recordID++;
+         }
+         stmt.close();
 
-	}
+      } catch (Exception ex)
+      {
+      }
+   }
 
-	%>
+   // add a record provided by the user into the radiology record table
+   public void addRecord(HttpServletRequest request,
+         HttpServletResponse response, JspWriter out)
+   {
 
-<%
-	request.getSession().removeAttribute("record");
+      try
+      {
+         //retrieve the fields entered by the user
+         String patientName = (request.getParameter("patient")).trim();
+         String doctorName = (request.getParameter("docName")).trim();
+         String radiologist = (request.getParameter("radname")).trim();
+         String testType = (request.getParameter("testtype")).trim();
+         String diagnosis = (request.getParameter("diagnosis")).trim();
+         String description = (request.getParameter("description")).trim();
+         String pres_date;
+         String test_date;
+         String tempday;
+         String tempyr;
+         String tempmon;
+         String dash = "-";
 
-	//checks if the user logged on is a radiologist
-	loggedUser = (User) request.getSession().getAttribute("loggedUser");
-	if (loggedUser == null) {
-		response.sendRedirect("Home.jsp");
-	} else {
-		String uClass = loggedUser.getUserClass();
-		if (uClass.compareTo("r") != 0)
-			response.sendRedirect("Home.jsp");
-	}
-	if (request.getParameter("rSubmit") != null) {
-		getRecordID();
-		addRecord(request, response, out);
-	}
+         //checks if user left any fields blank, if so then display a
+         //message
+         if (patientName.length() == 0 || doctorName.length() == 0
+               || radiologist.length() == 0 || testType.length() == 0
+               || testType.length() == 0 || diagnosis.length() == 0
+               || description.length() == 0)
+         {
+            out.println("<center><p><b> One or More Necessary Fields Not"
+                  + "Entered!!</b></p></center>");
+            return;
+         }
+         tempday = (request.getParameter("pdd")).trim();
+         tempyr = (request.getParameter("pdy")).trim();
+         tempmon = (request.getParameter("pdm")).trim();
+
+         pres_date = tempday.concat(dash).concat(tempmon).concat(dash)
+               .concat(tempyr);
+
+         tempday = (request.getParameter("tdd")).trim();
+         tempyr = (request.getParameter("tdy")).trim();
+         tempmon = (request.getParameter("tdm")).trim();
+
+         test_date = tempday.concat(dash).concat(tempmon).concat(dash)
+               .concat(tempyr);
+
+         String sql = "INSERT INTO radiology_record VALUES(" + recordID + ", '"
+               + patientName + "', '" + doctorName + "', '" + radiologist
+               + "', '" + testType + "', '" + pres_date + "', '" + test_date
+               + "', '" + diagnosis + "', '" + description + "')";
+         Statement stmt = null;
+         ResultSet rset = null;
+
+         stmt = UserConnection.getConnection().getConn().createStatement();
+         stmt.executeQuery(sql);
+         stmt.close();
+         UserConnection.getConnection().getConn().commit();
+         record = new Record(recordID);
+         String checked = request.getParameter("addPic");
+
+         //checks if the user checked add photo option or not
+         //if yes the user is taken to upload photo page
+         if (checked != null)
+         {
+            request.getSession().setAttribute("record", record);
+            response.sendRedirect("upload.jsp");
+         }
+      } catch (Exception ex)
+      {
+      }
+
+   }
 %>
 
+<%
+   request.getSession().removeAttribute("record");
 
+   //checks if the user logged on is a radiologist
+   loggedUser = (User) request.getSession().getAttribute("loggedUser");
+   if (loggedUser == null)
+   {
+      response.sendRedirect("Home.jsp");
+   } else
+   {
+      String uClass = loggedUser.getUserClass();
+      if (uClass.compareTo("r") != 0)
+         response.sendRedirect("Home.jsp");
+   }
+   if (request.getParameter("rSubmit") != null)
+   {
+      getRecordID();
+      addRecord(request, response, out);
+   }
+%>
+
+<!--The body of our HTML page, with all the form information used to complete the required result-->
 <body id="page" onload="if(IE||V5) OnWeLoad()">
 	<form method="post">
 		<a href="radioUser.jsp"

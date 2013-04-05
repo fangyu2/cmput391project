@@ -14,7 +14,7 @@
 	private String uFirstName = "";
 	private String uLastName = "";
 
-	//retrieves the users information that is currently logged in
+	//retrieves the users information that is currently logged in using an sql command+connection
 	public void queryUser() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -76,7 +76,7 @@
 		return true;
 	}
 
-	//updates the user information 
+	//updates the user information with anything that the user has changed in the form
 	public void updateUserInfo() {
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -91,6 +91,7 @@
 							ResultSet.CONCUR_UPDATABLE);
 			rset = stmt.executeQuery(sql);
 
+			//iterates over the rset and updates all the associated information
 			while (rset != null && rset.next()) {
 				rset.updateString(1, uFirstName);
 				rset.updateString(2, uLastName);
@@ -157,7 +158,7 @@
 		}
 		uName = loggedUser.getUserName();
 		
-		//obtain the current user info
+		//obtain the current user info -- parsing the information in the forms
 		queryUser();
 		if (request.getParameter("bSubmit") != null) {
 			uPass = request.getParameter("password").trim();
