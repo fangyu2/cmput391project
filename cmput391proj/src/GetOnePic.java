@@ -10,6 +10,14 @@ import java.net.*;
 import cmput391.*;
 
 /**
+ *  We are using this servlet, with most of the code remaining from the original
+ *  example. All we have changed is how the connection is dealt with, and the
+ *  sql commands and tables used to retrieve the proper information required
+ *  for the system to function. All credit goes to Li-Yan Yuan.
+ *  
+ *  All credit goes to Li-Yan Yuan.
+ * 
+ * 
  *  This servlet sends one picture stored in the table below to the client 
  *  who requested the servlet.
  *
@@ -40,7 +48,8 @@ implements SingleThreadModel {
       //  construct the query  from the client's QueryString
       String picid  = request.getQueryString();
       String query;
-
+      
+      //query to return the full_size image to the user
       if ( picid.startsWith("big") )  
          query = 
          "select full_size from pacs_images where image_id=" + picid.substring(3);
@@ -53,7 +62,7 @@ implements SingleThreadModel {
        *   to execute the given query
        */
       try {
-
+         //opens the connection for use
          Statement stmt = null;
          ResultSet rset = null;
 
@@ -71,7 +80,7 @@ implements SingleThreadModel {
          } 
          else 
             out.println("no picture available");
-
+         //closes the connection before exiting the servlet
          stmt.close();
       } catch( Exception ex ) {
          out.println(ex.getMessage() );

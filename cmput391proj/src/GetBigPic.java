@@ -8,9 +8,16 @@ import java.text.*;
 import java.net.*;
 import cmput391.*;
 
-/** This servlet is mostly the same as the provided example, except we import our
- * userconnection class into it, to simpliy the opening and closing of the connections
- * to the database.  
+/** 
+ * This servlet is mostly the same as the provided example, except we import our
+ *  UserConnection class (and other linked files in cmput391 folder) into it, to 
+ *  simplify the opening and closing of the connections to the database. We also modified
+ *  the sql commands, to allow for the access into our database for the required 
+ *  tables. 
+ * 
+ *  All credit goes to Li-Yan Yuan.
+ * 
+ * 
  * 
  * 
  *  This servlet sends one picture stored in the table below to the client 
@@ -40,7 +47,7 @@ implements SingleThreadModel {
          HttpServletResponse response)
                throws ServletException, IOException {
 
-      //  construct the query  from the client's QueryString
+      //  construct the query  from the page calling this method
       String picid  = request.getQueryString();
       String query;
 
