@@ -1,0 +1,10 @@
+install:
+	cp -rf proj1 ~/catalina/webapps
+	cp ~/catalina/webapps/proj1/GetBigPic.java ~/catalina/webapps/proj1/WEB-INF/classes/cmput391
+	cp ~/catalina/webapps/proj1/GetOnePic.java ~/catalina/webapps/proj1/WEB-INF/classes/cmput391
+	javac ~/catalina/webapps/proj1/WEB-INF/classes/cmput391/*.java
+	rm ~/catalina/webapps/proj1/WEB-INF/classes/cmput391/GetBigPic.java
+	rm ~/catalina/webapps/proj1/WEB-INF/classes/cmput391/GetOnePic.java
+	cp ~/catalina/webapps/proj1/WEB-INF/classes/cmput391/GetBigPic.class ~/catalina/webapps/proj1/
+	cp ~/catalina/webapps/proj1/WEB-INF/classes/cmput391/GetOnePic.class ~/catalina/webapps/proj1/
+	starttomcat
